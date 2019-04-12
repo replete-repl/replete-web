@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#test -e ../../../planck && $( cd ../../../planck && script/clean )
+
+lein clean
+rm -rf compiler
+rm -rf resources
+rm -rf aot-cache
