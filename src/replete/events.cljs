@@ -25,7 +25,7 @@
   ::async-eval
   (fn [clojure-forms]
     (let [result (repl/read-eval clojure-forms)]
-      (print "2- " result)
+      (print "3- " result)
       (dispatch [::eval-result result]))))
 
 (reg-event-fx
