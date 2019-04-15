@@ -1,10 +1,11 @@
 (ns replete.events
-  (:require [replete.repl :as repl]
+  (:require [replete.io-impl]
+            [replete.repl :as repl]
             [re-frame.core :refer [reg-event-db reg-event-fx
                                    reg-fx dispatch]]
             [clojure.edn :as edn]))
 
-(def DEFAULT_SERVER_TIMEOUT 3000)
+(def DEFAULT_SERVER_TIMEOUT 3100)
 
 (reg-event-db
   ::initialize-db
@@ -25,7 +26,6 @@
   ::async-eval
   (fn [clojure-forms]
     (let [result (repl/read-eval clojure-forms)]
-      (print "3- " result)
       (dispatch [::eval-result result]))))
 
 (reg-event-fx
