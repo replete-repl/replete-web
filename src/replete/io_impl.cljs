@@ -46,6 +46,7 @@
     clojure.test.check.clojure-test
     clojure.test.check.generators
     clojure.test.check.properties
+    cljs.analyzer
     cljs.analyzer.api
     cljs.core
     cljs.js
@@ -56,6 +57,7 @@
     cljs.spec.alpha
     cljs.spec.gen.alpha
     cljs.spec.test.alpha
+    cljs.tagged-literals
     cljs.tools.reader
     cljs.tools.reader.reader-types
     cljs.tools.reader.impl.errors
@@ -65,13 +67,13 @@
     cljs.test
     cljs.core.async
     cljs.core.async.impl.ioc-macros-runtime
-    goog.array
     goog.Delay
     goog.Disposable
     goog.Promise
     goog.Throttle
     goog.Timer
     goog.Uri
+    goog.array
     goog.color
     goog.color.Hsl
     goog.color.Hsv
@@ -212,6 +214,8 @@
   "A namespace loader that looks up the source against the
    given relative path in the dependencies bundle."
   [namespace-relative-path]
+  (println :load :ns namespace-relative-path
+           :keys (keys (get dependencies namespace-relative-path)))
   (:source (get dependencies namespace-relative-path)))
 
 (set! (.-REPLETE_LOAD js/goog.global) load)
