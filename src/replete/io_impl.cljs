@@ -44,6 +44,7 @@
            clojure.test.check.clojure-test
            clojure.test.check.generators
            clojure.test.check.properties
+           clojure.test.check.random
            cljs.analyzer
            cljs.analyzer.api
            cljs.analyzer.macros
@@ -65,14 +66,13 @@
            cljs.tools.reader.impl.commons
            cljs.tools.reader.impl.inspect
            cljs.tools.reader.impl.utils
-           cljs.test
-           cljs.core.async))
+           cljs.test))
 
 (defn load
   "A namespace loader that looks up the source against the
    given relative path in the dependencies bundle."
   [namespace-relative-path]
-  (println :load
+  #_(println :load
            :count (count dependencies)
            :ns namespace-relative-path
            :keys (keys (get dependencies namespace-relative-path)))
