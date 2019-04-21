@@ -66,13 +66,18 @@
        io/as-file file-seq
        (mapcat #(find-sources-in-dir % [".js"]))))
 
-(defn jars []
+(defn cljs-jars []
   (->> (classpath/classpath-jarfiles)
        (mapcat #(find/sources-in-jar % find/cljs))
        (map io/resource)))
 
+(defn clj-jars []
+  (->> (classpath/classpath-jarfiles)
+       (mapcat #(find/sources-in-jar %))
+       (map io/resource)))
+
 (defn resources []
-  (concat (jars) (clj-files) (cljs-files)))
+  (concat (clj-jars) (cljs-jars) (clj-files) (cljs-files)))
 
 (defn collate [entries]
   (reduce conj {} entries))
