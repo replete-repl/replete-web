@@ -82,23 +82,6 @@
 (defn collate [entries]
   (reduce conj {} entries))
 
-;; ALSO add support for .js so that we can load AOT version
-;; if it exists
-
-;; must be able to know if source
-;; is clj / cljs / cljc
-;; cos filename is passed not the namespace
-
-;; clojure/test/check.clj
-;; clojure/test/check.cljc
-;; clojure/test/check.cljs
-
-;; clojure/test/check/clojure_test.clj
-;; clojure/test/check/clojure_test.cljc
-;; clojure/test/check/clojure_test.cljs
-
-;; so we should carry the names of the files too
-
 (defn sources* [names]
   (let [in-names? (->> names (map str) set)
         relevant? (fn [[name _]] (in-names? name))]

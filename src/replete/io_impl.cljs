@@ -1,6 +1,8 @@
 (ns replete.io-impl
   (:require-macros
-    [replete.io-impl :refer [sources]]))
+    [replete.io-impl :refer [sources]])
+  (:require [clojure.string :as string]))
+
 
 ;js/REPLETE_COPY
 ;js/REPLETE_DELETE
@@ -21,8 +23,6 @@
 ;js/REPLETE_FSTAT
 ;js/REPLETE_IS_DIRECTORY
 ;js/REPLETE_LIST_FILES
-;js/REPLETE_LOAD
-;js/REPLETE_LOAD_FROM_JAR
 ;js/REPLETE_MKDIRS
 ;js/REPLETE_RAW_FLUSH_STDERR
 ;js/REPLETE_RAW_FLUSH_STDOUT
@@ -72,10 +72,22 @@
   "A namespace loader that looks up the source against the
    given relative path in the dependencies bundle."
   [namespace-relative-path]
-  #_(println :load
-           :count (count dependencies)
-           :ns namespace-relative-path
-           :keys (keys (get dependencies namespace-relative-path)))
   (:source (get dependencies namespace-relative-path)))
 
+(defn load-from-jar
+  [file-path resource]
+  (throw (ex-info "unsupported operation"
+                  {:file-path file-path :resource resource})))
+
+;; In memory file-system
+;  js/REPLETE_FILE_READER_OPEN
+(defn file-reader-open
+  ([path]
+   (file-reader-open path "UTF-8"))
+  ([path encoding])
+  )
+
 (set! (.-REPLETE_LOAD js/goog.global) load)
+(set! (.-REPLETE_LOAD_FROM_JAR js/goog.global) load-from-jar)
+
+
