@@ -2,25 +2,24 @@
   (:require [clojure.set :refer [map-invert]]
             [clojure.string :as string]))
 
-;; TODO - convert loop / recur fns to reduce
-
 (def path-separator-ch "/")
 (def path-separator-kw :separator)
 (def kw-encodings {:utf-8 "UTF-8"})
 (def str-encodings (map-invert kw-encodings))
 
 (defn node
-  [name]
-  {:name name})
+  [node-name]
+  {:name node-name})
 
+;; TODO devise key that we can use for content (eg UUID)
 ;; TODO Put the content in another map
 (defn file
-  ([name]
-   (file name nil))
-  ([name content]
-   (file name content :utf-8))
-  ([name content encoding]
-   (merge (node name)
+  ([file-name]
+   (file file-name nil))
+  ([file-name content]
+   (file file-name content :utf-8))
+  ([file-name content encoding]
+   (merge (node file-name)
           {:type     :file
            :content  content
            :encoding encoding})))
@@ -31,24 +30,17 @@
   ())
 
 (defn dir
-  ([name]
-   (dir name #{}))
-  ([name nodes]
-   (merge (node name)
-          {:type  :directory
-           :nodes nodes})))
-
-;; sample fs
-#_(def my-fs #{(dir "/"
-                    #{(dir "tmp")
-                      (dir "var" #{(dir "logs")
-                                   (dir "contrib")})
-                      (dir "etc" #{(file "passwd")
-                                   (dir "local")
-                                   (file "group")})})})
+  ([dir-name]
+   (dir dir-name {}))
+  ([dir-name nodes]
+   (assoc {}
+     (keyword dir-name)
+     (merge (node dir-name)
+            {:type  :directory
+             :nodes nodes}))))
 
 ;; Make into an atom
-(def replete-fs #{(dir "/")})
+(def replete-fs {:/ (dir "/")})
 
 (defn path->parts
   [pathname]
@@ -79,19 +71,19 @@
       (interleave (rest nodes))
       parts->path))
 
-(defn tree-nodes
-  "Find the sequence of nodes that matches
-   pathname in the file-system or nil"
+;; TODO - convert loop / recur fns to reduce
+(defn tree-node-search
+  "Return the sequence of nodes that matches
+  as much pathname as possible in the file-system.
+  Returns nil when there is no top-level match."
   [file-system pathname]
   {:pre [(string/starts-with? pathname "/")]}
   (if (= pathname "/")
-    [(first file-system)]
-    (loop [matching-nodes [(first file-system)]
-           nodes (:nodes (first file-system))
+    [file-system]
+    (loop [matching-nodes [file-system]
+           nodes file-system
            path-nodes (path->nodes pathname)]
-      (let [node-match (->> nodes
-                            (filter #(= (first path-nodes) (:name %)))
-                            first)]
+      (let [node-match (get nodes (keyword (first path-nodes)))]
         (if-not node-match
           matching-nodes
           (recur (conj matching-nodes node-match)
@@ -102,22 +94,33 @@
   "Invoke f on a leaf node that matches pathname in the file-system"
   [file-system pathname f]
   {:pre [(string/starts-with? pathname "/")]}
-  (let [nodes (tree-nodes file-system pathname)]
+  (let [nodes (tree-node-search file-system pathname)]
     (and (= (-> pathname path->parts parts->path)
-            (nodes->path (map :name nodes)))
+            (nodes->path (map #(or (:name %)
+                                   (name (first (keys %)))) nodes)))
          (f (last nodes)))))
 
 (defn path-exists?
   [fs pathname]
-  (match-leaf-node-with fs pathname #(not (nil? %))))
+  (match-leaf-node-with
+    fs pathname #(not (nil? %))))
+
+(defn- type-exists [type node]
+  (or (= (:type node) type)
+      (= (-> node vals first :type)
+         type)))
 
 (defn dir-exists?
   [fs pathname]
-  (match-leaf-node-with fs pathname #(= (:type %) :directory)))
+  (match-leaf-node-with
+    fs pathname
+    (partial type-exists :directory)))
 
 (defn file-exists?
   [fs pathname]
-  (match-leaf-node-with fs pathname #(= (:type %) :file)))
+  (match-leaf-node-with
+    fs pathname
+    (partial type-exists :file)))
 
 (defn basedir
   [pathname]
@@ -131,36 +134,50 @@
 
 (defn can-create-node?
   [fs pathname]
-  (when-let [basedir (basedir pathname)]
+  (let [basedir (basedir pathname)]
     (or (= basedir "/")
         (and (dir-exists? fs basedir)
              (not (path-exists? fs pathname))))))
 
-(defn update-fs-nodes
-  [node updated-node]
-  (let [nodes (remove #(= (:name %) (:name updated-node)) (:nodes node))
-        updated (set (conj nodes updated-node))]
-    (assoc node :nodes updated)))
-
-;; TODO - update atom
+;; TODO - convert loop / recur fns to reduce
 (defn add-leaf-node
   [fs pathname leaf-node]
-  (when (can-create-node? fs pathname)
-    (let [tree-nodes (tree-nodes fs (basedir pathname))
-          new-node (update-in (last tree-nodes) [:nodes] conj leaf-node)]
+  (if-not (can-create-node? fs pathname)
+    (throw (ex-info "false: can-create-node?" {:pathname pathname}))
+    (let [tree-nodes (tree-node-search fs (basedir pathname))
+          update-node (last tree-nodes)
+          new-node (update-in update-node [:nodes] merge leaf-node)]
       (loop [updated-fs new-node
              targets (reverse (butlast tree-nodes))]
         (if-not targets
-          (set [updated-fs])
-          (recur (update-fs-nodes (first targets) updated-fs)
-                 (next targets)))))))
+          updated-fs
+          (let [next-node (first targets)
+                next-update (if (:nodes next-node)
+                              (assoc {} (-> next-node :name keyword)
+                                        (update-in next-node [:nodes]
+                                                   merge updated-fs))
+                              (merge next-node updated-fs))]
+            (recur next-update
+                   (next targets))))))))
 
+;; TODO - update atom
 (defn make-directory
   [fs pathname]
   (add-leaf-node fs pathname (dir (basename pathname))))
 
+;; TODO - update atom
 (defn make-file
   [fs pathname]
   (add-leaf-node fs pathname (file (basename pathname))))
 
 ;; Update the last node, next node up and all way to the top
+
+(def simple-fs (merge (dir "etc")
+                      (dir "tmp")))
+
+(def sample-fs (merge (dir "tmp")
+                      (dir "var" {:logs    (dir "logs")
+                                  :contrib (dir "contrib")})
+                      (dir "etc" {:passwd (file "passwd")
+                                  :group  (file "group")
+                                  :local  (dir "local")})))
