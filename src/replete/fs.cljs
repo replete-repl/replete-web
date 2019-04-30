@@ -71,7 +71,6 @@
       (interleave (rest nodes))
       parts->path))
 
-;; TODO - convert loop / recur fns to reduce
 (defn tree-node-search
   "Return the sequence of nodes that matches
   as much pathname as possible in the file-system.
@@ -139,26 +138,27 @@
         (and (dir-exists? fs basedir)
              (not (path-exists? fs pathname))))))
 
-;; TODO - convert loop / recur fns to reduce
-(defn add-leaf-node
+(defn- merge-nodes
+  [node update-node]
+  (let [kw-node (if-not (:type node)
+                  node
+                  (assoc {} (-> node :name keyword) node))]
+    (if (:nodes update-node)
+      (assoc {} (-> update-node :name keyword)
+                (update-in update-node [:nodes] merge kw-node))
+      (merge update-node kw-node))))
+
+(defn- add-leaf-node
   [fs pathname leaf-node]
   (if-not (can-create-node? fs pathname)
     (throw (ex-info "false: can-create-node?" {:pathname pathname}))
-    (let [tree-nodes (tree-node-search fs (basedir pathname))
-          update-node (last tree-nodes)
-          new-node (update-in update-node [:nodes] merge leaf-node)]
-      (loop [updated-fs new-node
-             targets (reverse (butlast tree-nodes))]
-        (if-not targets
-          updated-fs
-          (let [next-node (first targets)
-                next-update (if (:nodes next-node)
-                              (assoc {} (-> next-node :name keyword)
-                                        (update-in next-node [:nodes]
-                                                   merge updated-fs))
-                              (merge next-node updated-fs))]
-            (recur next-update
-                   (next targets))))))))
+    (let [path-nodes (tree-node-search fs (basedir pathname))
+          initial-node (merge-nodes leaf-node (last path-nodes))]
+      (reduce
+        (fn [updated-node node]
+          (merge-nodes updated-node node))
+        initial-node
+        (reverse (butlast path-nodes))))))
 
 ;; TODO - update atom
 (defn make-directory
