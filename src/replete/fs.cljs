@@ -14,15 +14,11 @@
 ;; TODO devise key that we can use for content (eg UUID)
 ;; TODO Put the content in another map
 (defn file
-  ([file-name]
-   (file file-name nil))
-  ([file-name content]
-   (file file-name content :utf-8))
-  ([file-name content encoding]
-   (merge (node file-name)
-          {:type     :file
-           :content  content
-           :encoding encoding})))
+  [file-name]
+  (merge
+    (node file-name)
+    {:type    :file
+     :address (keyword (str (random-uuid)))}))
 
 (defn dir
   ([dir-name]
@@ -171,34 +167,44 @@
         initial-node
         (reverse (butlast path-nodes))))))
 
-;; TODO - update atom
 (defn make-directory
   [fs pathname]
-  (add-leaf-node fs pathname (dir (basename pathname))))
+  (reset!
+    fs
+    (add-leaf-node @fs pathname (dir (basename pathname)))))
 
-;; TODO - update atom
 (defn make-file
   [fs pathname]
-  (add-leaf-node fs pathname (file (basename pathname))))
+  (reset!
+    fs
+    (add-leaf-node @fs pathname (file (basename pathname)))))
 
-;; Update the last node, next node up and all way to the top
+(def replete-fs (atom {}))
+(def replete-content (atom {}))
 
-(def replete-fs {})
-
-(def sample-fs (merge (dir "tmp")
-                      (dir "var" {:logs    (dir "logs")
-                                  :contrib (dir "contrib")})
-                      (dir "etc" {:passwd (file "passwd")
-                                  :group  (file "group")
-                                  :local  (dir "local")})))
+(def sample-fs (reset! replete-fs
+                       (merge (dir "tmp")
+                              (dir "var" {:logs    (dir "logs")
+                                          :contrib (dir "contrib")})
+                              (dir "etc" {:passwd (file "passwd")
+                                          :group  (file "group")
+                                          :local  (dir "local")}))))
 
 (def file-not-found 0)
 
 (defn file-descriptor
   "Provides a link for clients to an actual file or 0"
   [fs path]
-  (if-let [leaf-node (find-leaf-node fs path)]
-    ()
-    file-not-found
-    ))
+  (if-let [leaf-node (find-leaf-node @fs path)]
+    (:address leaf-node)
+    file-not-found))
 
+(defn add-content
+  [fs path content]
+  (let [fd (file-descriptor @fs path)]
+    (swap! replete-content assoc fd content)))
+
+(defn get-content
+  [fs path]
+  (let [fd (file-descriptor @fs path)]
+    (get @replete-content fd)))
