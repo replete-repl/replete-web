@@ -182,14 +182,6 @@
 (def replete-fs (atom {}))
 (def replete-content (atom {}))
 
-(def sample-fs (reset! replete-fs
-                       (merge (dir "tmp")
-                              (dir "var" {:logs    (dir "logs")
-                                          :contrib (dir "contrib")})
-                              (dir "etc" {:passwd (file "passwd")
-                                          :group  (file "group")
-                                          :local  (dir "local")}))))
-
 (def file-not-found 0)
 
 (defn file-descriptor
