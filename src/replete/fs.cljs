@@ -24,11 +24,6 @@
            :content  content
            :encoding encoding})))
 
-(defn file-descriptor
-  "Provides a link for clients to an actual file or 0"
-  [tree file]
-  ())
-
 (defn dir
   ([dir-name]
    (dir dir-name {}))
@@ -38,9 +33,6 @@
      (merge (node dir-name)
             {:type  :directory
              :nodes nodes}))))
-
-;; Make into an atom
-(def replete-fs {:/ (dir "/")})
 
 (defn path->parts
   [pathname]
@@ -89,6 +81,16 @@
                  (:nodes node-match)
                  (next path-nodes)))))))
 
+(defn find-leaf-node
+  "Return the leaf node that matches pathname in the file-system"
+  [file-system pathname]
+  {:pre [(string/starts-with? pathname "/")]}
+  (let [nodes (tree-node-search file-system pathname)]
+    (and (= (-> pathname path->parts parts->path)
+            (nodes->path (map #(or (:name %)
+                                   (name (first (keys %)))) nodes)))
+         (last nodes))))
+
 (defn match-leaf-node-with
   "Invoke f on a leaf node that matches pathname in the file-system"
   [file-system pathname f]
@@ -104,22 +106,24 @@
   (match-leaf-node-with
     fs pathname #(not (nil? %))))
 
-(defn- type-exists [type node]
-  (or (= (:type node) type)
-      (= (-> node vals first :type)
-         type)))
+(defn- type-exists?
+  [type fs pathname]
+  (when-let [node (find-leaf-node fs pathname)]
+    (or (= (:type node) type)
+        (= (-> node vals first :type)
+           type))))
 
-(defn dir-exists?
-  [fs pathname]
-  (match-leaf-node-with
-    fs pathname
-    (partial type-exists :directory)))
+(def dir-exists? (partial type-exists? :directory))
+(def file-exists? (partial type-exists? :file))
 
-(defn file-exists?
-  [fs pathname]
-  (match-leaf-node-with
-    fs pathname
-    (partial type-exists :file)))
+(defn- find-node
+  [type fs pathname]
+  (when-let [leaf-node (find-leaf-node fs pathname)]
+    (when (type-exists? type fs leaf-node)
+      leaf-node)))
+
+(def find-file (partial find-node :file))
+(def find-dir (partial find-node :directory))
 
 (defn basedir
   [pathname]
@@ -140,15 +144,22 @@
 
 (defn- merge-nodes
   [node update-node]
-  (let [kw-node (if-not (:type node)
-                  node
-                  (assoc {} (-> node :name keyword) node))]
-    (if (:nodes update-node)
+  (let [merge-node (if-not (:type node)
+                     node
+                     (assoc {} (-> node :name keyword) node))]
+    (cond
+      (:nodes update-node)
       (assoc {} (-> update-node :name keyword)
-                (update-in update-node [:nodes] merge kw-node))
-      (merge update-node kw-node))))
+                (update-in update-node [:nodes] merge merge-node))
 
-(defn- add-leaf-node
+      (= 1 (count update-node))
+      (let [[k v] (first update-node)]
+        (assoc {} k (update-in v [:nodes] merge node)))
+
+      :else
+      (merge update-node merge-node))))
+
+(defn add-leaf-node
   [fs pathname leaf-node]
   (if-not (can-create-node? fs pathname)
     (throw (ex-info "false: can-create-node?" {:pathname pathname}))
@@ -172,8 +183,7 @@
 
 ;; Update the last node, next node up and all way to the top
 
-(def simple-fs (merge (dir "etc")
-                      (dir "tmp")))
+(def replete-fs {})
 
 (def sample-fs (merge (dir "tmp")
                       (dir "var" {:logs    (dir "logs")
@@ -181,3 +191,14 @@
                       (dir "etc" {:passwd (file "passwd")
                                   :group  (file "group")
                                   :local  (dir "local")})))
+
+(def file-not-found 0)
+
+(defn file-descriptor
+  "Provides a link for clients to an actual file or 0"
+  [fs path]
+  (if-let [leaf-node (find-leaf-node fs path)]
+    ()
+    file-not-found
+    ))
+
