@@ -41,6 +41,8 @@
 
 (defn- create-file
   "Creates a node in the file system with an address for content"
+  ([file-name]
+   (create-file replete-fs file-name :utf-8))
   ([file-name encoding]
    (create-file replete-fs file-name encoding))
   ([fs file-name encoding]
