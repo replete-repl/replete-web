@@ -86,7 +86,7 @@
      (if (= (:encoding leaf-node) encoding)
        ;; Set append? on the content map
        (:address leaf-node)
-       (create-file fs file-name encoding)))))
+       (:address (create-file fs file-name encoding))))))
 
 (defn write-file
   ([fd content]
