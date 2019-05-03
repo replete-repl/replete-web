@@ -42,7 +42,7 @@
 (defn- create-file
   "Creates a node in the file system with an address for content"
   ([file-name]
-   (create-file replete-fs file-name :utf-8))
+   (create-file file-name :utf-8))
   ([file-name encoding]
    (create-file replete-fs file-name encoding))
   ([fs file-name encoding]
@@ -58,9 +58,9 @@
   ([file-name encoding]
    (open-file-reader replete-fs file-name encoding))
   ([fs file-name encoding]
-   (if-let [leaf-node (get-in @fs [:nodes (keyword file-name)])]
-     (if (= (:encoding leaf-node) encoding)
-       (:address leaf-node)
+   (if-let [node (get-in @fs [:nodes (keyword file-name)])]
+     (if (= (:encoding node) encoding)
+       (:address node)
        file-not-found))))
 
 (defn read-file
@@ -78,17 +78,18 @@
 (defn open-file-writer
   "Provides a file-descriptor to an existing or newly created file"
   ([file-name]
-   (open-file-writer replete-fs file-name false))
+   (open-file-writer file-name false))
   ([file-name append?]
-   (open-file-writer replete-fs file-name append? :utf-8))
+   (open-file-writer file-name append? :utf-8))
   ([file-name append? encoding]
    (open-file-writer replete-fs file-name append? encoding))
   ([fs file-name append? encoding]
-   (if-let [leaf-node (get-in @fs [:nodes (keyword file-name)])]
-     (if (= (:encoding leaf-node) encoding)
+   (if-let [node (get-in @fs [:nodes (keyword file-name)])]
+     (when (= (:encoding node) encoding)
        ;; Set append? on the content map
-       (:address leaf-node)
-       (:address (create-file fs file-name encoding))))))
+       (:address node))
+     (get-in (create-file fs file-name encoding)
+             [:nodes (keyword file-name) :address]))))
 
 (defn write-file
   ([fd content]

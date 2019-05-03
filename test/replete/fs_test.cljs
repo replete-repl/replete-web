@@ -4,14 +4,16 @@
     [replete.fs :as fs]))
 
 (deftest make-file-test
-  (testing "we can manipulate a file"
+  (testing "we can do simple manipulate of a file"
     (let [file-name "file1"
           content (str "good-content")]
-      (fs/create-file file-name)
-      (let [fd (fs/open-file file-name)]
+      (let [fd (fs/open-file-writer file-name)]
         (is (keyword? fd))
         (fs/write-file fd content)
-        (is (= content (fs/read-file fd)))))))
+        (fs/close-file-writer fd)
+        (let [[data err] (-> (fs/open-file-reader file-name)
+                             (fs/read-file))]
+          (is (= content data)))))))
 
 
 
