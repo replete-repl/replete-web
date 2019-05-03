@@ -51,6 +51,8 @@
 
 (defn open-file-reader
   "Provides a file-descriptor to an existing file or 0"
+  ([file-name]
+   (open-file-reader file-name :utf-8))
   ([file-name encoding]
    (open-file-reader replete-fs file-name encoding))
   ([fs file-name encoding]
@@ -73,6 +75,10 @@
 
 (defn open-file-writer
   "Provides a file-descriptor to an existing or newly created file"
+  ([file-name]
+   (open-file-writer replete-fs file-name false))
+  ([file-name append?]
+   (open-file-writer replete-fs file-name append? :utf-8))
   ([file-name append? encoding]
    (open-file-writer replete-fs file-name append? encoding))
   ([fs file-name append? encoding]
