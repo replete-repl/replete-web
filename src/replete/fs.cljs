@@ -115,11 +115,19 @@
 (set! (.-REPLETE_FILE_READER_READ js/goog.global) read-file)
 (set! (.-REPLETE_FILE_READER_CLOSE js/goog.global) close-file-reader)
 
+(set! (.-REPLETE_FILE_INPUT_STREAM_OPEN js/goog.global) open-file-reader)
+;; coerce stream / file to have the same outputs
+(set! (.-REPLETE_FILE_INPUT_STREAM_READ js/goog.global) read-file)
+(set! (.-REPLETE_FILE_INPUT_STREAM_CLOSE js/goog.global) close-file-reader)
+
 (set! (.-REPLETE_FILE_WRITER_OPEN js/goog.global) open-file-writer)
 (set! (.-REPLETE_FILE_WRITER_WRITE js/goog.global) write-file)
 (set! (.-REPLETE_FILE_WRITER_FLUSH js/goog.global) flush-file-writer)
 (set! (.-REPLETE_FILE_WRITER_CLOSE js/goog.global) close-file-writer)
 
-
-
+(set! (.-REPLETE_FILE_OUTPUT_STREAM_OPEN js/goog.global) open-file-writer)
+;; coerce stream / file to have the same inputs
+(set! (.-REPLETE_FILE_OUTPUT_STREAM_WRITE js/goog.global) write-file)
+(set! (.-REPLETE_FILE_OUTPUT_STREAM_FLUSH js/goog.global) flush-file-writer)
+(set! (.-REPLETE_FILE_OUTPUT_STREAM_CLOSE js/goog.global) close-file-writer)
 
