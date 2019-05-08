@@ -149,3 +149,10 @@
 (set! (.-REPLETE_FILE_OUTPUT_STREAM_FLUSH js/goog.global) flush-file-writer)
 (set! (.-REPLETE_FILE_OUTPUT_STREAM_CLOSE js/goog.global) close-file-writer)
 
+;js/REPLETE_COPY
+;js/REPLETE_DELETE
+;js/REPLETE_FSTAT
+;js/REPLETE_IS_DIRECTORY
+;js/REPLETE_LIST_FILES
+;js/REPLETE_MKDIRS
+

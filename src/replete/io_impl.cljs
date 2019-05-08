@@ -1,14 +1,6 @@
 (ns replete.io-impl
   (:require-macros
-    [replete.io-impl :refer [sources]])
-  (:require [clojure.string :as string]))
-
-;js/REPLETE_COPY
-;js/REPLETE_DELETE
-;js/REPLETE_FSTAT
-;js/REPLETE_IS_DIRECTORY
-;js/REPLETE_LIST_FILES
-;js/REPLETE_MKDIRS
+    [replete.io-impl :refer [sources]]))
 
 (defn busy-sleep
   [wake-up-time]
