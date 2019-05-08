@@ -3,18 +3,24 @@
     [replete.io-impl :refer [sources]])
   (:require [clojure.string :as string]))
 
-
 ;js/REPLETE_COPY
 ;js/REPLETE_DELETE
 ;js/REPLETE_FSTAT
 ;js/REPLETE_IS_DIRECTORY
 ;js/REPLETE_LIST_FILES
 ;js/REPLETE_MKDIRS
-;js/REPLETE_RAW_FLUSH_STDERR
-;js/REPLETE_RAW_FLUSH_STDOUT
-;js/REPLETE_RAW_READ_STDIN
-;js/REPLETE_REQUEST
-;js/REPLETE_SLEEP
+
+(defn busy-sleep
+  [wake-up-time]
+  (loop [now (.getTime (js/Date.))]
+    (if-not (> now wake-up-time)
+      (recur (.getTime (js/Date.))))))
+
+(defn sleep
+  [m n]
+  (let [now (.getTime (js/Date.))]
+    (busy-sleep (+ now m))))
+
 
 ;; Add each of the above to a global variable so that it is accessed in the code
 
@@ -62,18 +68,22 @@
 
 (defn load-from-jar
   [file-path resource]
-  (throw (ex-info "unsupported operation"
-                  {:file-path file-path :resource resource})))
+  (throw (ex-info "Unsupported"
+                  {:method    "REPLETE_LOAD_FROM_JAR"
+                   :file-path file-path
+                   :resource  resource})))
 
-;; In memory file-system
-;  js/REPLETE_FILE_READER_OPEN
-(defn file-reader-open
-  ([path]
-   (file-reader-open path "UTF-8"))
-  ([path encoding])
-  )
+(defn unsupported-request
+  [& args]
+  (throw
+    (ex-info "Unsupported"
+             {:method "REPLETE_REQUEST"
+              :args   args})))
 
 (set! (.-REPLETE_LOAD js/goog.global) load)
+(set! (.-REPLETE_SLEEP js/goog.global) sleep)
 (set! (.-REPLETE_LOAD_FROM_JAR js/goog.global) load-from-jar)
+(set! (.-REPLETE_REQUEST js/goog.global) unsupported-request)
+
 
 

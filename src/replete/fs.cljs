@@ -1,6 +1,5 @@
 (ns replete.fs
-  (:require [clojure.set :refer [map-invert]]
-            [clojure.string :as string]))
+  (:require [clojure.set :refer [map-invert]]))
 
 (def kw-encodings {:utf-8 "UTF-8"})
 (def str-encodings (map-invert kw-encodings))
@@ -105,11 +104,30 @@
   ;; no-op
   )
 
+(defn flush-stdout
+  []
+  ;; no-op
+  )
+
+(defn flush-stderr
+  []
+  ;; no-op
+  )
+
+(defn read-stdin
+  []
+  (throw
+    (ex-info "Unsupported"
+             {:method "REPLETE_RAW_READ_STDIN"})))
+
 (defn close-file-writer
   [fd]
   ;; clear append? on content map
   )
 
+(set! (.-REPLETE_RAW_READ_STDIN js/goog.global) read-stdin)
+(set! (.-REPLETE_RAW_FLUSH_STDOUT js/goog.global) flush-stdout)
+(set! (.-REPLETE_RAW_FLUSH_STDERR js/goog.global) flush-stderr)
 
 (set! (.-REPLETE_FILE_READER_OPEN js/goog.global) open-file-reader)
 (set! (.-REPLETE_FILE_READER_READ js/goog.global) read-file)
