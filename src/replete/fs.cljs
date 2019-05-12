@@ -6,7 +6,9 @@
 
 (defn node
   [node-name]
-  {:name node-name})
+  {:name     node-name
+   :created  (js/Date.)
+   :modified (js/Date.)})
 
 (defn file
   ([file-name]
@@ -36,7 +38,19 @@
   (atom {:nodes   {}
          :content {}}))
 
-;; Simpler functions first ---
+(defn file-data
+  ([file-name]
+   (file-data replete-fs file-name))
+  ([fs file-name]
+   (clj->js (get-in @fs [:nodes (keyword file-name)]))))
+
+(defn directory?
+  ([file-name]
+   (directory? replete-fs file-name))
+  ([fs file-name]
+   (-> (get-in @fs [:nodes (keyword file-name)])
+       :type
+       (= :directory))))
 
 (defn- create-file
   "Creates a node in the file system with an address for content"
@@ -99,6 +113,23 @@
      ;; ex-info?
      :writer-error)))
 
+;; TODO implement byte / utf-8 conversion
+(defn copy-file
+  ([from-file to-file]
+   (copy-file replete-fs from-file to-file))
+  ([fs from-file to-file]
+   (when-let [read-fd (open-file-reader fs from-file :utf-8)
+              write-fd (open-file-writer fs to-file nil :utf-8)]
+     (write-file fs write-fd (read-file read-fd)))))
+
+(defn delete-file
+  ([file-name]
+   (delete-file replete-fs file-name))
+  ([fs file-name]
+   (when-let [node (get-in @fs [:nodes (keyword file-name)])]
+     (swap! fs update-in dissoc [:content] (:address node))
+     (swap! fs update-in dissoc [:nodes] (keyword file-name)))))
+
 (defn flush-file-writer
   [fd]
   ;; no-op
@@ -149,10 +180,12 @@
 (set! (.-REPLETE_FILE_OUTPUT_STREAM_FLUSH js/goog.global) flush-file-writer)
 (set! (.-REPLETE_FILE_OUTPUT_STREAM_CLOSE js/goog.global) close-file-writer)
 
-;js/REPLETE_COPY
-;js/REPLETE_DELETE
-;js/REPLETE_FSTAT
-;js/REPLETE_IS_DIRECTORY
+(set! (.-REPLETE_COPY js/goog.global) copy-file)
+(set! (.-REPLETE_DELETE js/goog.global) delete-file)
+
+(set! (.-REPLETE_FSTAT js/goog.global) file-data)
+(set! (.-REPLETE_IS_DIRECTORY js/goog.global) directory?)
+
 ;js/REPLETE_LIST_FILES
 ;js/REPLETE_MKDIRS
 
