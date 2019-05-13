@@ -151,21 +151,42 @@
     (ex-info "Unsupported"
              {:method "REPLETE_RAW_READ_STDIN"})))
 
+(defn list-files
+  [path]
+  (throw
+    (ex-info "Unsupported"
+             {:method "REPLETE_LIST_FILES"})))
+
+(defn make-parent-dirs
+  [path]
+  (throw
+    (ex-info "Unsupported"
+             {:method "REPLETE_MKDIRS"})))
+
+
 (defn close-file-writer
   [fd]
   ;; clear append? on content map
   )
 
+;; UNSUPPORTED or no-ops
 (set! (.-REPLETE_RAW_READ_STDIN js/goog.global) read-stdin)
 (set! (.-REPLETE_RAW_FLUSH_STDOUT js/goog.global) flush-stdout)
 (set! (.-REPLETE_RAW_FLUSH_STDERR js/goog.global) flush-stderr)
+(set! (.-REPLETE_LIST_FILES js/goog.global) list-files)
+(set! (.-REPLETE_MKDIRS js/goog.global) make-parent-dirs)
 
+;; Supported but never true
+(set! (.-REPLETE_IS_DIRECTORY js/goog.global) directory?)
+
+;; SUPPORTED
 (set! (.-REPLETE_FILE_READER_OPEN js/goog.global) open-file-reader)
 (set! (.-REPLETE_FILE_READER_READ js/goog.global) read-file)
 (set! (.-REPLETE_FILE_READER_CLOSE js/goog.global) close-file-reader)
 
 (set! (.-REPLETE_FILE_INPUT_STREAM_OPEN js/goog.global) open-file-reader)
-;; coerce stream / file to have the same outputs
+
+;; TODO coerce stream / file to have the same outputs
 (set! (.-REPLETE_FILE_INPUT_STREAM_READ js/goog.global) read-file)
 (set! (.-REPLETE_FILE_INPUT_STREAM_CLOSE js/goog.global) close-file-reader)
 
@@ -184,8 +205,6 @@
 (set! (.-REPLETE_DELETE js/goog.global) delete-file)
 
 (set! (.-REPLETE_FSTAT js/goog.global) file-data)
-(set! (.-REPLETE_IS_DIRECTORY js/goog.global) directory?)
 
-;js/REPLETE_LIST_FILES
-;js/REPLETE_MKDIRS
+
 
