@@ -22,31 +22,50 @@
     (js/parinferCodeMirror.init code-mirror)
     code-mirror))
 
+(defn parse-result
+  [prepl-result]
+  (when-let [{:keys [form val]} prepl-result]
+    (str (and form (str form "\n"))
+         val "\n\n")))
+
 (defn cmirror-comp
   [opts]
   (let [cmirror (atom nil)
+        history (atom [])
         editor? (:editor? opts)
-        node-id (str (if editor? "editor" "evaller"))
+        node-id (:node-id opts)
         cm-update (fn [comp]
-                    (when-let [{:keys [form val ns] :as c} (:changes (reagent/props comp))]
-                      (.setValue @cmirror (str form "\n" val "\n" ns "=>"))))]
+                    (when-let [output (parse-result (:changes (reagent/props comp)))]
+                      (swap! history conj output)
+                      (.setValue @cmirror (apply str @history))
+                      (.scrollIntoView @cmirror #js {:line (.lastLine @cmirror)})))]
     (reagent/create-class
-      {:reagent-render         (fn cm-render []
-                                 [:textarea {:id            node-id
-                                             :auto-complete :off
-                                             :readOnly      (false? editor?)}])
-       :component-did-mount    (fn cm-did-mount [comp]
-                                 (let [node (dom/dom-node comp)
-                                       extra-keys {:Cmd-Enter (fn [cm]
-                                                                (re-frame/dispatch
-                                                                  [::events/eval (.getValue cm)]))}
-                                       editor-shortcut (if editor? {:extraKeys extra-keys} {})
-                                       cm-opts (merge (:cm-options opts) editor-shortcut)
-                                       cm (cm-parinfer node cm-opts)]
-                                   (reset! cmirror cm))
-                                 (cm-update comp))
-       :component-will-unmount (fn cm-will-unmount []
-                                 (.toTextArea @cmirror)
-                                 (reset! cmirror nil))
-       :component-did-update   cm-update
-       :display-name           node-id})))
+      {:reagent-render
+       (fn cm-render []
+         [:textarea {:id            node-id
+                     :auto-complete :off
+                     :readOnly      (false? editor?)}])
+
+       :component-did-mount
+       (fn cm-did-mount [comp]
+         (let [node (dom/dom-node comp)
+               extra-keys {:Cmd-Enter
+                           (fn [cm]
+                             (re-frame/dispatch
+                               [::events/eval (.getValue cm)]))}
+               editor-shortcut (if editor? {:extraKeys extra-keys} {})
+               cm-opts (merge (:cm-options opts) editor-shortcut)
+               cm (cm-parinfer node cm-opts)]
+           (reset! cmirror cm))
+         (cm-update comp))
+
+       :component-will-unmount
+       (fn cm-will-unmount []
+         (.toTextArea @cmirror)
+         (reset! cmirror nil))
+
+       :component-did-update
+       cm-update
+
+       :display-name
+       node-id})))
