@@ -118,9 +118,10 @@
   ([from-file to-file]
    (copy-file replete-fs from-file to-file))
   ([fs from-file to-file]
-   (when-let [read-fd (open-file-reader fs from-file :utf-8)
-              write-fd (open-file-writer fs to-file nil :utf-8)]
-     (write-file fs write-fd (read-file read-fd)))))
+   (let [read-fd (open-file-reader fs from-file :utf-8)
+         write-fd (open-file-writer fs to-file nil :utf-8)]
+     (and read-fd write-fd
+          (write-file fs write-fd (read-file read-fd))))))
 
 (defn delete-file
   ([file-name]

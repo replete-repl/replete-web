@@ -1,16 +1,22 @@
 (ns replete.events
   (:require [replete.io-impl]
-            [replete.repl :as repl]
+            [replete.prepl :as prepl]
             [re-frame.core :refer [reg-event-db reg-event-fx
-                                   reg-fx dispatch]]
-            [clojure.edn :as edn]))
+                                   reg-fx dispatch]]))
 
-(def DEFAULT_SERVER_TIMEOUT 3100)
+(def preamble
+  (str "ClojureScript " *clojurescript-version*
+       "\n    Docs : (doc function-name)"
+       "\n           (find-doc \"part-of-name\")"
+       "\n  Source : (source function-name)"
+       "\n Results : Stored in *1, *2, *3,"
+       "\n           an exception in *e"))
 
 (reg-event-db
   ::initialize-db
   (fn [_ _]
-    {:app-name "replete-web"}))
+    {:app-name "replete-web"
+     :eval-result {:val preamble}}))
 
 (reg-event-db
   ::clojure-forms
@@ -25,7 +31,7 @@
 (reg-fx
   ::async-eval
   (fn [clojure-forms]
-    (let [result (repl/read-eval clojure-forms)]
+    (let [result (prepl/read-eval clojure-forms)]
       (dispatch [::eval-result result]))))
 
 (reg-event-fx
@@ -33,9 +39,4 @@
   (fn [{:keys [db]} [_ clojure-forms]]
     {:db          db
      ::async-eval clojure-forms}))
-
-(defn simulate-edits
-  [new-value]
-  (dispatch [::clojure-forms new-value])
-  (dispatch [::eval new-value]))
 
