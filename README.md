@@ -4,7 +4,6 @@ ClojureScript REPL web app.
 
 # Running
 
-0. Ensure `resources/public/js/compiled/out` has `cljs` and `goog` subdirectories.
 0. `clojure -A:fig-repl`
 
 # Contributing
