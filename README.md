@@ -4,7 +4,7 @@ ClojureScript REPL web app.
 
 # Running
 
-$ `clojure -A:fig-repl`
+`$ clojure -A:fig-repl`
 
 # Contributing
 
