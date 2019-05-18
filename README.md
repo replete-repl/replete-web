@@ -2,13 +2,9 @@
 
 ClojureScript REPL web app.
 
-#### WARNING: WIP
-
-We just started so <u>nothing</u> is working yet!
-
 # Running
 
-1. TBD
+0. `clojure -A:fig-repl`
 
 # Contributing
 
