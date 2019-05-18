@@ -2,13 +2,10 @@
 
 ClojureScript REPL web app.
 
-#### WARNING: WIP
-
-We just started so <u>nothing</u> is working yet!
-
 # Running
 
-1. TBD
+0. Ensure `resources/public/js/compiled/out` has `cljs` and `goog` subdirectories.
+0. `clojure -A:fig-repl`
 
 # Contributing
 
