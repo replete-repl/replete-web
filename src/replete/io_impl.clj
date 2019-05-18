@@ -29,9 +29,9 @@
 
 (defn ns->path
   [ns]
-  (-> (name ns)
-      (string/replace #"\." "/")
-      (string/replace #"-" "_")))
+  (some-> (name ns)
+          (string/replace #"\." "/")
+          (string/replace #"-" "_")))
 
 (defn ns-relative-path
   [ns path]
@@ -45,42 +45,42 @@
        :ns            ns
        :source        (slurp rdr)})))
 
-(defn name-val [rdr]
-  [(-> rdr file/read-file-ns-decl second str) (slurp rdr)])
-
 (defn clj-files []
-  (->> (classpath/classpath-directories)
-       (mapcat #(find/find-sources-in-dir %))))
+  (some->> (classpath/classpath-directories)
+           (mapcat #(find/find-sources-in-dir %))))
 
 (defn cljs-files []
-  (->> (classpath/classpath-directories)
-       (mapcat #(find/find-sources-in-dir % find/cljs))))
+  (some->> (classpath/classpath-directories)
+           (mapcat #(find/find-sources-in-dir % find/cljs))))
 
 (defn cljs-aot-js-files []
-  (->> (io/resource "public/js/compiled/out/cljs")
-       io/as-file file-seq
-       (mapcat #(find-sources-in-dir % [".js" "cljs.cache.json"]))))
+  (some->> (io/resource "public/js/compiled/out/cljs")
+           io/as-file file-seq
+           (mapcat #(find-sources-in-dir % [".js" "cljs.cache.json"]))))
 
 (defn goog-js-files []
-  (->> (io/resource "public/js/compiled/out/goog")
-       io/as-file file-seq
-       (mapcat #(find-sources-in-dir % [".js"]))))
+  (some->> (io/resource "public/js/compiled/out/goog")
+           io/as-file file-seq
+           (mapcat #(find-sources-in-dir % [".js"]))))
 
 (defn cljs-jars []
-  (->> (classpath/classpath-jarfiles)
-       (mapcat #(find/sources-in-jar % find/cljs))
-       (map io/resource)))
+  (some->> (classpath/classpath-jarfiles)
+           (mapcat #(find/sources-in-jar % find/cljs))
+           (map io/resource)))
 
 (defn clj-jars []
-  (->> (classpath/classpath-jarfiles)
-       (mapcat #(find/sources-in-jar %))
-       (map io/resource)))
+  (some->> (classpath/classpath-jarfiles)
+           (mapcat #(find/sources-in-jar %))
+           (map io/resource)))
 
 (defn resources []
   (concat (clj-jars) (cljs-jars) (clj-files) (cljs-files)))
 
 (defn collate [entries]
   (reduce conj {} entries))
+
+(defn name-val [rdr]
+  [(-> rdr file/read-file-ns-decl second str) (slurp rdr)])
 
 (defn sources* [names]
   (let [in-names? (->> names (map str) set)
@@ -89,9 +89,6 @@
          (map name-val)
          (filter relevant?)
          collate)))
-
-(defn key-val [meta-plus-val]
-  [(:relative-path meta-plus-val) meta-plus-val])
 
 (defn meta+goog-dep [rdr]
   (let [ns (re-find #"goog/.*" (.getPath rdr))]
@@ -105,31 +102,34 @@
      :ns            ns
      :source        (slurp rdr)}))
 
+(defn key-val [meta-plus-val]
+  [(:relative-path meta-plus-val) meta-plus-val])
+
 (defn goog+meta*
   []
-  (->> (goog-js-files)
-       (map meta+goog-dep)
-       set
-       (map key-val)
-       collate))
+  (some->> (goog-js-files)
+           (map meta+goog-dep)
+           set
+           (map key-val)
+           collate))
 
 (defn cljs-aot-js+meta*
   []
-  (->> (cljs-aot-js-files)
-       (map meta+cljs-aot-dep)
-       set
-       (map key-val)
-       collate))
+  (some->> (cljs-aot-js-files)
+           (map meta+cljs-aot-dep)
+           set
+           (map key-val)
+           collate))
 
 (defn sources+meta* [names]
   (let [in-names? (->> names (map str) set)
         relevant? (fn [{:keys [ns]}] (in-names? ns))]
-    (->> (resources)
-         (keep meta+val)
-         (filter relevant?)
-         set
-         (map key-val)
-         collate)))
+    (some->> (resources)
+             (keep meta+val)
+             (filter relevant?)
+             set
+             (map key-val)
+             collate)))
 
 (defmacro sources
   "Make a map of namespace name to source, looking for files on the classpath and in jars."
