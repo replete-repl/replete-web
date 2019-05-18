@@ -8,7 +8,8 @@
             [reagent.core :as reagent]
             [reagent.dom :as dom]
             [re-frame.core :as re-frame]
-            [replete.events :as events]))
+            [replete.events :as events]
+            [replete.pprint :as pprint]))
 
 (defn cm-parinfer
   [dom-node opts]
@@ -22,11 +23,24 @@
     (js/parinferCodeMirror.init code-mirror)
     code-mirror))
 
+(defmulti render-val :tag)
+
+(defmethod render-val :ret
+  [{:keys [val ns]}]
+  (with-out-str (pprint/pprint val
+                  {:width 70                                ; TODO determine character-width of screen
+                   :ns    ns
+                   :theme "plain"})))
+
+(defmethod render-val :default
+  [prepl-result]
+  (str (:val prepl-result)))
+
 (defn parse-result
   [prepl-result]
-  (when-let [{:keys [form val]} prepl-result]
+  (when-let [{:keys [form]} prepl-result]
     (str (and form (str form "\n"))
-         val "\n\n")))
+         (render-val prepl-result) "\n\n")))
 
 (defn cmirror-comp
   [opts]
