@@ -27,7 +27,7 @@
 
 (defmethod render-val :err
   [{:keys [val]}]
-  (cljs.repl/error->str val))
+  val)
 
 (defmethod render-val :ret
   [{:keys [val ns]}]
