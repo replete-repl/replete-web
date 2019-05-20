@@ -25,12 +25,16 @@
 
 (defmulti render-val :tag)
 
+(defmethod render-val :err
+  [{:keys [val]}]
+  (cljs.repl/error->str val))
+
 (defmethod render-val :ret
   [{:keys [val ns]}]
   (with-out-str (pprint/pprint val
-                  {:width 70                                ; TODO determine character-width of screen
-                   :ns    ns
-                   :theme "plain"})))
+                   {:width 70                   ; TODO determine character-width of screen
+                    :ns    ns
+                    :theme "plain"})))
 
 (defmethod render-val :default
   [prepl-result]
