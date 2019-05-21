@@ -47,6 +47,16 @@
   (re-frame/dispatch
     [::events/save-form clojure-form]))
 
+(defn os-keys
+  [os]
+  (if (= os :macosx)
+    {:Cmd-Enter (fn [cm]
+                  (re-frame/dispatch [::events/eval])
+                  (.setValue cm ""))}
+    {:Ctrl-Enter (fn [cm]
+                   (re-frame/dispatch [::events/eval])
+                   (.setValue cm ""))}))
+
 (defn cmirror-comp
   [opts]
   (let [cmirror (atom nil)
@@ -68,10 +78,7 @@
        :component-did-mount
        (fn cm-did-mount [comp]
          (let [node (dom/dom-node comp)
-               extra-keys {:Cmd-Enter
-                           (fn [cm]
-                             (re-frame/dispatch [::events/eval])
-                             (.setValue cm ""))}
+               extra-keys (os-keys (:os opts))
                editor-shortcut (if editor? {:extraKeys extra-keys} {})
                cm-opts (merge (:cm-options opts) editor-shortcut)
                cm (cm-parinfer node cm-opts)]

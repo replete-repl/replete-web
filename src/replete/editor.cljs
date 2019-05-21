@@ -9,7 +9,6 @@
     [replete.subs :as subs]))
 
 ;; TODO
-;; button - Ctrl/Cmd based on platform - how to sniff?
 ;; history - Ctrl/Cmd up and down arrow
 ;; dark mode - based on Safari setting?
 ;; grey lowlight for forms - can we mark that up in codemirror?
@@ -32,9 +31,10 @@
 
 (defn edit-mirror
   "Edit forms with parinfer support"
-  []
+  [os]
   [box-mirror {:editor?    true
                :node-id    "editor"
+               :os         os
                :cm-options {:autofocus true}}])
 
 (defn eval-mirror
@@ -46,15 +46,24 @@
                    :node-id "eval-history"
                    :changes @result}])))
 
+(defn button-label
+  [os]
+  (str "Eval (or "
+       (if (= os :macosx) "Cmd" "Ctrl")
+       "-Enter)"))
+
+;; TODO - clear edit panel after click
 (defn edit-panel
   []
-  [v-box :size "100%" :gap "5px"
-   :children
-   [[edit-mirror]
-    [button
-     :class "btn-primary"
-     :label "Eval (or Cmd-Enter)"
-     :on-click #(re-frame/dispatch [::events/eval])]]])
+  (let [os (re-frame/subscribe [::subs/os])]
+    (fn []
+      [v-box :size "100%" :gap "5px"
+       :children
+       [[edit-mirror @os]
+        [button
+         :class "btn-primary"
+         :label (button-label @os)
+         :on-click #(re-frame/dispatch [::events/eval])]]])))
 
 (def main-style
   {:position "absolute"

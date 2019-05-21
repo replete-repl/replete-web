@@ -12,10 +12,20 @@
        "\n Results : Stored in *1, *2, *3,"
        "\n           an exception in *e"))
 
+(def os
+  (let [app-version (.-appVersion js/navigator)]
+    (cond
+      (re-find #"Win" app-version) :windows
+      (re-find #"X11" app-version) :unix
+      (re-find #"Linux" app-version) :linux
+      (re-find #"Mac" app-version) :macosx
+      :else :unknown-os)))
+
 (reg-event-db
   ::initialize-db
   (fn [_ _]
     {:app-name "replete-web"
+     :os os
      :eval-result {:val preamble}}))
 
 (reg-event-db
