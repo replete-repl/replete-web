@@ -4,10 +4,11 @@
            org.clojure/test.check      {:mvn/version "0.10.0-alpha4"}
 
            replete-repl/replete-shared {:git/url "https://github.com/replete-repl/replete-shared.git"
-                                        :sha     "8d704d8c18bdf815d62d94b2fb75f4aaae4011fc"}
+                                        :sha     "bbacd445dd658bdadc8cca36eba1b82050b5e463"}
 
            re-frame                    {:mvn/version "0.10.6"}
-           re-com                      {:mvn/version "2.3.0" :exclusions [org.clojure/core.async]}
+           re-com                      {:mvn/version "2.3.0"
+                                        :exclusions [org.clojure/core.async]}
 
            org.clojure/tools.namespace {:mvn/version "0.3.0-alpha4"}
            org.clojure/java.classpath  {:mvn/version "0.3.0"}

@@ -5,7 +5,14 @@
                          label input-text v-split md-icon-button
                          input-textarea title flex-child-style p slider]]
     [replete.cm :as cmirror]
+    [replete.events :as events]
     [replete.subs :as subs]))
+
+;; TODO
+;; button - Ctrl/Cmd based on platform - how to sniff?
+;; history - Ctrl/Cmd up and down arrow
+;; dark mode - based on Safari setting?
+;; grey lowlight for forms - can we mark that up in codemirror?
 
 
 (defonce default-style
@@ -46,7 +53,8 @@
    [[edit-mirror]
     [button
      :class "btn-primary"
-     :label "Eval (or Cmd-Enter)"]]])
+     :label "Eval (or Cmd-Enter)"
+     :on-click #(re-frame/dispatch [::events/eval])]]])
 
 (def main-style
   {:position "absolute"
@@ -59,7 +67,7 @@
   []
   [box
    :style main-style
-   :child [v-split
+   :child [v-split :initial-split 70
            :panel-1 [eval-mirror]
            :panel-2 [edit-panel]]])
 

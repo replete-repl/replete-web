@@ -19,9 +19,9 @@
      :eval-result {:val preamble}}))
 
 (reg-event-db
-  ::clojure-forms
-  (fn [db [_ clojure-forms]]
-    (assoc db :clojure-forms clojure-forms)))
+  ::save-form
+  (fn [db [_ clojure-form]]
+    (assoc db :current-form clojure-form)))
 
 (reg-event-db
   ::eval-result
@@ -36,7 +36,7 @@
 
 (reg-event-fx
   ::eval
-  (fn [{:keys [db]} [_ clojure-forms]]
+  (fn [{:keys [db]} _]
     {:db          db
-     ::async-eval clojure-forms}))
+     ::async-eval (:current-form db)}))
 
