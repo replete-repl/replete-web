@@ -1,47 +1,43 @@
 (ns replete.editor
   (:require
     [re-frame.core :as re-frame]
-    [re-com.core :refer [h-box v-box box button gap line scroller border
-                         label input-text v-split md-icon-button
+    [re-com.core :refer [h-box v-box box button gap line scroller
+                         border label input-text v-split md-icon-button
                          input-textarea title flex-child-style p slider]]
     [replete.cm :as cmirror]
     [replete.events :as events]
     [replete.subs :as subs]))
 
-(defonce default-style
-         {:font-family "Menlo, Lucida Console, Monaco, monospace"
-          :border      "1px solid lightgrey"
-          :padding     "15px 15px 15px 15px"})
-
 (defonce box-style
-         (merge (flex-child-style "1")
-                default-style))
-
-(defn box-mirror
-  [opts]
-  [box
-   :style (dissoc box-style :padding)
-   :child [cmirror/cmirror-comp opts]])
+         (merge
+           (flex-child-style "1")
+           {:font-family "Menlo, Lucida Console, Monaco, monospace"
+            :border      "1px solid lightgrey"}))
 
 (defn edit-mirror
   "Edit forms with parinfer support"
   [ckey-binding]
   (let [clear-form (re-frame/subscribe [::subs/clear-input-form])]
     (fn []
-      [box-mirror {:editor?      true
-                   :node-id      "editor"
-                   :ckey-binding ckey-binding
-                   :changes      @clear-form
-                   :cm-options   {:autofocus true}}])))
+      (let [opts {:node-id      "editor"
+                  :ckey-binding ckey-binding
+                  :changes      @clear-form
+                  :cm-options   {:autofocus true}}]
+        [box
+         :style box-style
+         :child [cmirror/cmirror-edit-comp opts]]))))
 
 (defn eval-mirror
   "Show evalled results from the component it is `watching`"
   []
   (let [result (re-frame/subscribe [::subs/eval-result])]
     (fn []
-      [box-mirror {:editor? false
-                   :node-id "eval-history"
-                   :changes @result}])))
+      (let [opts {:editor? false
+                  :node-id "eval-history"
+                  :changes @result}]
+        [box
+         :style box-style
+         :child [cmirror/cmirror-eval-comp opts]]))))
 
 (defn button-label
   [os]
@@ -49,8 +45,6 @@
        (if (= os :macosx) "Cmd" "Ctrl")
        "-Enter)"))
 
-;; TODO - clear edit panel after click
-::ckey-binding
 (defn edit-panel
   []
   (let [ckey-binding (re-frame/subscribe [::subs/ckey-binding])]
