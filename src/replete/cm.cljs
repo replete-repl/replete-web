@@ -9,7 +9,8 @@
             [reagent.dom :as dom]
             [re-frame.core :as re-frame]
             [replete.events :as events]
-            [replete.pprint :as pprint]))
+            [replete.pprint :as pprint]
+            [clojure.string :as string]))
 
 (defn cm-parinfer
   [dom-node opts]
@@ -47,15 +48,9 @@
   (re-frame/dispatch
     [::events/save-form clojure-form]))
 
-(defn os-keys
-  [os]
-  (if (= os :macosx)
-    {:Cmd-Enter (fn [cm]
-                  (re-frame/dispatch [::events/eval])
-                  (.setValue cm ""))}
-    {:Ctrl-Enter (fn [cm]
-                   (re-frame/dispatch [::events/eval])
-                   (.setValue cm ""))}))
+(defn ckey-binding
+  [ckey-binding]
+  (assoc {} ckey-binding #(re-frame/dispatch [::events/eval])))
 
 (defn cmirror-comp
   [opts]
@@ -64,10 +59,13 @@
         editor? (:editor? opts)
         node-id (:node-id opts)
         cm-update (fn [comp]
-                    (when-let [output (parse-result (:changes (reagent/props comp)))]
-                      (swap! history conj output)
-                      (.setValue @cmirror (apply str @history))
-                      (.scrollIntoView @cmirror #js {:line (.lastLine @cmirror)})))]
+                    (let [changes (:changes (reagent/props comp))]
+                      (if (:clear-input-form changes)
+                        (.setValue @cmirror "")
+                        (when-let [output (parse-result changes)]
+                          (swap! history conj output)
+                          (.setValue @cmirror (apply str @history))
+                          (.scrollIntoView @cmirror #js {:line (.lastLine @cmirror)})))))]
     (reagent/create-class
       {:reagent-render
        (fn cm-render []
@@ -78,13 +76,16 @@
        :component-did-mount
        (fn cm-did-mount [comp]
          (let [node (dom/dom-node comp)
-               extra-keys (os-keys (:os opts))
+               extra-keys (ckey-binding (:ckey-binding opts))
                editor-shortcut (if editor? {:extraKeys extra-keys} {})
                cm-opts (merge (:cm-options opts) editor-shortcut)
                cm (cm-parinfer node cm-opts)]
-           (.on cm "change"
-                (fn [cm _]
-                  (save-form (.getValue cm))))
+           (when editor?
+             (.on cm "change"
+                  (fn [cm _]
+                    (let [val (string/trim (.getValue cm))]
+                      (when-not (empty? val)
+                        (save-form val))))))
            (reset! cmirror cm))
          (cm-update comp))
 

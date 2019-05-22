@@ -8,12 +8,6 @@
     [replete.events :as events]
     [replete.subs :as subs]))
 
-;; TODO
-;; history - Ctrl/Cmd up and down arrow
-;; dark mode - based on Safari setting?
-;; grey lowlight for forms - can we mark that up in codemirror?
-
-
 (defonce default-style
          {:font-family "Menlo, Lucida Console, Monaco, monospace"
           :border      "1px solid lightgrey"
@@ -31,11 +25,14 @@
 
 (defn edit-mirror
   "Edit forms with parinfer support"
-  [os]
-  [box-mirror {:editor?    true
-               :node-id    "editor"
-               :os         os
-               :cm-options {:autofocus true}}])
+  [ckey-binding]
+  (let [clear-form (re-frame/subscribe [::subs/clear-input-form])]
+    (fn []
+      [box-mirror {:editor?      true
+                   :node-id      "editor"
+                   :ckey-binding ckey-binding
+                   :changes      @clear-form
+                   :cm-options   {:autofocus true}}])))
 
 (defn eval-mirror
   "Show evalled results from the component it is `watching`"
@@ -53,16 +50,18 @@
        "-Enter)"))
 
 ;; TODO - clear edit panel after click
+::ckey-binding
 (defn edit-panel
   []
-  (let [os (re-frame/subscribe [::subs/os])]
+  (let [os (re-frame/subscribe [::subs/os])
+        ckey-binding (re-frame/subscribe [::subs/ckey-binding])]
     (fn []
       [v-box :size "100%" :gap "5px"
        :children
-       [[edit-mirror @os]
+       [[edit-mirror @ckey-binding]
         [button
          :class "btn-primary"
-         :label (button-label @os)
+         :label (str "Eval (or " (name @ckey-binding) ")")
          :on-click #(re-frame/dispatch [::events/eval])]]])))
 
 (def main-style

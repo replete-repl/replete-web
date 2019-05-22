@@ -12,26 +12,36 @@
        "\n Results : Stored in *1, *2, *3,"
        "\n           an exception in *e"))
 
-(def os
-  (let [app-version (.-appVersion js/navigator)]
-    (cond
-      (re-find #"Win" app-version) :windows
-      (re-find #"X11" app-version) :unix
-      (re-find #"Linux" app-version) :linux
-      (re-find #"Mac" app-version) :macosx
-      :else :unknown-os)))
+(defonce os-data
+         (let [app-version (.-appVersion js/navigator)
+               os (cond
+                    (re-find #"Win" app-version) :windows
+                    (re-find #"X11" app-version) :unix
+                    (re-find #"Linux" app-version) :linux
+                    (re-find #"Mac" app-version) :macosx
+                    :else :unknown-os)]
+           {:os           os
+            :ckey-binding (if (= os :macosx)
+                            :Cmd-Enter
+                            :Ctrl-Enter)}))
 
 (reg-event-db
   ::initialize-db
   (fn [_ _]
-    {:app-name "replete-web"
-     :os os
-     :eval-result {:val preamble}}))
+    (merge {:app-name    "replete-web"
+            :eval-result {:val preamble}}
+           os-data)))
 
 (reg-event-db
   ::save-form
   (fn [db [_ clojure-form]]
-    (assoc db :current-form clojure-form)))
+    (assoc db :current-form clojure-form
+              :clear-input nil)))
+
+(reg-event-db
+  ::clear-input
+  (fn [db _]
+    (assoc db :clear-input {:clear-input-form true})))
 
 (reg-event-db
   ::eval-result
@@ -42,7 +52,8 @@
   ::async-eval
   (fn [clojure-forms]
     (let [result (prepl/read-eval clojure-forms)]
-      (dispatch [::eval-result result]))))
+      (dispatch [::eval-result result])
+      (dispatch [::clear-input]))))
 
 (reg-event-fx
   ::eval
