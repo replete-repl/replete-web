@@ -24,19 +24,6 @@
     (js/parinferCodeMirror.init code-mirror)
     code-mirror))
 
-(defmulti render-val :tag)
-
-(defmethod render-val :ret
-  [{:keys [val ns]}]
-  (with-out-str (pprint/pprint val
-                               {:width 70                   ; TODO determine character-width of screen
-                                :ns    ns
-                                :theme "plain"})))
-
-(defmethod render-val :default
-  [prepl-result]
-  (str (:val prepl-result)))
-
 (defn parse-result
   [prepl-result]
   (when-let [{:keys [form]} prepl-result]
