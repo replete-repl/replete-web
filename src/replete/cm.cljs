@@ -25,16 +25,12 @@
 
 (defmulti render-val :tag)
 
-(defmethod render-val :err
-  [{:keys [val]}]
-  val)
-
 (defmethod render-val :ret
   [{:keys [val ns]}]
   (with-out-str (pprint/pprint val
-                   {:width 70                   ; TODO determine character-width of screen
-                    :ns    ns
-                    :theme "plain"})))
+                               {:width 70                   ; TODO determine character-width of screen
+                                :ns    ns
+                                :theme "plain"})))
 
 (defmethod render-val :default
   [prepl-result]
@@ -44,7 +40,22 @@
   [prepl-result]
   (when-let [{:keys [form]} prepl-result]
     (str (and form (str form "\n"))
-         (render-val prepl-result) "\n\n")))
+         (:val prepl-result) "\n\n")))
+
+(defn save-form
+  [clojure-form]
+  (re-frame/dispatch
+    [::events/save-form clojure-form]))
+
+(defn os-keys
+  [os]
+  (if (= os :macosx)
+    {:Cmd-Enter (fn [cm]
+                  (re-frame/dispatch [::events/eval])
+                  (.setValue cm ""))}
+    {:Ctrl-Enter (fn [cm]
+                   (re-frame/dispatch [::events/eval])
+                   (.setValue cm ""))}))
 
 (defn cmirror-comp
   [opts]
@@ -67,13 +78,13 @@
        :component-did-mount
        (fn cm-did-mount [comp]
          (let [node (dom/dom-node comp)
-               extra-keys {:Cmd-Enter
-                           (fn [cm]
-                             (re-frame/dispatch
-                               [::events/eval (.getValue cm)]))}
+               extra-keys (os-keys (:os opts))
                editor-shortcut (if editor? {:extraKeys extra-keys} {})
                cm-opts (merge (:cm-options opts) editor-shortcut)
                cm (cm-parinfer node cm-opts)]
+           (.on cm "change"
+                (fn [cm _]
+                  (save-form (.getValue cm))))
            (reset! cmirror cm))
          (cm-update comp))
 
