@@ -53,8 +53,7 @@
 ::ckey-binding
 (defn edit-panel
   []
-  (let [os (re-frame/subscribe [::subs/os])
-        ckey-binding (re-frame/subscribe [::subs/ckey-binding])]
+  (let [ckey-binding (re-frame/subscribe [::subs/ckey-binding])]
     (fn []
       [v-box :size "100%" :gap "5px"
        :children
