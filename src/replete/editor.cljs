@@ -1,51 +1,45 @@
 (ns replete.editor
   (:require
     [re-frame.core :as re-frame]
-    [re-com.core :refer [h-box v-box box button gap line scroller border
-                         label input-text v-split md-icon-button
+    [re-com.core :refer [h-box v-box box button gap line scroller
+                         border label input-text v-split md-icon-button
                          input-textarea title flex-child-style p slider]]
     [replete.cm :as cmirror]
     [replete.events :as events]
     [replete.subs :as subs]))
 
-;; TODO
-;; history - Ctrl/Cmd up and down arrow
-;; dark mode - based on Safari setting?
-;; grey lowlight for forms - can we mark that up in codemirror?
-
-
-(defonce default-style
-         {:font-family "Menlo, Lucida Console, Monaco, monospace"
-          :border      "1px solid lightgrey"
-          :padding     "15px 15px 15px 15px"
-          :border-radius "4px"})
-
 (defonce box-style
-         (merge (flex-child-style "1")
-                default-style))
-
-(defn box-mirror
-  [opts]
-  [box
-   :style (dissoc box-style :padding)
-   :child [cmirror/cmirror-comp opts]])
+         (merge
+           (flex-child-style "1")
+           {:font-family   "Menlo, Lucida Console, Monaco, monospace"
+            :border        "1px solid lightgrey"
+            :border-radius "4px"}))
 
 (defn edit-mirror
   "Edit forms with parinfer support"
-  [os]
-  [box-mirror {:editor?    true
-               :node-id    "editor"
-               :os         os
-               :cm-options {:autofocus true}}])
+  [ckey-binding]
+  (let [clear-form (re-frame/subscribe [::subs/clear-input-form])]
+    (fn []
+      (let [opts {:node-id      "editor"
+                  :ckey-binding ckey-binding
+                  :changes      @clear-form
+                  :cm-options   {:autofocus true}}]
+        [box
+         :style box-style
+         :child [cmirror/cmirror-edit-comp opts]]))))
 
 (defn eval-mirror
   "Show evalled results from the component it is `watching`"
   []
   (let [result (re-frame/subscribe [::subs/eval-result])]
     (fn []
-      [box-mirror {:editor? false
-                   :node-id "eval-history"
-                   :changes @result}])))
+      (let [opts {:editor?    false
+                  :node-id    "eval-history"
+                  :cm-options {:readOnly true}
+                  :changes    @result}]
+        [box
+         :style box-style
+         :child [cmirror/cmirror-eval-comp opts]]))))
 
 (defn button-label
   [os]
@@ -53,17 +47,16 @@
        (if (= os :macosx) "Cmd" "Ctrl")
        "-Enter)"))
 
-;; TODO - clear edit panel after click
 (defn edit-panel
   []
-  (let [os (re-frame/subscribe [::subs/os])]
+  (let [ckey-binding (re-frame/subscribe [::subs/ckey-binding])]
     (fn []
       [v-box :size "100%" :gap "5px"
        :children
-       [[edit-mirror @os]
+       [[edit-mirror @ckey-binding]
         [button
          :class "btn-primary"
-         :label (button-label @os)
+         :label (str "Eval (or " (name @ckey-binding) ")")
          :on-click #(re-frame/dispatch [::events/eval])]]])))
 
 (def main-style
