@@ -52,9 +52,7 @@
     (reagent/create-class
       {:reagent-render
        (fn cm-render []
-         [:textarea {:id            node-id
-                     :auto-complete :off
-                     :readOnly      true}])
+         [:textarea {:id node-id :auto-complete :off}])
 
        :component-did-mount
        (fn cm-did-mount [comp]

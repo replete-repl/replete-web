@@ -11,8 +11,9 @@
 (defonce box-style
          (merge
            (flex-child-style "1")
-           {:font-family "Menlo, Lucida Console, Monaco, monospace"
-            :border      "1px solid lightgrey"}))
+           {:font-family   "Menlo, Lucida Console, Monaco, monospace"
+            :border        "1px solid lightgrey"
+            :border-radius "4px"}))
 
 (defn edit-mirror
   "Edit forms with parinfer support"
@@ -32,9 +33,10 @@
   []
   (let [result (re-frame/subscribe [::subs/eval-result])]
     (fn []
-      (let [opts {:editor? false
-                  :node-id "eval-history"
-                  :changes @result}]
+      (let [opts {:editor?    false
+                  :node-id    "eval-history"
+                  :cm-options {:readOnly true}
+                  :changes    @result}]
         [box
          :style box-style
          :child [cmirror/cmirror-eval-comp opts]]))))
