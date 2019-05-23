@@ -17,7 +17,8 @@
 (defonce default-style
          {:font-family "Menlo, Lucida Console, Monaco, monospace"
           :border      "1px solid lightgrey"
-          :padding     "15px 15px 15px 15px"})
+          :padding     "15px 15px 15px 15px"
+          :border-radius "4px"})
 
 (defonce box-style
          (merge (flex-child-style "1")
