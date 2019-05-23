@@ -72,15 +72,16 @@
       {:reagent-render
        (fn cm-render []
          [:textarea {:id            node-id
-                     :auto-complete :off
-                     :readOnly      (false? editor?)}])
+                     :auto-complete :off}])
 
        :component-did-mount
        (fn cm-did-mount [comp]
          (let [node (dom/dom-node comp)
                extra-keys (os-keys (:os opts))
                editor-shortcut (if editor? {:extraKeys extra-keys} {})
-               cm-opts (merge (:cm-options opts) editor-shortcut)
+               cm-opts (merge (:cm-options opts)
+                              editor-shortcut
+                              {:readOnly (false? editor?)})
                cm (cm-parinfer node cm-opts)]
            (.on cm "change"
                 (fn [cm _]
