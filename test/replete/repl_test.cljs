@@ -2,9 +2,11 @@
   (:require
     [clojure.test :refer [deftest is testing run-tests]]
     [clojure.string :as string]
-    [replete.repl :as repl]))
+    [replete.prepl :as repl]))
 
-(def test-nses ["clojure.data"
+(def test-nses [
+                ;"clojure.core.async"
+                "clojure.data"
                 "clojure.set"
                 "clojure.string"
                 "clojure.test.check"
@@ -29,20 +31,16 @@
                 "cljs.tools.reader.reader-types"])
 
 (defn require+fn
-  ([ns f]
-   (require+fn ns f nil))
-  ([ns f arg]
+  ([ns]
    (let [{:keys [val] :as result}
          (repl/read-eval (str "(require '" ns ")"))]
-     (if (nil? val)
-       (repl/read-eval (str "(" f " " (if arg arg "") ")"))
-       (println :nil-require :arg arg :result result)))))
-
-;; Currently failing - "cljs.core.async"
+     (if (= "nil" val)
+       (repl/read-eval (str "(dir " ns ")"))
+       (println :nil-require :result result)))))
 
 (defn require+dir
   [test-ns]
-  (let [{:keys [val]} (require+fn test-ns "dir" test-ns)]
+  (let [{:keys [val]} (require+fn test-ns)]
     (assoc {} (if (string? val) :pass :fail) test-ns)))
 
 (deftest bundle-dir-test
@@ -52,7 +50,7 @@
 
 (defn require+source
   [[test-ns sym]]
-  (let [{:keys [val]} (require+fn test-ns "dir" test-ns)]
+  (let [{:keys [val]} (require+fn test-ns)]
     (when val
       (let [_ (repl/read-eval (str "(in-ns '" test-ns ")"))
             doc (:val (repl/read-eval (str "(source " sym ")")))]
