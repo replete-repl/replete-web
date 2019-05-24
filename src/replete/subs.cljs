@@ -1,6 +1,12 @@
 (ns replete.subs
   (:require [re-frame.core :refer [reg-sub]]))
 
+
+(reg-sub
+  ::preamble
+  (fn [db]
+    (:preamble db)))
+
 (reg-sub
   ::eval-result
   (fn [db]
@@ -25,5 +31,6 @@
   ::ckey-binding
   (fn [db]
     (:ckey-binding db)))
+
 
 
