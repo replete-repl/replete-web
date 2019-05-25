@@ -28,9 +28,9 @@
 (defn parse-update
   [update]
   (let [{:keys [preamble val form]} update]
-    (str (if preamble
-           preamble
-           (str form "\n" val))
+    (str (if val                                            ; PREPL
+           (str form "\n" val)
+           preamble)
          "\n\n")))
 
 (defn save-form
