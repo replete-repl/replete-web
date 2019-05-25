@@ -31,12 +31,13 @@
 (defn eval-mirror
   "Show evalled results from the component it is `watching`"
   []
-  (let [result (re-frame/subscribe [::subs/eval-result])]
+  (let [preamble (re-frame/subscribe [::subs/preamble])
+        result (re-frame/subscribe [::subs/eval-result])]
     (fn []
       (let [opts {:editor?    false
                   :node-id    "eval-history"
                   :cm-options {:readOnly true}
-                  :changes    @result}]
+                  :changes    (or @result @preamble)}]
         [box
          :style box-style
          :child [cmirror/cmirror-eval-comp opts]]))))

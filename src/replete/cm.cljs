@@ -23,12 +23,15 @@
     (js/parinferCodeMirror.init code-mirror)
     code-mirror))
 
-;; Send code-mirror here and format appropriately
-(defn parse-result
-  [prepl-result]
-  (when-let [{:keys [form]} prepl-result]
-    (str (and form (str form "\n"))
-         (:val prepl-result) "\n\n")))
+;; TODO: how to ensure codemirror uses parinfer rendering for
+;; TODO: showing values and plainer formatting for other text?
+(defn parse-update
+  [update]
+  (let [{:keys [preamble val form]} update]
+    (str (if val                                            ; PREPL
+           (str form "\n" val)
+           preamble)
+         "\n\n")))
 
 (defn save-form
   [clojure-form]
@@ -45,7 +48,7 @@
         history (atom [])
         node-id (:node-id opts)
         cm-update (fn [comp]
-                    (let [output (parse-result (:changes (reagent/props comp)))]
+                    (let [output (parse-update (:changes (reagent/props comp)))]
                       (swap! history conj output)
                       (.setValue @cmirror (apply str @history))
                       (.scrollIntoView @cmirror #js {:line (.lastLine @cmirror)})))]

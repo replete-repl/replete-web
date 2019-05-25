@@ -4,13 +4,13 @@
             [re-frame.core :refer [reg-event-db reg-event-fx
                                    reg-fx dispatch]]))
 
-(def preamble
-  (str "ClojureScript " *clojurescript-version*
-       "\n    Docs : (doc function-name)"
-       "\n           (find-doc \"part-of-name\")"
-       "\n  Source : (source function-name)"
-       "\n Results : Stored in *1, *2, *3,"
-       "\n           an exception in *e"))
+(defonce preamble
+         (str "ClojureScript " *clojurescript-version*
+              "\n    Docs : (doc function-name)"
+              "\n           (find-doc \"part-of-name\")"
+              "\n  Source : (source function-name)"
+              "\n Results : Stored in *1, *2, *3,"
+              "\n           an exception in *e"))
 
 (defonce os-data
          (let [app-version (.-appVersion js/navigator)
@@ -28,8 +28,8 @@
 (reg-event-db
   ::initialize-db
   (fn [_ _]
-    (merge {:app-name    "replete-web"
-            :eval-result {:val preamble}}
+    (merge {:app-name "replete-web"
+            :preamble {:preamble preamble}}
            os-data)))
 
 (reg-event-db
