@@ -9,7 +9,8 @@
             [reagent.core :as reagent]
             [reagent.dom :as dom]
             [re-frame.core :as re-frame]
-            [replete.events :as events]))
+            [replete.events :as events]
+            [replete.pprint :as pprint]))
 
 (defn cm-parinfer
   [dom-node opts]
@@ -23,14 +24,31 @@
     (js/parinferCodeMirror.init code-mirror)
     code-mirror))
 
+(defmulti render-val :tag)
+
+(defmethod render-val :ret
+  [{:keys [val ns]}]
+  (with-out-str (pprint/pprint val
+                               {:width 70                   ; TODO determine character-width of screen
+                                :ns    ns
+                                :theme "plain"})))
+
+(defmethod render-val :default
+  [prepl-result]
+  (:val prepl-result))
+
 ;; TODO: how to ensure codemirror uses parinfer rendering for
 ;; TODO: showing values and plainer formatting for other text?
 (defn parse-update
-  [update]
-  (let [{:keys [preamble val form]} update]
-    (str (if val                                            ; PREPL
-           (str form "\n" val)
-           preamble)
+  [eval-update]
+  (cond
+    (:preamble eval-update)
+    (str (:preamble eval-update) "\n\n")
+
+    (coll? eval-update)
+    (str (:form (first eval-update))
+         "\n"
+         (apply str (map :val eval-update))
          "\n\n")))
 
 (defn save-form
