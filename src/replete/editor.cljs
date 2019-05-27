@@ -17,12 +17,13 @@
 
 (defn edit-mirror
   "Edit forms with parinfer support"
-  [ckey-binding]
-  (let [clear-form (re-frame/subscribe [::subs/clear-input-form])]
+  [key-bindings]
+  (let [clear-form (re-frame/subscribe [::subs/clear-input-form])
+        restore-item (re-frame/subscribe [::subs/restore-item])]
     (fn []
       (let [opts {:node-id      "editor"
-                  :ckey-binding ckey-binding
-                  :changes      @clear-form
+                  :key-bindings key-bindings
+                  :changes      (or @restore-item @clear-form)
                   :cm-options   {:autofocus true}}]
         [box
          :style box-style
@@ -50,14 +51,15 @@
 
 (defn edit-panel
   []
-  (let [ckey-binding (re-frame/subscribe [::subs/ckey-binding])]
+  (let [key-bindings (re-frame/subscribe [::subs/key-bindings])]
     (fn []
       [v-box :size "100%" :gap "5px"
        :children
-       [[edit-mirror @ckey-binding]
+       [[edit-mirror @key-bindings]
         [button
          :class "btn-primary"
-         :label (str "Eval (or " (name @ckey-binding) ")")
+         :label (str "Eval")
+         :tooltip (str "Shortcut: " (name (:enter @key-bindings)))
          :on-click #(re-frame/dispatch [::events/eval])]]])))
 
 (def main-style

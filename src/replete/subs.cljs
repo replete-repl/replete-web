@@ -1,11 +1,20 @@
 (ns replete.subs
   (:require [re-frame.core :refer [reg-sub]]))
 
-
 (reg-sub
   ::preamble
   (fn [db]
     (:preamble db)))
+
+(reg-sub
+  ::restore-item
+  (fn [db]
+    (:restore-item db)))
+
+(reg-sub
+  ::input-history
+  (fn [db]
+    (:input-history db)))
 
 (reg-sub
   ::eval-result
@@ -28,9 +37,10 @@
     (:os db)))
 
 (reg-sub
-  ::ckey-binding
+  ::key-bindings
   (fn [db]
-    (:ckey-binding db)))
+    (:key-bindings db)))
+
 
 
 

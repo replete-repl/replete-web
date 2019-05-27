@@ -56,10 +56,6 @@
   (re-frame/dispatch
     [::events/save-form clojure-form]))
 
-(defn ckey-binding
-  [ckey-binding]
-  (assoc {} ckey-binding #(re-frame/dispatch [::events/eval])))
-
 (defn cmirror-eval-comp
   [opts]
   (let [cmirror (atom nil)
@@ -94,14 +90,27 @@
        :display-name
        node-id})))
 
+(defn enter-binding
+  [enter]
+  (assoc {} enter #(re-frame/dispatch [::events/eval])))
+
+(defn up-binding
+  [up]
+  (assoc {} up #(re-frame/dispatch [::events/history-prev])))
+
+(defn down-binding
+  [down]
+  (assoc {} down #(re-frame/dispatch [::events/history-next])))
+
 (defn cmirror-edit-comp
   [opts]
   (let [cmirror (atom nil)
         node-id (:node-id opts)
         cm-update (fn [comp]
-                    (let [changes (:changes (reagent/props comp))]
-                      (when (:clear-input-form changes)
-                        (.setValue @cmirror ""))))]
+                    (when-let [changes (:changes (reagent/props comp))]
+                      (if (:clear-input-form changes)
+                        (.setValue @cmirror "")
+                        (.setValue @cmirror changes))))]
     (reagent/create-class
       {:reagent-render
        (fn cm-render
@@ -112,8 +121,10 @@
        (fn cm-did-mount
          [comp]
          (let [node (dom/dom-node comp)
-               extra-keys (ckey-binding (:ckey-binding opts))
-               editor-shortcut {:extraKeys extra-keys}
+               enter (enter-binding (get-in opts [:key-bindings :enter]))
+               down (down-binding (get-in opts [:key-bindings :down]))
+               up (up-binding (get-in opts [:key-bindings :up]))
+               editor-shortcut {:extraKeys (merge enter up down)}
                cm-opts (merge (:cm-options opts) editor-shortcut)
                cm (cm-parinfer node cm-opts)]
            (.on cm "change" (fn [cm _]
