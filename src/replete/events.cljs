@@ -95,7 +95,8 @@
     (if (= item :not-found)
       db
       (assoc db :history-index index
-                :restore-item item))))
+                :restore-item item
+                :current-form item))))
 
 (reg-event-db
   ::history-prev
