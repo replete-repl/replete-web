@@ -85,7 +85,7 @@
 (reg-event-fx
   ::eval
   (fn [{:keys [db]} _]
-    {:db          db
+    {:db          (assoc db :restore-item nil)
      ::async-eval (:current-form db)}))
 
 (defn next-prev [db f]
