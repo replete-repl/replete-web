@@ -46,7 +46,7 @@
    :end   (lines-count preamble-text)
    :width (max-line-width preamble-text)})
 
-(def replete-dim-css "color: #696969")
+(def replete-dim-css "color: #404040")
 
 (defn mark-up-cm
   [cm {:keys [start end width]}]
