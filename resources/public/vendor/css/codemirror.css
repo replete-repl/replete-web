@@ -3,6 +3,7 @@
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: Monospaced, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: small;
   height: 300px;
   color: darkblue;
   direction: ltr;
@@ -117,7 +118,7 @@
 .cm-strikethrough {text-decoration: line-through;}
 
 .cm-s-default .cm-keyword {color: black;}
-.cm-s-default .cm-atom {color: magenta;}
+.cm-s-default .cm-atom {color: #BD19BA;}
 .cm-s-default .cm-number {color: blue;}
 .cm-s-default .cm-def {color: black;}
 .cm-s-default .cm-variable {color: black;}
