@@ -32,29 +32,20 @@ Any exceptions / errors should be formatted using parinfer. (TBC)
 - each map has a `:form` key for the input that was evaluated
 
 ## Implementation
-After examining other options we are implementing this formatting with a
-side-effecting `loop recur`
+We parse the prepl-response for the input form parts and the output parts.
 
-This enables the codemirror document to be initialised with the preamble, 
-have each of the PREPL responses formatted appropriately and then 
-finally have the codemirror document swapped once the loop is complete.
+We append results to the CodeMirror instance and calculate the needed 
+markup coordinates for the input form (start line, end line, width).
 
-The process can be optimised by keeping a copy of previously computed state.
+Appending the results requires us to call `.setValue` on the CodeMirror instance.
 
-Other options do not have the ability to directly associate the state of
-the document formatting with the element being processed or seemed off for
-some other reason
+Whenever `.setValue` is called, the existing markup is removed
 
-Other options considered and why they were rejected:
-- formatting post-hoc: blind programming, brittle
-- string tagging: mixing concerns, brittle
-- cm API extensions: not Clojure and too hard to maintain
-- stateful transducer: we need more side-effects than results, no parallelism
+To countermeasure this we keep a history of markup coordinates and apply the markup 
+after any calls to `.setValue`
+
+Yes, managing state is annoying
 
 
 
 
-
-
-
-    
