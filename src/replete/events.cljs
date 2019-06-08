@@ -7,15 +7,6 @@
                                    reg-event-fx
                                    reg-fx]]))
 
-(defonce
-  preamble
-  (str "ClojureScript " *clojurescript-version*
-       "\n    Docs : (doc function-name)"
-       "\n           (find-doc \"part-of-name\")"
-       "\n  Source : (source function-name)"
-       "\n Results : Stored in *1, *2, *3,"
-       "\n           an exception in *e"))
-
 (defn key-bindings
   [os]
   (let [ckey (if (= os :macosx) "cmd" "ctrl")
@@ -44,10 +35,8 @@
 (reg-event-db
   ::initialize-db
   (fn [_ _]
-    (merge
-      {:app-name "replete-web"
-       :preamble {:preamble preamble}}
-      os-data)))
+    (merge {:app-name "replete-web"}
+           os-data)))
 
 (reg-event-db
   ::save-form

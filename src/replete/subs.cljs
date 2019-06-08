@@ -2,11 +2,6 @@
   (:require [re-frame.core :refer [reg-sub]]))
 
 (reg-sub
-  ::preamble
-  (fn [db]
-    (:preamble db)))
-
-(reg-sub
   ::restore-item
   (fn [db]
     (:restore-item db)))

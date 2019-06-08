@@ -1,0 +1,8 @@
+.parinfer-error {
+    background: #FFBEBE;
+    color: black !important;
+}
+
+.parinfer-paren-trail {
+    opacity: 0.4;
+}

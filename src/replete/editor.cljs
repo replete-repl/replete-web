@@ -4,7 +4,8 @@
     [re-com.core :refer [h-box v-box box button gap line scroller
                          border label input-text v-split md-icon-button
                          input-textarea title flex-child-style p slider]]
-    [replete.cm :as cmirror]
+    [replete.cm-edit :as cm-edit]
+    [replete.cm-eval :as cm-eval]
     [replete.events :as events]
     [replete.subs :as subs]))
 
@@ -27,21 +28,20 @@
                   :cm-options   {:autofocus true}}]
         [box
          :style box-style
-         :child [cmirror/cmirror-edit-comp opts]]))))
+         :child [cm-edit/cmirror-edit-comp opts]]))))
 
 (defn eval-mirror
   "Show evalled results from the component it is `watching`"
   []
-  (let [preamble (re-frame/subscribe [::subs/preamble])
-        result (re-frame/subscribe [::subs/eval-result])]
+  (let [result (re-frame/subscribe [::subs/eval-result])]
     (fn []
       (let [opts {:editor?    false
                   :node-id    "eval-history"
                   :cm-options {:readOnly true}
-                  :changes    (or @result @preamble)}]
+                  :changes    @result}]
         [box
          :style box-style
-         :child [cmirror/cmirror-eval-comp opts]]))))
+         :child [cm-eval/cmirror-eval-comp opts]]))))
 
 (defn button-label
   [os]
