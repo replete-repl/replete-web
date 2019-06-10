@@ -7,7 +7,7 @@
                                    reg-event-fx
                                    reg-fx]]))
 
-(defn key-bindings
+(defn- key-bindings
   [os]
   (let [ckey (if (= os :macosx) "cmd" "ctrl")
         keys ["enter" "up" "down"]]
@@ -21,16 +21,16 @@
                          (string/capitalize the-key)))])
         (repeat ckey) keys))))
 
-(defonce
-  os-data
-  (let [app-version (.-appVersion js/navigator)
-        os (cond
-             (re-find #"Win" app-version) :windows
-             (re-find #"X11" app-version) :unix
-             (re-find #"Linux" app-version) :linux
-             (re-find #"Mac" app-version) :macosx
-             :else :unknown-os)]
-    {:os os :key-bindings (key-bindings os)}))
+(defonce ^:private
+         os-data
+         (let [app-version (.-appVersion js/navigator)
+               os (cond
+                    (re-find #"Win" app-version) :windows
+                    (re-find #"X11" app-version) :unix
+                    (re-find #"Linux" app-version) :linux
+                    (re-find #"Mac" app-version) :macosx
+                    :else :unknown-os)]
+           {:os os :key-bindings (key-bindings os)}))
 
 (reg-event-db
   ::initialize-db
@@ -77,15 +77,52 @@
     {:db          (assoc db :restore-item nil)
      ::async-eval (:current-form db)}))
 
-(defn next-prev [db f]
-  (let [index (f (:history-index db))
+(defn- highlight-form
+  "Direct codemirror to create a highlight bar over the form.
+
+  Hack #1 Note: `inc` is needed on the `end` line to force codemirror
+  to highlight the full width of the last line of the form. Otherwise
+  it stops at the end of the text. Let me know if you have a less
+  hacky option.
+
+  Hack #2 Note: `.extendSelection` scrolls to `start` but this does
+  not always show whole multi-line forms. To make it wholly visible
+  a further scroll is attempted with a simple heuristic as an attempt
+  to avoid this problem."
+  [cm {:keys [start end]}]
+  (.extendSelection
+    cm #js {:line start :ch 0} #js {:line (inc end) :ch 0})
+
+  (.scrollIntoView
+    cm #js {:line (if (< start 15) 0 (+ 2 end))}))
+
+(defn- highlight-history
+  [index {:keys [eval-codemirror mark-up-history]}]
+  (let [next-mark-up (nth mark-up-history index :not-found)]
+    (when-not (= next-mark-up :not-found)
+      (highlight-form eval-codemirror next-mark-up))))
+
+(reg-event-db
+  ::eval-codemirror
+  (fn [db [_ codemirror]]
+    (assoc db :eval-codemirror codemirror)))
+
+(reg-event-db
+  ::mark-up-history
+  (fn [db [_ mark-up-history]]
+    (assoc db :mark-up-history mark-up-history)))
+
+(defn- next-prev [db direction-fn]
+  (let [index (direction-fn (:history-index db))
         history (:input-history db)
         item (nth history index :not-found)]
     (if (= item :not-found)
       db
-      (assoc db :history-index index
-                :restore-item item
-                :current-form item))))
+      (let [options (select-keys db [:eval-codemirror :mark-up-history])]
+        (highlight-history index options)
+        (assoc db :history-index index
+                  :restore-item item
+                  :current-form item)))))
 
 (reg-event-db
   ::history-prev
