@@ -22,15 +22,15 @@
         (repeat ckey) keys))))
 
 (defonce ^:private
-  os-data
-  (let [app-version (.-appVersion js/navigator)
-        os (cond
-             (re-find #"Win" app-version) :windows
-             (re-find #"X11" app-version) :unix
-             (re-find #"Linux" app-version) :linux
-             (re-find #"Mac" app-version) :macosx
-             :else :unknown-os)]
-    {:os os :key-bindings (key-bindings os)}))
+         os-data
+         (let [app-version (.-appVersion js/navigator)
+               os (cond
+                    (re-find #"Win" app-version) :windows
+                    (re-find #"X11" app-version) :unix
+                    (re-find #"Linux" app-version) :linux
+                    (re-find #"Mac" app-version) :macosx
+                    :else :unknown-os)]
+           {:os os :key-bindings (key-bindings os)}))
 
 (reg-event-db
   ::initialize-db
@@ -80,14 +80,21 @@
 (defn- highlight-form
   "Direct codemirror to create a highlight bar over the form.
 
-  Hack Note: `inc` is needed on the `end` line to force codemirror
+  Hack #1 Note: `inc` is needed on the `end` line to force codemirror
   to highlight the full width of the last line of the form. Otherwise
   it stops at the end of the text. Let me know if you have a less
-  hacky option."
+  hacky option.
+
+  Hack #2 Note: `.extendSelection` scrolls to `start` but this does
+  not always show whole multi-line forms. To make it wholly visible
+  a further scroll is attempted with a simple heuristic as an attempt
+  to avoid this problem."
   [cm {:keys [start end]}]
-  (.setSelection cm
-                 #js {:line start :ch 0}
-                 #js {:line (inc end) :ch 0}))
+  (.extendSelection
+    cm #js {:line start :ch 0} #js {:line (inc end) :ch 0})
+
+  (.scrollIntoView
+    cm #js {:line (if (< start 15) 0 (+ 2 end))}))
 
 (defn- highlight-history
   [index {:keys [eval-codemirror mark-up-history]}]
