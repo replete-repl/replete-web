@@ -20,7 +20,8 @@
 
  :aliases {:repl     {:main-opts ["-r"]}
            :fig-repl {:jvm-opts   ["-Xmx1g" "-Xms1g"]
-                      :extra-deps {com.bhauman/figwheel-main       {:mvn/version "0.2.0"}
+                      :extra-deps {com.bhauman/figwheel-main       {:mvn/version "0.2.1-SNAPSHOT"}
                                    com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}}
                       :main-opts  ["-m" "figwheel.main"
+                                   "-bb" "worker"
                                    "-b" "replete" "-r"]}}}
