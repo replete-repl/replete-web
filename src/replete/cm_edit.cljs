@@ -51,8 +51,9 @@
                enter (enter-binding (get-in opts [:key-bindings :enter]))
                down (down-binding (get-in opts [:key-bindings :down]))
                up (up-binding (get-in opts [:key-bindings :up]))
-               editor-shortcut {:extraKeys (merge enter up down)}
-               cm-opts (merge (:cm-options opts) editor-shortcut)
+               editor-opts {:extraKeys (merge enter up down)
+                            :theme     "replete-edit-light"}
+               cm-opts (merge (:cm-options opts) editor-opts)
                cm (cm/cm-parinfer node cm-opts)]
            (.on cm "change" (fn [cm _]
                               (let [val (string/trim (.getValue cm))]

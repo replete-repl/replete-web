@@ -37,10 +37,11 @@
 
 (def preamble-markup
   {:start 0
-   :end (lines-count preamble-text) 
+   :end   (lines-count preamble-text)
    :width (max-line-width preamble-text)})
 
 (def replete-dim-css "color: #282828")
+(def replete-dimmer "color: #696969")
 
 (defn parse-prepl-response
   [prepl-response]
@@ -53,7 +54,7 @@
    :result-gap "\n\n"})
 
 (defn dim-text
-  [cm {:keys [start end width]} ]
+  [cm {:keys [start end width]}]
   (.markText cm
              #js {:line start :ch 0}
              #js {:line end :ch width}
@@ -96,7 +97,8 @@
        :component-did-mount
        (fn cm-did-mount [comp]
          (let [node (dom/dom-node comp)
-               cm-opts (merge (:cm-options opts))
+               cm-opts (merge (:cm-options opts)
+                              {:theme     "replete-eval-light"})
                cm (cm/cm-parinfer node cm-opts)]
            (.setValue cm preamble-text)
            (dim-text cm preamble-markup)
