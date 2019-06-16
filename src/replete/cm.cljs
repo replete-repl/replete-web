@@ -11,7 +11,6 @@
   (let [code-mirror (js/CodeMirror.fromTextArea
                       dom-node
                       (clj->js (merge {:lineWrapping  true
-                                       :matchBrackets true
                                        :mode          :clojure}
                                       opts)))]
     (.setSize code-mirror "100%" "100%")

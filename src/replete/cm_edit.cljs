@@ -12,32 +12,25 @@
             [replete.cm :as cm]
             [replete.events :as events]))
 
-(defn save-form
-  [clojure-form]
-  (re-frame/dispatch
-    [::events/save-form clojure-form]))
+(defn- save-changes
+  [cm _]
+  (let [val (string/trim (.getValue cm))]
+    (when-not (empty? val)
+      (re-frame/dispatch [::events/save-form val]))))
 
-(defn enter-binding
-  [enter]
-  (assoc {} enter #(re-frame/dispatch [::events/eval])))
-
-(defn up-binding
-  [up]
-  (assoc {} up #(re-frame/dispatch [::events/history-prev])))
-
-(defn down-binding
-  [down]
-  (assoc {} down #(re-frame/dispatch [::events/history-next])))
+(defn- update-codemirror
+  [cm-ref compnt]
+  (when-let [changes (:changes (reagent/props compnt))]
+    (if (:clear-input-form changes)
+      (.setValue @cm-ref "")
+      (.setValue @cm-ref changes))))
 
 (defn cmirror-edit-comp
   [opts]
   (let [cmirror (atom nil)
-        node-id (:node-id opts)
-        cm-update (fn [comp]
-                    (when-let [changes (:changes (reagent/props comp))]
-                      (if (:clear-input-form changes)
-                        (.setValue @cmirror "")
-                        (.setValue @cmirror changes))))]
+        {:keys [node-id update-fn change-fn]} opts
+        cm-update (partial (or update-fn update-codemirror) cmirror)
+        cm-save (or change-fn save-changes)]
     (reagent/create-class
       {:reagent-render
        (fn cm-render
@@ -46,21 +39,12 @@
 
        :component-did-mount
        (fn cm-did-mount
-         [comp]
-         (let [node (dom/dom-node comp)
-               enter (enter-binding (get-in opts [:key-bindings :enter]))
-               down (down-binding (get-in opts [:key-bindings :down]))
-               up (up-binding (get-in opts [:key-bindings :up]))
-               editor-opts {:extraKeys (merge enter up down)
-                            :theme     "replete-edit-light"}
-               cm-opts (merge (:cm-options opts) editor-opts)
-               cm (cm/cm-parinfer node cm-opts)]
-           (.on cm "change" (fn [cm _]
-                              (let [val (string/trim (.getValue cm))]
-                                (when-not (empty? val)
-                                  (save-form val)))))
+         [compnt]
+         (let [node (dom/dom-node compnt)
+               cm (cm/cm-parinfer node (:cm-options opts))]
+           (.on cm "change" cm-save)
            (reset! cmirror cm))
-         (cm-update comp))
+         (cm-update compnt))
 
        :component-will-unmount
        (fn cm-will-unmount
