@@ -2,7 +2,7 @@
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: Monospaced, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: "Fira Code", Monospaced, Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: small;
   height: 300px;
   color: darkblue;
