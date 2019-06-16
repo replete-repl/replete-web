@@ -10,11 +10,9 @@
     [replete.helpers :as helpers]
     [replete.subs :as subs]))
 
-(def ^:private box-style
-         (merge
-           (flex-child-style "1")
-           {:font-family   "Menlo, Lucida Console, Monaco, monospace"
-            :border        "1px solid lightgrey"
+(def ^:private editor-box-style
+  (merge (flex-child-style "1")
+         {:border          "1px solid lightgrey"
             :border-radius "4px"}))
 
 (defn- enter-binding
@@ -44,10 +42,10 @@
                                :extraKeys (merge enter up down)
                                :theme     "replete-edit-light"}}]
         [box
-         :style box-style
+         :style editor-box-style
          :child [cm-edit/cmirror-edit-comp opts]]))))
 
-(def ^:private preamble-text
+(def ^:private replete-preamble-text
   (str "ClojureScript " *clojurescript-version*
        "\n    Docs : (doc function-name)"
        "\n           (find-doc \"part-of-name\")"
@@ -57,8 +55,8 @@
 
 (def ^:private preamble-markup
   {:start 0
-   :end   (helpers/lines-count preamble-text)
-   :width (helpers/max-line-width preamble-text)})
+   :end   (helpers/lines-count replete-preamble-text)
+   :width (helpers/max-line-width replete-preamble-text)})
 
 
 (defn eval-mirror
@@ -70,11 +68,11 @@
                   :node-id         "eval-history"
                   :cm-options      {:readOnly true
                                     :theme    "replete-eval-light"}
-                  :preamble-text   preamble-text
+                  :preamble-text   replete-preamble-text
                   :preamble-markup preamble-markup
                   :changes         @result}]
         [box
-         :style box-style
+         :style editor-box-style
          :child [cm-eval/cmirror-eval-comp opts]]))))
 
 (defn- button-label
