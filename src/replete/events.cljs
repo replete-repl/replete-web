@@ -10,7 +10,7 @@
 (defn- key-bindings
   [os]
   (let [ckey (if (= os :macosx) "cmd" "ctrl")
-        keys ["enter" "up" "down"]]
+        keys ["enter" "up" "down" "left" "right"]]
     (into
       {}
       (map
