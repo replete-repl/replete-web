@@ -8,7 +8,7 @@
 
            re-frame                    {:mvn/version "0.10.6"}
            re-com                      {:mvn/version "2.3.0"
-                                        :exclusions [org.clojure/core.async]}
+                                        :exclusions  [org.clojure/core.async]}
 
            org.clojure/tools.namespace {:mvn/version "0.3.0-alpha4"}
            org.clojure/java.classpath  {:mvn/version "0.3.0"}
@@ -18,6 +18,9 @@
 
  :paths   ["src" "resources"]
 
- :aliases {:repl     {:main-opts ["-m" "cljs.main" "-w" "src" "-ro" "repl.edn" "-co" "replete.cljs.edn" "-c" "-r"]
-                      :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}
-           :worker {:main-opts ["-m" "cljs.main" "-w" "src" "-co" "worker.cljs.edn" "-c"]}}}
+ :aliases {:repl        {:main-opts  ["-m" "cljs.main" "-w" "src" "-ro" "repl.edn" "-co" "replete.cljs.edn" "-c" "-r"]
+                         :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}
+           :worker      {:main-opts ["-m" "cljs.main" "-w" "src" "-co" "worker.cljs.edn" "-c"]}
+
+           :dist-worker {:main-opts ["-m" "cljs.main" "-co" "worker.cljs.edn" "-c"]}
+           :dist-app    {:main-opts  ["-m" "cljs.main" "-co" "dist.cljs.edn" "-c"]}}}
