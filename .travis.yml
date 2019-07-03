@@ -1,0 +1,18 @@
+language: clojure
+
+jobs:
+  include:
+    - stage: compile-worker
+      script: clojure -A:dist-worker
+    - stage: compile-app
+      script: clojure -A:dist-app
+
+stages:
+  - compile-worker
+  - compile-app
+  - name: deploy
+    if: branch = master
+
+jdk:
+  - openjdk11
+
