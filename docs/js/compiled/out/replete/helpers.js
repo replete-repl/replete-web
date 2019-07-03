@@ -7,13 +7,13 @@ goog.require('clojure.string');
  * The maximum width of lines in `s` or 0 if `s` is nil
  */
 replete.helpers.max_line_width = (function replete$helpers$max_line_width(s){
-var or__4131__auto__ = (function (){var G__14499 = s;
-var G__14499__$1 = (((G__14499 == null))?null:clojure.string.split_lines(G__14499));
-var G__14499__$2 = (((G__14499__$1 == null))?null:cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.count,G__14499__$1));
-if((G__14499__$2 == null)){
+var or__4131__auto__ = (function (){var G__11030 = s;
+var G__11030__$1 = (((G__11030 == null))?null:clojure.string.split_lines(G__11030));
+var G__11030__$2 = (((G__11030__$1 == null))?null:cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.count,G__11030__$1));
+if((G__11030__$2 == null)){
 return null;
 } else {
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2(cljs.core.max,G__14499__$2);
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2(cljs.core.max,G__11030__$2);
 }
 })();
 if(cljs.core.truth_(or__4131__auto__)){
@@ -26,12 +26,12 @@ return (0);
  * The count of lines in `s` or 0 if `s` is nil
  */
 replete.helpers.lines_count = (function replete$helpers$lines_count(s){
-var or__4131__auto__ = (function (){var G__14501 = s;
-var G__14501__$1 = (((G__14501 == null))?null:clojure.string.split_lines(G__14501));
-if((G__14501__$1 == null)){
+var or__4131__auto__ = (function (){var G__11032 = s;
+var G__11032__$1 = (((G__11032 == null))?null:clojure.string.split_lines(G__11032));
+if((G__11032__$1 == null)){
 return null;
 } else {
-return cljs.core.count(G__14501__$1);
+return cljs.core.count(G__11032__$1);
 }
 })();
 if(cljs.core.truth_(or__4131__auto__)){

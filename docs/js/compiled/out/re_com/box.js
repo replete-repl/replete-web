@@ -39,10 +39,10 @@ var split_count = cljs.core.count(split_size);
 var _ = ((cljs.core.contains_QMARK_(new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, [(1),null,(3),null], null), null),split_count))?null:(function(){throw (new Error(["Assert failed: ","Must pass either 1 or 3 words to flex-child-style","\n","(contains? #{1 3} split-count)"].join('')))})());
 var size_only = ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(split_count,(1)))?cljs.core.first(split_size):null);
 var split_size_only = (cljs.core.truth_(size_only)?clojure.string.split.cljs$core$IFn$_invoke$arity$2(size_only,/(\d+)(.*)/):null);
-var vec__14760 = (cljs.core.truth_(size_only)?split_size_only:null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14760,(0),null);
-var num = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14760,(1),null);
-var units = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14760,(2),null);
+var vec__11291 = (cljs.core.truth_(size_only)?split_size_only:null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11291,(0),null);
+var num = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11291,(1),null);
+var units = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11291,(2),null);
 var pass_through_QMARK_ = (num == null);
 var grow_ratio_QMARK_ = ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(units,"%")) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(units,"")) || ((units == null)));
 var grow = ((grow_ratio_QMARK_)?num:"0");
@@ -70,9 +70,9 @@ return new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$_DASH_webkit_
  * Reference: http://www.w3.org/TR/css3-flexbox/#justify-content-property
  */
 re_com.box.justify_style = (function re_com$box$justify_style(justify){
-var js = (function (){var G__14763 = justify;
-var G__14763__$1 = (((G__14763 instanceof cljs.core.Keyword))?G__14763.fqn:null);
-switch (G__14763__$1) {
+var js = (function (){var G__11294 = justify;
+var G__11294__$1 = (((G__11294 instanceof cljs.core.Keyword))?G__11294.fqn:null);
+switch (G__11294__$1) {
 case "start":
 return "flex-start";
 
@@ -94,7 +94,7 @@ return "space-around";
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__14763__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__11294__$1)].join('')));
 
 }
 })();
@@ -108,9 +108,9 @@ return new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$_DASH_webkit_
  */
 re_com.box.align_style = (function re_com$box$align_style(attribute,align){
 var attribute_wk = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(["-webkit-",cljs.core.name(attribute)].join(''));
-var as = (function (){var G__14765 = align;
-var G__14765__$1 = (((G__14765 instanceof cljs.core.Keyword))?G__14765.fqn:null);
-switch (G__14765__$1) {
+var as = (function (){var G__11296 = align;
+var G__11296__$1 = (((G__11296 instanceof cljs.core.Keyword))?G__11296.fqn:null);
+switch (G__11296__$1) {
 case "start":
 return "flex-start";
 
@@ -132,7 +132,7 @@ return "stretch";
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__14765__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__11296__$1)].join('')));
 
 }
 })();
@@ -144,9 +144,9 @@ return cljs.core.PersistentArrayMap.createAsIfByAssoc([attribute_wk,as,attribute
  * Because we're translating scroll into overflow, the keyword doesn't appear to match the attribute value
  */
 re_com.box.scroll_style = (function re_com$box$scroll_style(attribute,scroll){
-return cljs.core.PersistentArrayMap.createAsIfByAssoc([attribute,(function (){var G__14767 = scroll;
-var G__14767__$1 = (((G__14767 instanceof cljs.core.Keyword))?G__14767.fqn:null);
-switch (G__14767__$1) {
+return cljs.core.PersistentArrayMap.createAsIfByAssoc([attribute,(function (){var G__11298 = scroll;
+var G__11298__$1 = (((G__11298 instanceof cljs.core.Keyword))?G__11298.fqn:null);
+switch (G__11298__$1) {
 case "auto":
 return "auto";
 
@@ -164,7 +164,7 @@ return "visible";
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__14767__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__11298__$1)].join('')));
 
 }
 })()]);
@@ -174,14 +174,14 @@ throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$ari
  */
 re_com.box.box_base = (function re_com$box$box_base(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___14773 = arguments.length;
-var i__4731__auto___14774 = (0);
+var len__4730__auto___11304 = arguments.length;
+var i__4731__auto___11305 = (0);
 while(true){
-if((i__4731__auto___14774 < len__4730__auto___14773)){
-args__4736__auto__.push((arguments[i__4731__auto___14774]));
+if((i__4731__auto___11305 < len__4730__auto___11304)){
+args__4736__auto__.push((arguments[i__4731__auto___11305]));
 
-var G__14775 = (i__4731__auto___14774 + (1));
-i__4731__auto___14774 = G__14775;
+var G__11306 = (i__4731__auto___11305 + (1));
+i__4731__auto___11305 = G__11306;
 continue;
 } else {
 }
@@ -192,36 +192,36 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.box.box_base.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.box.box_base.cljs$core$IFn$_invoke$arity$variadic = (function (p__14770){
-var map__14771 = p__14770;
-var map__14771__$1 = (((((!((map__14771 == null))))?(((((map__14771.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14771.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14771):map__14771);
-var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$child);
-var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$align_DASH_self);
-var border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$border);
-var v_scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$v_DASH_scroll);
-var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$height);
-var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$margin);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$attr);
-var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$min_DASH_width);
-var align = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$align);
-var bk_color = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$bk_DASH_color);
-var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$max_DASH_height);
-var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$min_DASH_height);
-var r_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$r_DASH_border);
-var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$justify);
-var h_scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$h_DASH_scroll);
-var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$width);
-var b_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$b_DASH_border);
-var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$max_DASH_width);
-var radius = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$radius);
-var size = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$size);
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$style);
-var scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$scroll);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$class);
-var l_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$l_DASH_border);
-var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$padding);
-var t_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$t_DASH_border);
-var class_name = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14771__$1,cljs.core.cst$kw$class_DASH_name);
+re_com.box.box_base.cljs$core$IFn$_invoke$arity$variadic = (function (p__11301){
+var map__11302 = p__11301;
+var map__11302__$1 = (((((!((map__11302 == null))))?(((((map__11302.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11302.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11302):map__11302);
+var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$child);
+var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$align_DASH_self);
+var border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$border);
+var v_scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$v_DASH_scroll);
+var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$height);
+var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$margin);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$attr);
+var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$min_DASH_width);
+var align = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$align);
+var bk_color = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$bk_DASH_color);
+var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$max_DASH_height);
+var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$min_DASH_height);
+var r_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$r_DASH_border);
+var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$justify);
+var h_scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$h_DASH_scroll);
+var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$width);
+var b_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$b_DASH_border);
+var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$max_DASH_width);
+var radius = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$radius);
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$size);
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$style);
+var scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$scroll);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$class);
+var l_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$l_DASH_border);
+var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$padding);
+var t_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$t_DASH_border);
+var class_name = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11302__$1,cljs.core.cst$kw$class_DASH_name);
 var s = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([re_com.box.flex_flow_style("inherit"),re_com.box.flex_child_style(size),(cljs.core.truth_(scroll)?re_com.box.scroll_style(cljs.core.cst$kw$overflow,scroll):null),(cljs.core.truth_(h_scroll)?re_com.box.scroll_style(cljs.core.cst$kw$overflow_DASH_x,h_scroll):null),(cljs.core.truth_(v_scroll)?re_com.box.scroll_style(cljs.core.cst$kw$overflow_DASH_y,v_scroll):null),(cljs.core.truth_(width)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$width,width], null):null),(cljs.core.truth_(height)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$height,height], null):null),(cljs.core.truth_(min_width)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$min_DASH_width,min_width], null):null),(cljs.core.truth_(min_height)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$min_DASH_height,min_height], null):null),(cljs.core.truth_(max_width)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$max_DASH_width,max_width], null):null),(cljs.core.truth_(max_height)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$max_DASH_height,max_height], null):null),(cljs.core.truth_(justify)?re_com.box.justify_style(justify):null),(cljs.core.truth_(align)?re_com.box.align_style(cljs.core.cst$kw$align_DASH_items,align):null),(cljs.core.truth_(align_self)?re_com.box.align_style(cljs.core.cst$kw$align_DASH_self,align_self):null),(cljs.core.truth_(margin)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$margin,margin], null):null),(cljs.core.truth_(padding)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$padding,padding], null):null),(cljs.core.truth_(border)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$border,border], null):null),(cljs.core.truth_(l_border)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$border_DASH_left,l_border], null):null),(cljs.core.truth_(r_border)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$border_DASH_right,r_border], null):null),(cljs.core.truth_(t_border)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$border_DASH_top,t_border], null):null),(cljs.core.truth_(b_border)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$border_DASH_bottom,b_border], null):null),(cljs.core.truth_(radius)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$border_DASH_radius,radius], null):null),(cljs.core.truth_(bk_color)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$background_DASH_color,bk_color], null):((re_com.box.debug)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$background_DASH_color,"lightblue"], null):cljs.core.PersistentArrayMap.EMPTY)),style], 0));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,[cljs.core.str.cljs$core$IFn$_invoke$arity$1(class_name),"display-flex ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(class$)].join(''),cljs.core.cst$kw$style,s], null),attr], 0)),child], null);
 });
@@ -229,9 +229,9 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 re_com.box.box_base.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.box.box_base.cljs$lang$applyTo = (function (seq14769){
+re_com.box.box_base.cljs$lang$applyTo = (function (seq11300){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14769));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11300));
 });
 
 re_com.box.gap_args_desc = new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$size,cljs.core.cst$kw$required,true,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"the length of the whitespace.  Typically, an absolute CSS length like 10px or 10em, but can be a stretchy proportional amount like 2"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$class,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS class names, space separated"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$style,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"CSS style map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.css_style_QMARK_,cljs.core.cst$kw$description,"CSS styles to add or override"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$attr,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"HTML attr map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.html_attr_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"HTML attributes, like ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on-mouse-move"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"No ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null),"allowed"], null)], null)], null);
@@ -240,14 +240,14 @@ re_com.box.gap_args_desc = new cljs.core.PersistentVector(null, 6, 5, cljs.core.
  */
 re_com.box.gap = (function re_com$box$gap(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___14780 = arguments.length;
-var i__4731__auto___14781 = (0);
+var len__4730__auto___11311 = arguments.length;
+var i__4731__auto___11312 = (0);
 while(true){
-if((i__4731__auto___14781 < len__4730__auto___14780)){
-args__4736__auto__.push((arguments[i__4731__auto___14781]));
+if((i__4731__auto___11312 < len__4730__auto___11311)){
+args__4736__auto__.push((arguments[i__4731__auto___11312]));
 
-var G__14782 = (i__4731__auto___14781 + (1));
-i__4731__auto___14781 = G__14782;
+var G__11313 = (i__4731__auto___11312 + (1));
+i__4731__auto___11312 = G__11313;
 continue;
 } else {
 }
@@ -258,16 +258,16 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.box.gap.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.box.gap.cljs$core$IFn$_invoke$arity$variadic = (function (p__14777){
-var map__14778 = p__14777;
-var map__14778__$1 = (((((!((map__14778 == null))))?(((((map__14778.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14778.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14778):map__14778);
-var args = map__14778__$1;
-var size = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14778__$1,cljs.core.cst$kw$size);
-var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14778__$1,cljs.core.cst$kw$width);
-var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14778__$1,cljs.core.cst$kw$height);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14778__$1,cljs.core.cst$kw$class);
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14778__$1,cljs.core.cst$kw$style);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14778__$1,cljs.core.cst$kw$attr);
+re_com.box.gap.cljs$core$IFn$_invoke$arity$variadic = (function (p__11308){
+var map__11309 = p__11308;
+var map__11309__$1 = (((((!((map__11309 == null))))?(((((map__11309.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11309.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11309):map__11309);
+var args = map__11309__$1;
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11309__$1,cljs.core.cst$kw$size);
+var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11309__$1,cljs.core.cst$kw$width);
+var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11309__$1,cljs.core.cst$kw$height);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11309__$1,cljs.core.cst$kw$class);
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11309__$1,cljs.core.cst$kw$style);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11309__$1,cljs.core.cst$kw$attr);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.box.gap_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["gap"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro gap-args-desc args \"gap\")"));
@@ -280,9 +280,9 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 re_com.box.gap.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.box.gap.cljs$lang$applyTo = (function (seq14776){
+re_com.box.gap.cljs$lang$applyTo = (function (seq11307){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14776));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11307));
 });
 
 re_com.box.line_args_desc = new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$size,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"1px",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS style for the thickness of the line. Usually px, % or em"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$color,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"lightgray",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS color"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$class,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS class names, space separated"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$style,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"CSS style map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.css_style_QMARK_,cljs.core.cst$kw$description,"CSS styles to add or override"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$attr,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"HTML attr map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.html_attr_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"HTML attributes, like ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on-mouse-move"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"No ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null),"allowed"], null)], null)], null);
@@ -292,14 +292,14 @@ re_com.box.line_args_desc = new cljs.core.PersistentVector(null, 5, 5, cljs.core
  */
 re_com.box.line = (function re_com$box$line(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___14787 = arguments.length;
-var i__4731__auto___14788 = (0);
+var len__4730__auto___11318 = arguments.length;
+var i__4731__auto___11319 = (0);
 while(true){
-if((i__4731__auto___14788 < len__4730__auto___14787)){
-args__4736__auto__.push((arguments[i__4731__auto___14788]));
+if((i__4731__auto___11319 < len__4730__auto___11318)){
+args__4736__auto__.push((arguments[i__4731__auto___11319]));
 
-var G__14789 = (i__4731__auto___14788 + (1));
-i__4731__auto___14788 = G__14789;
+var G__11320 = (i__4731__auto___11319 + (1));
+i__4731__auto___11319 = G__11320;
 continue;
 } else {
 }
@@ -310,15 +310,15 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.box.line.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.box.line.cljs$core$IFn$_invoke$arity$variadic = (function (p__14784){
-var map__14785 = p__14784;
-var map__14785__$1 = (((((!((map__14785 == null))))?(((((map__14785.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14785.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14785):map__14785);
-var args = map__14785__$1;
-var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14785__$1,cljs.core.cst$kw$size,"1px");
-var color = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14785__$1,cljs.core.cst$kw$color,"lightgray");
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14785__$1,cljs.core.cst$kw$class);
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14785__$1,cljs.core.cst$kw$style);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14785__$1,cljs.core.cst$kw$attr);
+re_com.box.line.cljs$core$IFn$_invoke$arity$variadic = (function (p__11315){
+var map__11316 = p__11315;
+var map__11316__$1 = (((((!((map__11316 == null))))?(((((map__11316.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11316.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11316):map__11316);
+var args = map__11316__$1;
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11316__$1,cljs.core.cst$kw$size,"1px");
+var color = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11316__$1,cljs.core.cst$kw$color,"lightgray");
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11316__$1,cljs.core.cst$kw$class);
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11316__$1,cljs.core.cst$kw$style);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11316__$1,cljs.core.cst$kw$attr);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.box.line_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["line"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro line-args-desc args \"line\")"));
@@ -331,9 +331,9 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 re_com.box.line.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.box.line.cljs$lang$applyTo = (function (seq14783){
+re_com.box.line.cljs$lang$applyTo = (function (seq11314){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14783));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11314));
 });
 
 re_com.box.h_box_args_desc = new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$children,cljs.core.cst$kw$required,true,cljs.core.cst$kw$type,"vector",cljs.core.cst$kw$validate_DASH_fn,cljs.core.sequential_QMARK_,cljs.core.cst$kw$description,"a vector (or list) of components"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$size,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"none",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"flex"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Examples: ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"initial"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"auto"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"none"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"100px"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"2"], null)," or a generic triple of ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"grow shrink basis"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The minimum width to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The minimum height to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The maximum width to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The maximum height to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$justify,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,cljs.core.cst$kw$start,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.justify_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"justify-content"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"One of ",re_com.validate.justify_options_list], null)], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$align,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,cljs.core.cst$kw$stretch,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.align_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"align-items"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null)," One of ",re_com.validate.align_options_list], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$align_DASH_self,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.align_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"align-self"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Used when a child must override the parent's align-items setting."], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$margin,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS margin style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$padding,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS padding style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$gap,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"the amount of whitespace to put between each child. Typically, an absolute CSS length like 10px or 10em, but can be a stretchy proportional amount like 2"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$class,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS class names, space separated"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$style,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"CSS style map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.css_style_QMARK_,cljs.core.cst$kw$description,"CSS styles to add or override"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$attr,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"HTML attr map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.html_attr_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"HTML attributes, like ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on-mouse-move"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"No ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null),"allowed"], null)], null)], null);
@@ -344,14 +344,14 @@ re_com.box.h_box_args_desc = new cljs.core.PersistentVector(null, 17, 5, cljs.co
  */
 re_com.box.h_box = (function re_com$box$h_box(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___14794 = arguments.length;
-var i__4731__auto___14795 = (0);
+var len__4730__auto___11325 = arguments.length;
+var i__4731__auto___11326 = (0);
 while(true){
-if((i__4731__auto___14795 < len__4730__auto___14794)){
-args__4736__auto__.push((arguments[i__4731__auto___14795]));
+if((i__4731__auto___11326 < len__4730__auto___11325)){
+args__4736__auto__.push((arguments[i__4731__auto___11326]));
 
-var G__14796 = (i__4731__auto___14795 + (1));
-i__4731__auto___14795 = G__14796;
+var G__11327 = (i__4731__auto___11326 + (1));
+i__4731__auto___11326 = G__11327;
 continue;
 } else {
 }
@@ -362,27 +362,27 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.box.h_box.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.box.h_box.cljs$core$IFn$_invoke$arity$variadic = (function (p__14791){
-var map__14792 = p__14791;
-var map__14792__$1 = (((((!((map__14792 == null))))?(((((map__14792.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14792.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14792):map__14792);
-var args = map__14792__$1;
-var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$align_DASH_self);
-var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$height);
-var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$margin);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$attr);
-var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$min_DASH_width);
-var children = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$children);
-var align = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14792__$1,cljs.core.cst$kw$align,cljs.core.cst$kw$stretch);
-var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$max_DASH_height);
-var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$min_DASH_height);
-var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14792__$1,cljs.core.cst$kw$justify,cljs.core.cst$kw$start);
-var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$width);
-var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$max_DASH_width);
-var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14792__$1,cljs.core.cst$kw$size,"none");
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$style);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$class);
-var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$padding);
-var gap = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14792__$1,cljs.core.cst$kw$gap);
+re_com.box.h_box.cljs$core$IFn$_invoke$arity$variadic = (function (p__11322){
+var map__11323 = p__11322;
+var map__11323__$1 = (((((!((map__11323 == null))))?(((((map__11323.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11323.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11323):map__11323);
+var args = map__11323__$1;
+var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$align_DASH_self);
+var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$height);
+var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$margin);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$attr);
+var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$min_DASH_width);
+var children = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$children);
+var align = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11323__$1,cljs.core.cst$kw$align,cljs.core.cst$kw$stretch);
+var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$max_DASH_height);
+var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$min_DASH_height);
+var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11323__$1,cljs.core.cst$kw$justify,cljs.core.cst$kw$start);
+var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$width);
+var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$max_DASH_width);
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11323__$1,cljs.core.cst$kw$size,"none");
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$style);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$class);
+var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$padding);
+var gap = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11323__$1,cljs.core.cst$kw$gap);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.box.h_box_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["h-box"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro h-box-args-desc args \"h-box\")"));
@@ -397,9 +397,9 @@ return cljs.core.into.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVect
 re_com.box.h_box.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.box.h_box.cljs$lang$applyTo = (function (seq14790){
+re_com.box.h_box.cljs$lang$applyTo = (function (seq11321){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14790));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11321));
 });
 
 re_com.box.v_box_args_desc = new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$children,cljs.core.cst$kw$required,true,cljs.core.cst$kw$type,"vector",cljs.core.cst$kw$validate_DASH_fn,cljs.core.sequential_QMARK_,cljs.core.cst$kw$description,"a vector (or list) of components"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$size,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"none",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"flex"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Examples: ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"initial"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"auto"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"none"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"100px"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"2"], null)," or a generic triple of ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"grow shrink basis"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The minimum width to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The minimum height to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The maximum width to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The maximum height to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$justify,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,cljs.core.cst$kw$start,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.justify_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"justify-content"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"One of ",re_com.validate.justify_options_list], null)], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$align,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,cljs.core.cst$kw$stretch,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.align_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"align-items"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null)," One of ",re_com.validate.align_options_list], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$align_DASH_self,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.align_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"align-self"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Used when a child must override the parent's align-items setting."], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$margin,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS margin style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$padding,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS padding style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$gap,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"the amount of whitespace to put between each child. Typically, an absolute CSS length like 10px or 10em, but can be a stretchy proportional amount like 2"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$class,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS class names, space separated"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$style,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"CSS style map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.css_style_QMARK_,cljs.core.cst$kw$description,"CSS styles to add or override"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$attr,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"HTML attr map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.html_attr_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"HTML attributes, like ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on-mouse-move"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"No ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null),"allowed"], null)], null)], null);
@@ -410,14 +410,14 @@ re_com.box.v_box_args_desc = new cljs.core.PersistentVector(null, 17, 5, cljs.co
  */
 re_com.box.v_box = (function re_com$box$v_box(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___14801 = arguments.length;
-var i__4731__auto___14802 = (0);
+var len__4730__auto___11332 = arguments.length;
+var i__4731__auto___11333 = (0);
 while(true){
-if((i__4731__auto___14802 < len__4730__auto___14801)){
-args__4736__auto__.push((arguments[i__4731__auto___14802]));
+if((i__4731__auto___11333 < len__4730__auto___11332)){
+args__4736__auto__.push((arguments[i__4731__auto___11333]));
 
-var G__14803 = (i__4731__auto___14802 + (1));
-i__4731__auto___14802 = G__14803;
+var G__11334 = (i__4731__auto___11333 + (1));
+i__4731__auto___11333 = G__11334;
 continue;
 } else {
 }
@@ -428,27 +428,27 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.box.v_box.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.box.v_box.cljs$core$IFn$_invoke$arity$variadic = (function (p__14798){
-var map__14799 = p__14798;
-var map__14799__$1 = (((((!((map__14799 == null))))?(((((map__14799.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14799.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14799):map__14799);
-var args = map__14799__$1;
-var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$align_DASH_self);
-var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$height);
-var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$margin);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$attr);
-var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$min_DASH_width);
-var children = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$children);
-var align = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14799__$1,cljs.core.cst$kw$align,cljs.core.cst$kw$stretch);
-var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$max_DASH_height);
-var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$min_DASH_height);
-var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14799__$1,cljs.core.cst$kw$justify,cljs.core.cst$kw$start);
-var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$width);
-var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$max_DASH_width);
-var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14799__$1,cljs.core.cst$kw$size,"none");
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$style);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$class);
-var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$padding);
-var gap = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14799__$1,cljs.core.cst$kw$gap);
+re_com.box.v_box.cljs$core$IFn$_invoke$arity$variadic = (function (p__11329){
+var map__11330 = p__11329;
+var map__11330__$1 = (((((!((map__11330 == null))))?(((((map__11330.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11330.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11330):map__11330);
+var args = map__11330__$1;
+var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$align_DASH_self);
+var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$height);
+var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$margin);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$attr);
+var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$min_DASH_width);
+var children = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$children);
+var align = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11330__$1,cljs.core.cst$kw$align,cljs.core.cst$kw$stretch);
+var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$max_DASH_height);
+var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$min_DASH_height);
+var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11330__$1,cljs.core.cst$kw$justify,cljs.core.cst$kw$start);
+var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$width);
+var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$max_DASH_width);
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11330__$1,cljs.core.cst$kw$size,"none");
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$style);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$class);
+var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$padding);
+var gap = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11330__$1,cljs.core.cst$kw$gap);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.box.v_box_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["v-box"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro v-box-args-desc args \"v-box\")"));
@@ -463,9 +463,9 @@ return cljs.core.into.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVect
 re_com.box.v_box.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.box.v_box.cljs$lang$applyTo = (function (seq14797){
+re_com.box.v_box.cljs$lang$applyTo = (function (seq11328){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14797));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11328));
 });
 
 re_com.box.box_args_desc = new cljs.core.PersistentVector(null, 16, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$child,cljs.core.cst$kw$required,true,cljs.core.cst$kw$type,"string | hiccup",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.string_or_hiccup_QMARK_,cljs.core.cst$kw$description,"a component (or string)"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$size,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"none",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"flex"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Examples: ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"initial"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"auto"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"none"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"100px"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"2"], null)," or a generic triple of ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"grow shrink basis"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The minimum width to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The minimum height to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The maximum width to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The maximum height to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$justify,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,cljs.core.cst$kw$start,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.justify_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"justify-content"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"One of ",re_com.validate.justify_options_list], null)], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$align,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,cljs.core.cst$kw$stretch,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.align_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"align-items"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null)," One of ",re_com.validate.align_options_list], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$align_DASH_self,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.align_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"align-self"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Used when a child must override the parent's align-items setting."], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$margin,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS margin style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$padding,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS padding style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$class,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS class names, space separated"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$style,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"CSS style map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.css_style_QMARK_,cljs.core.cst$kw$description,"CSS styles to add or override"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$attr,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"HTML attr map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.html_attr_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"HTML attributes, like ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on-mouse-move"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"No ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null),"allowed"], null)], null)], null);
@@ -475,14 +475,14 @@ re_com.box.box_args_desc = new cljs.core.PersistentVector(null, 16, 5, cljs.core
  */
 re_com.box.box = (function re_com$box$box(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___14808 = arguments.length;
-var i__4731__auto___14809 = (0);
+var len__4730__auto___11339 = arguments.length;
+var i__4731__auto___11340 = (0);
 while(true){
-if((i__4731__auto___14809 < len__4730__auto___14808)){
-args__4736__auto__.push((arguments[i__4731__auto___14809]));
+if((i__4731__auto___11340 < len__4730__auto___11339)){
+args__4736__auto__.push((arguments[i__4731__auto___11340]));
 
-var G__14810 = (i__4731__auto___14809 + (1));
-i__4731__auto___14809 = G__14810;
+var G__11341 = (i__4731__auto___11340 + (1));
+i__4731__auto___11340 = G__11341;
 continue;
 } else {
 }
@@ -493,26 +493,26 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.box.box.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.box.box.cljs$core$IFn$_invoke$arity$variadic = (function (p__14805){
-var map__14806 = p__14805;
-var map__14806__$1 = (((((!((map__14806 == null))))?(((((map__14806.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14806.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14806):map__14806);
-var args = map__14806__$1;
-var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$child);
-var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$align_DASH_self);
-var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$height);
-var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$margin);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$attr);
-var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$min_DASH_width);
-var align = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$align);
-var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$max_DASH_height);
-var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$min_DASH_height);
-var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$justify);
-var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$width);
-var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$max_DASH_width);
-var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14806__$1,cljs.core.cst$kw$size,"none");
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$style);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$class);
-var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14806__$1,cljs.core.cst$kw$padding);
+re_com.box.box.cljs$core$IFn$_invoke$arity$variadic = (function (p__11336){
+var map__11337 = p__11336;
+var map__11337__$1 = (((((!((map__11337 == null))))?(((((map__11337.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11337.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11337):map__11337);
+var args = map__11337__$1;
+var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$child);
+var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$align_DASH_self);
+var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$height);
+var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$margin);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$attr);
+var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$min_DASH_width);
+var align = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$align);
+var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$max_DASH_height);
+var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$min_DASH_height);
+var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$justify);
+var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$width);
+var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$max_DASH_width);
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11337__$1,cljs.core.cst$kw$size,"none");
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$style);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$class);
+var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11337__$1,cljs.core.cst$kw$padding);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.box.box_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["box"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro box-args-desc args \"box\")"));
@@ -524,9 +524,9 @@ return re_com.box.box_base.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_s
 re_com.box.box.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.box.box.cljs$lang$applyTo = (function (seq14804){
+re_com.box.box.cljs$lang$applyTo = (function (seq11335){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14804));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11335));
 });
 
 re_com.box.scroller_args_desc = new cljs.core.PersistentVector(null, 19, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$child,cljs.core.cst$kw$required,true,cljs.core.cst$kw$type,"string | hiccup",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.string_or_hiccup_QMARK_,cljs.core.cst$kw$description,"a component (or string)"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$size,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"auto",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"flex"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Examples: ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"initial"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"auto"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"none"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"100px"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"2"], null)," or a generic triple of ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"grow shrink basis"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$scroll,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"auto",cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.scroll_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 14, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"Sets both h-scroll and v-scroll at once: ",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":auto"], null),": only show scroll bar(s) if the content is larger than the scroller",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on"], null),": always show scroll bars",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":off"], null),": never show scroll bar(s). Content which is not in the bounds of the scroller can not be seen",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":spill"], null),": never show scroll bar(s). Content which is not in the bounds of the scroller spills all over the place"], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$h_DASH_scroll,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.scroll_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"see ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":scroll"], null),". Overrides that setting"], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$v_DASH_scroll,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.scroll_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"see ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":scroll"], null),". Overrides that setting"], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"initial width"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"initial height"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The minimum width to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The minimum height to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The maximum width to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The maximum height to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$justify,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,cljs.core.cst$kw$start,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.justify_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"justify-content"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"One of ",re_com.validate.justify_options_list], null)], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$align,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,cljs.core.cst$kw$stretch,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.align_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"align-items"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null)," One of ",re_com.validate.align_options_list], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$align_DASH_self,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.align_style_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"align-self"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Used when a child must override the parent's align-items setting."], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$margin,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS margin style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$padding,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS padding style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$class,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS class names, space separated"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$style,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"CSS style map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.css_style_QMARK_,cljs.core.cst$kw$description,"CSS styles to add or override"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$attr,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"HTML attr map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.html_attr_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"HTML attributes, like ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on-mouse-move"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"No ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null),"allowed"], null)], null)], null);
@@ -546,14 +546,14 @@ re_com.box.scroller_args_desc = new cljs.core.PersistentVector(null, 19, 5, cljs
  */
 re_com.box.scroller = (function re_com$box$scroller(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___14815 = arguments.length;
-var i__4731__auto___14816 = (0);
+var len__4730__auto___11346 = arguments.length;
+var i__4731__auto___11347 = (0);
 while(true){
-if((i__4731__auto___14816 < len__4730__auto___14815)){
-args__4736__auto__.push((arguments[i__4731__auto___14816]));
+if((i__4731__auto___11347 < len__4730__auto___11346)){
+args__4736__auto__.push((arguments[i__4731__auto___11347]));
 
-var G__14817 = (i__4731__auto___14816 + (1));
-i__4731__auto___14816 = G__14817;
+var G__11348 = (i__4731__auto___11347 + (1));
+i__4731__auto___11347 = G__11348;
 continue;
 } else {
 }
@@ -564,29 +564,29 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.box.scroller.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.box.scroller.cljs$core$IFn$_invoke$arity$variadic = (function (p__14812){
-var map__14813 = p__14812;
-var map__14813__$1 = (((((!((map__14813 == null))))?(((((map__14813.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14813.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14813):map__14813);
-var args = map__14813__$1;
-var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$child);
-var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$align_DASH_self);
-var v_scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$v_DASH_scroll);
-var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$height);
-var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$margin);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$attr);
-var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$min_DASH_width);
-var align = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$align);
-var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$max_DASH_height);
-var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$min_DASH_height);
-var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$justify);
-var h_scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$h_DASH_scroll);
-var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$width);
-var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$max_DASH_width);
-var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14813__$1,cljs.core.cst$kw$size,"auto");
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$style);
-var scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$scroll);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$class);
-var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14813__$1,cljs.core.cst$kw$padding);
+re_com.box.scroller.cljs$core$IFn$_invoke$arity$variadic = (function (p__11343){
+var map__11344 = p__11343;
+var map__11344__$1 = (((((!((map__11344 == null))))?(((((map__11344.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11344.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11344):map__11344);
+var args = map__11344__$1;
+var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$child);
+var align_self = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$align_DASH_self);
+var v_scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$v_DASH_scroll);
+var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$height);
+var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$margin);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$attr);
+var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$min_DASH_width);
+var align = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$align);
+var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$max_DASH_height);
+var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$min_DASH_height);
+var justify = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$justify);
+var h_scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$h_DASH_scroll);
+var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$width);
+var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$max_DASH_width);
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11344__$1,cljs.core.cst$kw$size,"auto");
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$style);
+var scroll = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$scroll);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$class);
+var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11344__$1,cljs.core.cst$kw$padding);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.box.scroller_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["scroller"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro scroller-args-desc args \"scroller\")"));
@@ -600,9 +600,9 @@ return re_com.box.box_base.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_s
 re_com.box.scroller.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.box.scroller.cljs$lang$applyTo = (function (seq14811){
+re_com.box.scroller.cljs$lang$applyTo = (function (seq11342){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14811));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11342));
 });
 
 re_com.box.border_args_desc = new cljs.core.PersistentVector(null, 19, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$child,cljs.core.cst$kw$required,true,cljs.core.cst$kw$type,"string | hiccup",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.string_or_hiccup_QMARK_,cljs.core.cst$kw$description,"a component (or string)"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$border,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"1px solid lightgrey",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS border style. A convenience to describe all borders in one parameter"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$l_DASH_border,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"a CSS border style for the left border. Overrides ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":border"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$r_DASH_border,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"a CSS border style for the right border. Overrides ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":border"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$t_DASH_border,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"a CSS border style for the top border. Overrides ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":border"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$b_DASH_border,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"a CSS border style for the bottom. Overrides ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":border"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$radius,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS radius style eg.\"2px\""], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$size,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"none",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"equivalent to CSS style ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$bold,"flex"], null),".",new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"Examples: ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"initial"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"auto"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"none"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"100px"], null),", ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"2"], null)," or a generic triple of ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,"grow shrink basis"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS style describing the initial width"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS style describing the initial height"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The minimum width to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$min_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The minimum height to which the box can shrink"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_width,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS width style. The maximum width to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$max_DASH_height,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS height style. The maximum height to which the box can grow"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$margin,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS margin style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$padding,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"a CSS padding style"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$class,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS class names, space separated"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$style,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"CSS style map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.css_style_QMARK_,cljs.core.cst$kw$description,"CSS styles to add or override"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$attr,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"HTML attr map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.html_attr_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"HTML attributes, like ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on-mouse-move"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"No ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null),"allowed"], null)], null)], null);
@@ -616,14 +616,14 @@ re_com.box.border_args_desc = new cljs.core.PersistentVector(null, 19, 5, cljs.c
  */
 re_com.box.border = (function re_com$box$border(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___14822 = arguments.length;
-var i__4731__auto___14823 = (0);
+var len__4730__auto___11353 = arguments.length;
+var i__4731__auto___11354 = (0);
 while(true){
-if((i__4731__auto___14823 < len__4730__auto___14822)){
-args__4736__auto__.push((arguments[i__4731__auto___14823]));
+if((i__4731__auto___11354 < len__4730__auto___11353)){
+args__4736__auto__.push((arguments[i__4731__auto___11354]));
 
-var G__14824 = (i__4731__auto___14823 + (1));
-i__4731__auto___14823 = G__14824;
+var G__11355 = (i__4731__auto___11354 + (1));
+i__4731__auto___11354 = G__11355;
 continue;
 } else {
 }
@@ -634,29 +634,29 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.box.border.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.box.border.cljs$core$IFn$_invoke$arity$variadic = (function (p__14819){
-var map__14820 = p__14819;
-var map__14820__$1 = (((((!((map__14820 == null))))?(((((map__14820.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14820.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14820):map__14820);
-var args = map__14820__$1;
-var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$child);
-var border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$border);
-var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$height);
-var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$margin);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$attr);
-var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$min_DASH_width);
-var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$max_DASH_height);
-var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$min_DASH_height);
-var r_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$r_DASH_border);
-var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$width);
-var b_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$b_DASH_border);
-var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$max_DASH_width);
-var radius = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$radius);
-var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__14820__$1,cljs.core.cst$kw$size,"none");
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$style);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$class);
-var l_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$l_DASH_border);
-var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$padding);
-var t_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14820__$1,cljs.core.cst$kw$t_DASH_border);
+re_com.box.border.cljs$core$IFn$_invoke$arity$variadic = (function (p__11350){
+var map__11351 = p__11350;
+var map__11351__$1 = (((((!((map__11351 == null))))?(((((map__11351.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11351.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11351):map__11351);
+var args = map__11351__$1;
+var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$child);
+var border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$border);
+var height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$height);
+var margin = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$margin);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$attr);
+var min_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$min_DASH_width);
+var max_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$max_DASH_height);
+var min_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$min_DASH_height);
+var r_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$r_DASH_border);
+var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$width);
+var b_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$b_DASH_border);
+var max_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$max_DASH_width);
+var radius = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$radius);
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11351__$1,cljs.core.cst$kw$size,"none");
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$style);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$class);
+var l_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$l_DASH_border);
+var padding = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$padding);
+var t_border = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11351__$1,cljs.core.cst$kw$t_DASH_border);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.box.border_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["border"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro border-args-desc args \"border\")"));
@@ -670,8 +670,8 @@ return re_com.box.box_base.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_s
 re_com.box.border.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.box.border.cljs$lang$applyTo = (function (seq14818){
+re_com.box.border.cljs$lang$applyTo = (function (seq11349){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14818));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11349));
 });
 

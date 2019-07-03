@@ -18,8 +18,8 @@ return reagent.core.render.cljs$core$IFn$_invoke$arity$2(new cljs.core.Persisten
 replete.system.init = (function replete$system$init(){
 replete.worker_client.init_BANG_();
 
-var G__21119_21120 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$replete$events_SLASH_initialize_DASH_db], null);
-(re_frame.core.dispatch_sync.cljs$core$IFn$_invoke$arity$1 ? re_frame.core.dispatch_sync.cljs$core$IFn$_invoke$arity$1(G__21119_21120) : re_frame.core.dispatch_sync.call(null,G__21119_21120));
+var G__20230_20231 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$replete$events_SLASH_initialize_DASH_db], null);
+(re_frame.core.dispatch_sync.cljs$core$IFn$_invoke$arity$1 ? re_frame.core.dispatch_sync.cljs$core$IFn$_invoke$arity$1(G__20230_20231) : re_frame.core.dispatch_sync.call(null,G__20230_20231));
 
 replete.system.dev_setup();
 

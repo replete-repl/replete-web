@@ -11,14 +11,14 @@ re_com.text.label_args_desc = new cljs.core.PersistentVector(null, 6, 5, cljs.co
  */
 re_com.text.label = (function re_com$text$label(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___15102 = arguments.length;
-var i__4731__auto___15103 = (0);
+var len__4730__auto___11633 = arguments.length;
+var i__4731__auto___11634 = (0);
 while(true){
-if((i__4731__auto___15103 < len__4730__auto___15102)){
-args__4736__auto__.push((arguments[i__4731__auto___15103]));
+if((i__4731__auto___11634 < len__4730__auto___11633)){
+args__4736__auto__.push((arguments[i__4731__auto___11634]));
 
-var G__15104 = (i__4731__auto___15103 + (1));
-i__4731__auto___15103 = G__15104;
+var G__11635 = (i__4731__auto___11634 + (1));
+i__4731__auto___11634 = G__11635;
 continue;
 } else {
 }
@@ -29,36 +29,36 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.text.label.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.text.label.cljs$core$IFn$_invoke$arity$variadic = (function (p__15099){
-var map__15100 = p__15099;
-var map__15100__$1 = (((((!((map__15100 == null))))?(((((map__15100.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__15100.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15100):map__15100);
-var args = map__15100__$1;
-var label = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15100__$1,cljs.core.cst$kw$label);
-var on_click = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15100__$1,cljs.core.cst$kw$on_DASH_click);
-var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15100__$1,cljs.core.cst$kw$width);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15100__$1,cljs.core.cst$kw$class);
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15100__$1,cljs.core.cst$kw$style);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15100__$1,cljs.core.cst$kw$attr);
+re_com.text.label.cljs$core$IFn$_invoke$arity$variadic = (function (p__11630){
+var map__11631 = p__11630;
+var map__11631__$1 = (((((!((map__11631 == null))))?(((((map__11631.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11631.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11631):map__11631);
+var args = map__11631__$1;
+var label = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11631__$1,cljs.core.cst$kw$label);
+var on_click = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11631__$1,cljs.core.cst$kw$on_DASH_click);
+var width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11631__$1,cljs.core.cst$kw$width);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11631__$1,cljs.core.cst$kw$class);
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11631__$1,cljs.core.cst$kw$style);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11631__$1,cljs.core.cst$kw$attr);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.text.label_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["label"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro label-args-desc args \"label\")"));
 }
 
-return new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_com.box.box,cljs.core.cst$kw$class,"rc-label-wrapper display-inline-flex",cljs.core.cst$kw$width,width,cljs.core.cst$kw$align,cljs.core.cst$kw$start,cljs.core.cst$kw$child,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,["rc-label ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(class$)].join(''),cljs.core.cst$kw$style,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([re_com.box.flex_child_style("none"),style], 0))], null),(cljs.core.truth_(on_click)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,((function (map__15100,map__15100__$1,args,label,on_click,width,class$,style,attr){
+return new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_com.box.box,cljs.core.cst$kw$class,"rc-label-wrapper display-inline-flex",cljs.core.cst$kw$width,width,cljs.core.cst$kw$align,cljs.core.cst$kw$start,cljs.core.cst$kw$child,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,["rc-label ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(class$)].join(''),cljs.core.cst$kw$style,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([re_com.box.flex_child_style("none"),style], 0))], null),(cljs.core.truth_(on_click)?new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,((function (map__11631,map__11631__$1,args,label,on_click,width,class$,style,attr){
 return (function (event){
 (on_click.cljs$core$IFn$_invoke$arity$0 ? on_click.cljs$core$IFn$_invoke$arity$0() : on_click.call(null));
 
 return null;
-});})(map__15100,map__15100__$1,args,label,on_click,width,class$,style,attr))
+});})(map__11631,map__11631__$1,args,label,on_click,width,class$,style,attr))
 ], null):null),attr], 0)),label], null)], null);
 });
 
 re_com.text.label.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.text.label.cljs$lang$applyTo = (function (seq15098){
+re_com.text.label.cljs$lang$applyTo = (function (seq11629){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq15098));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11629));
 });
 
 re_com.text.title_args_desc = new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$name,cljs.core.cst$kw$label,cljs.core.cst$kw$required,true,cljs.core.cst$kw$type,"anything",cljs.core.cst$kw$description,"title or hiccup or anything to display"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$level,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"keyword",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.title_level_type_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"one of ",re_com.validate.title_levels_list,". If not provided then style the title using ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null)], null)], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$underline_QMARK_,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,false,cljs.core.cst$kw$type,"boolean",cljs.core.cst$kw$description,"if true, the title is underlined"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$margin_DASH_top,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"0.4em",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS size for space above the title"], null),new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$name,cljs.core.cst$kw$margin_DASH_bottom,cljs.core.cst$kw$required,false,cljs.core.cst$kw$default,"0.1em",cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS size for space below the title"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$class,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"string",cljs.core.cst$kw$validate_DASH_fn,cljs.core.string_QMARK_,cljs.core.cst$kw$description,"CSS class names, space separated (applies to the title, not the wrapping div)"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$style,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"CSS style map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.css_style_QMARK_,cljs.core.cst$kw$description,"CSS styles to add or override (applies to the title, not the wrapping div)"], null),new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$name,cljs.core.cst$kw$attr,cljs.core.cst$kw$required,false,cljs.core.cst$kw$type,"HTML attr map",cljs.core.cst$kw$validate_DASH_fn,re_com.validate.html_attr_QMARK_,cljs.core.cst$kw$description,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span,"HTML attributes, like ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":on-mouse-move"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),"No ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":class"], null)," or ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$code,":style"], null),"allowed (applies to the title, not the wrapping div)"], null)], null)], null);
@@ -67,14 +67,14 @@ re_com.text.title_args_desc = new cljs.core.PersistentVector(null, 8, 5, cljs.co
  */
 re_com.text.title = (function re_com$text$title(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___15109 = arguments.length;
-var i__4731__auto___15110 = (0);
+var len__4730__auto___11640 = arguments.length;
+var i__4731__auto___11641 = (0);
 while(true){
-if((i__4731__auto___15110 < len__4730__auto___15109)){
-args__4736__auto__.push((arguments[i__4731__auto___15110]));
+if((i__4731__auto___11641 < len__4730__auto___11640)){
+args__4736__auto__.push((arguments[i__4731__auto___11641]));
 
-var G__15111 = (i__4731__auto___15110 + (1));
-i__4731__auto___15110 = G__15111;
+var G__11642 = (i__4731__auto___11641 + (1));
+i__4731__auto___11641 = G__11642;
 continue;
 } else {
 }
@@ -85,18 +85,18 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.text.title.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.text.title.cljs$core$IFn$_invoke$arity$variadic = (function (p__15106){
-var map__15107 = p__15106;
-var map__15107__$1 = (((((!((map__15107 == null))))?(((((map__15107.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__15107.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15107):map__15107);
-var args = map__15107__$1;
-var label = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15107__$1,cljs.core.cst$kw$label);
-var level = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15107__$1,cljs.core.cst$kw$level);
-var underline_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15107__$1,cljs.core.cst$kw$underline_QMARK_);
-var margin_top = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__15107__$1,cljs.core.cst$kw$margin_DASH_top,"0.6em");
-var margin_bottom = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__15107__$1,cljs.core.cst$kw$margin_DASH_bottom,"0.3em");
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15107__$1,cljs.core.cst$kw$class);
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15107__$1,cljs.core.cst$kw$style);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15107__$1,cljs.core.cst$kw$attr);
+re_com.text.title.cljs$core$IFn$_invoke$arity$variadic = (function (p__11637){
+var map__11638 = p__11637;
+var map__11638__$1 = (((((!((map__11638 == null))))?(((((map__11638.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11638.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11638):map__11638);
+var args = map__11638__$1;
+var label = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11638__$1,cljs.core.cst$kw$label);
+var level = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11638__$1,cljs.core.cst$kw$level);
+var underline_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11638__$1,cljs.core.cst$kw$underline_QMARK_);
+var margin_top = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11638__$1,cljs.core.cst$kw$margin_DASH_top,"0.6em");
+var margin_bottom = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__11638__$1,cljs.core.cst$kw$margin_DASH_bottom,"0.3em");
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11638__$1,cljs.core.cst$kw$class);
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11638__$1,cljs.core.cst$kw$style);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11638__$1,cljs.core.cst$kw$attr);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.text.title_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["title"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro title-args-desc args \"title\")"));
@@ -109,9 +109,9 @@ return new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMP
 re_com.text.title.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.text.title.cljs$lang$applyTo = (function (seq15105){
+re_com.text.title.cljs$lang$applyTo = (function (seq11636){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq15105));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11636));
 });
 
 /**
@@ -132,14 +132,14 @@ return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq
  */
 re_com.text.p = (function re_com$text$p(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___15116 = arguments.length;
-var i__4731__auto___15117 = (0);
+var len__4730__auto___11647 = arguments.length;
+var i__4731__auto___11648 = (0);
 while(true){
-if((i__4731__auto___15117 < len__4730__auto___15116)){
-args__4736__auto__.push((arguments[i__4731__auto___15117]));
+if((i__4731__auto___11648 < len__4730__auto___11647)){
+args__4736__auto__.push((arguments[i__4731__auto___11648]));
 
-var G__15118 = (i__4731__auto___15117 + (1));
-i__4731__auto___15117 = G__15118;
+var G__11649 = (i__4731__auto___11648 + (1));
+i__4731__auto___11648 = G__11649;
 continue;
 } else {
 }
@@ -152,9 +152,9 @@ return re_com.text.p.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 
 re_com.text.p.cljs$core$IFn$_invoke$arity$variadic = (function (children){
 var child1 = cljs.core.first(children);
-var vec__15113 = ((cljs.core.map_QMARK_(child1))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [child1,cljs.core.rest(children)], null):new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.PersistentArrayMap.EMPTY,children], null));
-var m = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15113,(0),null);
-var children__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15113,(1),null);
+var vec__11644 = ((cljs.core.map_QMARK_(child1))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [child1,cljs.core.rest(children)], null):new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.PersistentArrayMap.EMPTY,children], null));
+var m = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11644,(0),null);
+var children__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11644,(1),null);
 var m__$1 = re_com.util.deep_merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$flex,"none",cljs.core.cst$kw$width,"450px",cljs.core.cst$kw$min_DASH_width,"450px"], null)], null),m], 0));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$rc_DASH_p,m__$1,cljs.core.into.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p], null),children__$1)], null);
 });
@@ -162,9 +162,9 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 re_com.text.p.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.text.p.cljs$lang$applyTo = (function (seq15112){
+re_com.text.p.cljs$lang$applyTo = (function (seq11643){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq15112));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11643));
 });
 
 /**
@@ -180,14 +180,14 @@ return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq
  */
 re_com.text.p_span = (function re_com$text$p_span(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___15123 = arguments.length;
-var i__4731__auto___15124 = (0);
+var len__4730__auto___11654 = arguments.length;
+var i__4731__auto___11655 = (0);
 while(true){
-if((i__4731__auto___15124 < len__4730__auto___15123)){
-args__4736__auto__.push((arguments[i__4731__auto___15124]));
+if((i__4731__auto___11655 < len__4730__auto___11654)){
+args__4736__auto__.push((arguments[i__4731__auto___11655]));
 
-var G__15125 = (i__4731__auto___15124 + (1));
-i__4731__auto___15124 = G__15125;
+var G__11656 = (i__4731__auto___11655 + (1));
+i__4731__auto___11655 = G__11656;
 continue;
 } else {
 }
@@ -200,9 +200,9 @@ return re_com.text.p_span.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__aut
 
 re_com.text.p_span.cljs$core$IFn$_invoke$arity$variadic = (function (children){
 var child1 = cljs.core.first(children);
-var vec__15120 = ((cljs.core.map_QMARK_(child1))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [child1,cljs.core.rest(children)], null):new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.PersistentArrayMap.EMPTY,children], null));
-var m = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15120,(0),null);
-var children__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15120,(1),null);
+var vec__11651 = ((cljs.core.map_QMARK_(child1))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [child1,cljs.core.rest(children)], null):new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.PersistentArrayMap.EMPTY,children], null));
+var m = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11651,(0),null);
+var children__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11651,(1),null);
 var m__$1 = re_com.util.deep_merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$flex,"none",cljs.core.cst$kw$width,"450px",cljs.core.cst$kw$min_DASH_width,"450px",cljs.core.cst$kw$margin_DASH_bottom,"0.7em"], null)], null),m], 0));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$rc_DASH_p,m__$1,cljs.core.into.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span], null),children__$1)], null);
 });
@@ -210,8 +210,8 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 re_com.text.p_span.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.text.p_span.cljs$lang$applyTo = (function (seq15119){
+re_com.text.p_span.cljs$lang$applyTo = (function (seq11650){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq15119));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq11650));
 });
 

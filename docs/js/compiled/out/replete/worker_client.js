@@ -6,8 +6,8 @@ goog.require('re_frame.core');
 goog.require('cljs.reader');
 replete.worker_client.worker_path = ((goog.DEBUG)?"js/bootstrap_worker.js":"js/compiled/worker.js");
 replete.worker_client.handle_message = (function replete$worker_client$handle_message(e){
-var G__14447 = cljs.reader.read_string.cljs$core$IFn$_invoke$arity$1(e.data);
-return (re_frame.core.dispatch.cljs$core$IFn$_invoke$arity$1 ? re_frame.core.dispatch.cljs$core$IFn$_invoke$arity$1(G__14447) : re_frame.core.dispatch.call(null,G__14447));
+var G__10978 = cljs.reader.read_string.cljs$core$IFn$_invoke$arity$1(e.data);
+return (re_frame.core.dispatch.cljs$core$IFn$_invoke$arity$1 ? re_frame.core.dispatch.cljs$core$IFn$_invoke$arity$1(G__10978) : re_frame.core.dispatch.call(null,G__10978));
 });
 if((typeof replete !== 'undefined') && (typeof replete.worker_client !== 'undefined') && (typeof replete.worker_client.worker !== 'undefined')){
 } else {

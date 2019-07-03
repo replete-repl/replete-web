@@ -49,14 +49,14 @@ var n__4607__auto__ = a.length;
 var i = (0);
 while(true){
 if((i < n__4607__auto__)){
-var c_10083 = (a[i]);
-if((c_10083["cljsIsDirty"]) === true){
-(c_10083["forceUpdate"])();
+var c_6526 = (a[i]);
+if((c_6526["cljsIsDirty"]) === true){
+(c_6526["forceUpdate"])();
 } else {
 }
 
-var G__10084 = (i + (1));
-i = G__10084;
+var G__6527 = (i + (1));
+i = G__6527;
 continue;
 } else {
 return null;
@@ -92,11 +92,11 @@ var n__4607__auto__ = fs.length;
 var i = (0);
 while(true){
 if((i < n__4607__auto__)){
-var fexpr__10085_10087 = (fs[i]);
-(fexpr__10085_10087.cljs$core$IFn$_invoke$arity$0 ? fexpr__10085_10087.cljs$core$IFn$_invoke$arity$0() : fexpr__10085_10087.call(null));
+var fexpr__6528_6530 = (fs[i]);
+(fexpr__6528_6530.cljs$core$IFn$_invoke$arity$0 ? fexpr__6528_6530.cljs$core$IFn$_invoke$arity$0() : fexpr__6528_6530.call(null));
 
-var G__10088 = (i + (1));
-i = G__10088;
+var G__6531 = (i + (1));
+i = G__6531;
 continue;
 } else {
 return null;
@@ -126,12 +126,12 @@ return null;
 } else {
 self__.scheduled_QMARK_ = true;
 
-var G__10086 = ((function (this$){
+var G__6529 = ((function (this$){
 return (function (){
 return this$.run_queues();
 });})(this$))
 ;
-return (reagent.impl.batching.next_tick.cljs$core$IFn$_invoke$arity$1 ? reagent.impl.batching.next_tick.cljs$core$IFn$_invoke$arity$1(G__10086) : reagent.impl.batching.next_tick.call(null,G__10086));
+return (reagent.impl.batching.next_tick.cljs$core$IFn$_invoke$arity$1 ? reagent.impl.batching.next_tick.cljs$core$IFn$_invoke$arity$1(G__6529) : reagent.impl.batching.next_tick.call(null,G__6529));
 }
 });
 
@@ -142,13 +142,13 @@ this$.run_funs("beforeFlush");
 
 reagent.impl.batching.ratom_flush();
 
-var temp__5724__auto___10089 = (this$["componentQueue"]);
-if((temp__5724__auto___10089 == null)){
+var temp__5724__auto___6532 = (this$["componentQueue"]);
+if((temp__5724__auto___6532 == null)){
 } else {
-var cs_10090 = temp__5724__auto___10089;
+var cs_6533 = temp__5724__auto___6532;
 (this$["componentQueue"] = null);
 
-reagent.impl.batching.run_queue(cs_10090);
+reagent.impl.batching.run_queue(cs_6533);
 }
 
 return this$.flush_after_render();

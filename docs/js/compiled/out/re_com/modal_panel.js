@@ -12,14 +12,14 @@ re_com.modal_panel.modal_panel_args_desc = new cljs.core.PersistentVector(null, 
  */
 re_com.modal_panel.modal_panel = (function re_com$modal_panel$modal_panel(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___21045 = arguments.length;
-var i__4731__auto___21046 = (0);
+var len__4730__auto___20156 = arguments.length;
+var i__4731__auto___20157 = (0);
 while(true){
-if((i__4731__auto___21046 < len__4730__auto___21045)){
-args__4736__auto__.push((arguments[i__4731__auto___21046]));
+if((i__4731__auto___20157 < len__4730__auto___20156)){
+args__4736__auto__.push((arguments[i__4731__auto___20157]));
 
-var G__21047 = (i__4731__auto___21046 + (1));
-i__4731__auto___21046 = G__21047;
+var G__20158 = (i__4731__auto___20157 + (1));
+i__4731__auto___20157 = G__20158;
 continue;
 } else {
 }
@@ -30,24 +30,24 @@ var argseq__4737__auto__ = ((((0) < args__4736__auto__.length))?(new cljs.core.I
 return re_com.modal_panel.modal_panel.cljs$core$IFn$_invoke$arity$variadic(argseq__4737__auto__);
 });
 
-re_com.modal_panel.modal_panel.cljs$core$IFn$_invoke$arity$variadic = (function (p__21042){
-var map__21043 = p__21042;
-var map__21043__$1 = (((((!((map__21043 == null))))?(((((map__21043.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__21043.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__21043):map__21043);
-var args = map__21043__$1;
-var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21043__$1,cljs.core.cst$kw$child);
-var wrap_nicely_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__21043__$1,cljs.core.cst$kw$wrap_DASH_nicely_QMARK_,true);
-var backdrop_color = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__21043__$1,cljs.core.cst$kw$backdrop_DASH_color,"black");
-var backdrop_opacity = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__21043__$1,cljs.core.cst$kw$backdrop_DASH_opacity,0.6);
-var backdrop_on_click = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21043__$1,cljs.core.cst$kw$backdrop_DASH_on_DASH_click);
-var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21043__$1,cljs.core.cst$kw$class);
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21043__$1,cljs.core.cst$kw$style);
-var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21043__$1,cljs.core.cst$kw$attr);
+re_com.modal_panel.modal_panel.cljs$core$IFn$_invoke$arity$variadic = (function (p__20153){
+var map__20154 = p__20153;
+var map__20154__$1 = (((((!((map__20154 == null))))?(((((map__20154.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__20154.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__20154):map__20154);
+var args = map__20154__$1;
+var child = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20154__$1,cljs.core.cst$kw$child);
+var wrap_nicely_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__20154__$1,cljs.core.cst$kw$wrap_DASH_nicely_QMARK_,true);
+var backdrop_color = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__20154__$1,cljs.core.cst$kw$backdrop_DASH_color,"black");
+var backdrop_opacity = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__20154__$1,cljs.core.cst$kw$backdrop_DASH_opacity,0.6);
+var backdrop_on_click = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20154__$1,cljs.core.cst$kw$backdrop_DASH_on_DASH_click);
+var class$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20154__$1,cljs.core.cst$kw$class);
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20154__$1,cljs.core.cst$kw$style);
+var attr = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20154__$1,cljs.core.cst$kw$attr);
 if((((!(goog.DEBUG)))?true:re_com.validate.validate_args.cljs$core$IFn$_invoke$arity$variadic(re_com.validate.extract_arg_data(re_com.modal_panel.modal_panel_args_desc),args,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["modal-panel"], 0)))){
 } else {
 throw (new Error("Assert failed: (validate-args-macro modal-panel-args-desc args \"modal-panel\")"));
 }
 
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,["rc-modal-panel display-flex ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(class$)].join(''),cljs.core.cst$kw$style,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$position,"fixed",cljs.core.cst$kw$left,"0px",cljs.core.cst$kw$top,"0px",cljs.core.cst$kw$width,"100%",cljs.core.cst$kw$height,"100%",cljs.core.cst$kw$z_DASH_index,(1020)], null),style], 0))], null),attr], 0)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$class,"rc-modal-panel-backdrop",cljs.core.cst$kw$style,new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$position,"fixed",cljs.core.cst$kw$width,"100%",cljs.core.cst$kw$height,"100%",cljs.core.cst$kw$background_DASH_color,backdrop_color,cljs.core.cst$kw$opacity,backdrop_opacity,cljs.core.cst$kw$z_DASH_index,(1)], null),cljs.core.cst$kw$on_DASH_click,((function (map__21043,map__21043__$1,args,child,wrap_nicely_QMARK_,backdrop_color,backdrop_opacity,backdrop_on_click,class$,style,attr){
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,["rc-modal-panel display-flex ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(class$)].join(''),cljs.core.cst$kw$style,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$position,"fixed",cljs.core.cst$kw$left,"0px",cljs.core.cst$kw$top,"0px",cljs.core.cst$kw$width,"100%",cljs.core.cst$kw$height,"100%",cljs.core.cst$kw$z_DASH_index,(1020)], null),style], 0))], null),attr], 0)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$class,"rc-modal-panel-backdrop",cljs.core.cst$kw$style,new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$position,"fixed",cljs.core.cst$kw$width,"100%",cljs.core.cst$kw$height,"100%",cljs.core.cst$kw$background_DASH_color,backdrop_color,cljs.core.cst$kw$opacity,backdrop_opacity,cljs.core.cst$kw$z_DASH_index,(1)], null),cljs.core.cst$kw$on_DASH_click,((function (map__20154,map__20154__$1,args,child,wrap_nicely_QMARK_,backdrop_color,backdrop_opacity,backdrop_on_click,class$,style,attr){
 return (function (event){
 if(cljs.core.truth_(backdrop_on_click)){
 (backdrop_on_click.cljs$core$IFn$_invoke$arity$0 ? backdrop_on_click.cljs$core$IFn$_invoke$arity$0() : backdrop_on_click.call(null));
@@ -59,15 +59,15 @@ event.preventDefault();
 event.stopPropagation();
 
 return null;
-});})(map__21043,map__21043__$1,args,child,wrap_nicely_QMARK_,backdrop_color,backdrop_opacity,backdrop_on_click,class$,style,attr))
+});})(map__20154,map__20154__$1,args,child,wrap_nicely_QMARK_,backdrop_color,backdrop_opacity,backdrop_on_click,class$,style,attr))
 ], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,"rc-modal-panel-container",cljs.core.cst$kw$style,cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$margin,"auto",cljs.core.cst$kw$z_DASH_index,(2)], null),(cljs.core.truth_(wrap_nicely_QMARK_)?new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$background_DASH_color,"white",cljs.core.cst$kw$padding,"16px",cljs.core.cst$kw$border_DASH_radius,"6px"], null):null)], 0))], null),child], null)], null);
 });
 
 re_com.modal_panel.modal_panel.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-re_com.modal_panel.modal_panel.cljs$lang$applyTo = (function (seq21041){
+re_com.modal_panel.modal_panel.cljs$lang$applyTo = (function (seq20152){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq21041));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq20152));
 });
 
