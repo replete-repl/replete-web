@@ -1,7 +1,12 @@
-// Compiled by ClojureScript 1.10.520 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.10.520 {}
 goog.provide('replete.cm_edit');
 goog.require('cljs.core');
-goog.require('cljs.core.constants');
+goog.require('cljsjs.codemirror');
+goog.require('cljsjs.codemirror.addon.edit.matchbrackets');
+goog.require('cljsjs.codemirror.addon.hint.show_hint');
+goog.require('cljsjs.codemirror.mode.clojure');
+goog.require('cljsjs.parinfer');
+goog.require('cljsjs.parinfer_codemirror');
 goog.require('clojure.string');
 goog.require('reagent.core');
 goog.require('reagent.dom');
@@ -9,32 +14,31 @@ goog.require('re_frame.core');
 goog.require('replete.cm');
 goog.require('replete.events');
 replete.cm_edit.save_changes = (function replete$cm_edit$save_changes(cm,_){
-var val = clojure.string.trim(cm.getValue());
-if(cljs.core.seq(val)){
-var G__11022 = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$replete$events_SLASH_save_DASH_form,val], null);
-return (re_frame.core.dispatch.cljs$core$IFn$_invoke$arity$1 ? re_frame.core.dispatch.cljs$core$IFn$_invoke$arity$1(G__11022) : re_frame.core.dispatch.call(null,G__11022));
+var val = clojure.string.trim.call(null,cm.getValue());
+if(cljs.core.seq.call(null,val)){
+return re_frame.core.dispatch.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("replete.events","save-form","replete.events/save-form",322041842),val], null));
 } else {
 return null;
 }
 });
 replete.cm_edit.update_codemirror = (function replete$cm_edit$update_codemirror(cm_ref,compnt){
-var temp__5720__auto__ = cljs.core.cst$kw$changes.cljs$core$IFn$_invoke$arity$1(reagent.core.props(compnt));
+var temp__5720__auto__ = new cljs.core.Keyword(null,"changes","changes",1492088).cljs$core$IFn$_invoke$arity$1(reagent.core.props.call(null,compnt));
 if(cljs.core.truth_(temp__5720__auto__)){
 var changes = temp__5720__auto__;
-return cljs.core.deref(cm_ref).setValue((cljs.core.truth_(cljs.core.cst$kw$clear_DASH_input_DASH_form.cljs$core$IFn$_invoke$arity$1(changes))?"":changes));
+return cljs.core.deref.call(null,cm_ref).setValue((cljs.core.truth_(new cljs.core.Keyword(null,"clear-input-form","clear-input-form",-2047880566).cljs$core$IFn$_invoke$arity$1(changes))?"":changes));
 } else {
 return null;
 }
 });
 replete.cm_edit.cmirror_edit_comp = (function replete$cm_edit$cmirror_edit_comp(opts){
-var cmirror = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null);
-var map__11023 = opts;
-var map__11023__$1 = (((((!((map__11023 == null))))?(((((map__11023.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11023.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11023):map__11023);
-var node_id = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11023__$1,cljs.core.cst$kw$node_DASH_id);
-var update_fn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11023__$1,cljs.core.cst$kw$update_DASH_fn);
-var change_fn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11023__$1,cljs.core.cst$kw$change_DASH_fn);
-var cm_options = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11023__$1,cljs.core.cst$kw$cm_DASH_options);
-var cm_update = cljs.core.partial.cljs$core$IFn$_invoke$arity$2((function (){var or__4131__auto__ = update_fn;
+var cmirror = cljs.core.atom.call(null,null);
+var map__2008 = opts;
+var map__2008__$1 = (((((!((map__2008 == null))))?(((((map__2008.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__2008.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__2008):map__2008);
+var node_id = cljs.core.get.call(null,map__2008__$1,new cljs.core.Keyword(null,"node-id","node-id",779482292));
+var update_fn = cljs.core.get.call(null,map__2008__$1,new cljs.core.Keyword(null,"update-fn","update-fn",711087313));
+var change_fn = cljs.core.get.call(null,map__2008__$1,new cljs.core.Keyword(null,"change-fn","change-fn",1566440825));
+var cm_options = cljs.core.get.call(null,map__2008__$1,new cljs.core.Keyword(null,"cm-options","cm-options",-1418884096));
+var cm_update = cljs.core.partial.call(null,(function (){var or__4131__auto__ = update_fn;
 if(cljs.core.truth_(or__4131__auto__)){
 return or__4131__auto__;
 } else {
@@ -48,25 +52,27 @@ return or__4131__auto__;
 return replete.cm_edit.save_changes;
 }
 })();
-return reagent.core.create_class(new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$reagent_DASH_render,((function (cmirror,map__11023,map__11023__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save){
+return reagent.core.create_class.call(null,new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"reagent-render","reagent-render",-985383853),((function (cmirror,map__2008,map__2008__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save){
 return (function replete$cm_edit$cmirror_edit_comp_$_cm_render(){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$textarea,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$id,node_id,cljs.core.cst$kw$auto_DASH_complete,cljs.core.cst$kw$off], null)], null);
-});})(cmirror,map__11023,map__11023__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save))
-,cljs.core.cst$kw$component_DASH_did_DASH_mount,((function (cmirror,map__11023,map__11023__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save){
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"textarea","textarea",-650375824),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"id","id",-1388402092),node_id,new cljs.core.Keyword(null,"auto-complete","auto-complete",244958848),new cljs.core.Keyword(null,"off","off",606440789)], null)], null);
+});})(cmirror,map__2008,map__2008__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save))
+,new cljs.core.Keyword(null,"component-did-mount","component-did-mount",-1126910518),((function (cmirror,map__2008,map__2008__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save){
 return (function replete$cm_edit$cmirror_edit_comp_$_cm_did_mount(compnt){
-var node_11025 = reagent.dom.dom_node(compnt);
-var cm_11026 = replete.cm.cm_parinfer(node_11025,cm_options);
-cm_11026.on("change",cm_save);
+var node_2010 = reagent.dom.dom_node.call(null,compnt);
+var cm_2011 = replete.cm.cm_parinfer.call(null,node_2010,cm_options);
+cm_2011.on("change",cm_save);
 
-cljs.core.reset_BANG_(cmirror,cm_11026);
+cljs.core.reset_BANG_.call(null,cmirror,cm_2011);
 
-return (cm_update.cljs$core$IFn$_invoke$arity$1 ? cm_update.cljs$core$IFn$_invoke$arity$1(compnt) : cm_update.call(null,compnt));
-});})(cmirror,map__11023,map__11023__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save))
-,cljs.core.cst$kw$component_DASH_will_DASH_unmount,((function (cmirror,map__11023,map__11023__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save){
+return cm_update.call(null,compnt);
+});})(cmirror,map__2008,map__2008__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save))
+,new cljs.core.Keyword(null,"component-will-unmount","component-will-unmount",-2058314698),((function (cmirror,map__2008,map__2008__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save){
 return (function replete$cm_edit$cmirror_edit_comp_$_cm_will_unmount(){
-cljs.core.deref(cmirror).toTextArea();
+cljs.core.deref.call(null,cmirror).toTextArea();
 
-return cljs.core.reset_BANG_(cmirror,null);
-});})(cmirror,map__11023,map__11023__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save))
-,cljs.core.cst$kw$component_DASH_did_DASH_update,cm_update,cljs.core.cst$kw$display_DASH_name,node_id], null));
+return cljs.core.reset_BANG_.call(null,cmirror,null);
+});})(cmirror,map__2008,map__2008__$1,node_id,update_fn,change_fn,cm_options,cm_update,cm_save))
+,new cljs.core.Keyword(null,"component-did-update","component-did-update",-1468549173),cm_update,new cljs.core.Keyword(null,"display-name","display-name",694513143),node_id], null));
 });
+
+//# sourceMappingURL=cm_edit.js.map

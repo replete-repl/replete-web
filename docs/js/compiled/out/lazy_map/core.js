@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.10.520 {:target :webworker}
+// Compiled by ClojureScript 1.10.520 {}
 goog.provide('lazy_map.core');
 goog.require('cljs.core');
 goog.require('cljs.core');
@@ -108,10 +108,10 @@ lazy_map.core.LazyMap.prototype.cljs$core$IIterable$_iterator$arity$1 = (functio
 var self__ = this;
 var this$__$1 = this;
 return cljs.core._iterator.call(null,cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,((function (this$__$1){
-return (function (p__18292){
-var vec__18293 = p__18292;
-var k = cljs.core.nth.call(null,vec__18293,(0),null);
-var v = cljs.core.nth.call(null,vec__18293,(1),null);
+return (function (p__19829){
+var vec__19830 = p__19829;
+var k = cljs.core.nth.call(null,vec__19830,(0),null);
+var v = cljs.core.nth.call(null,vec__19830,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,lazy_map.core.getv.call(null,v)], null);
 });})(this$__$1))
 ,self__.contents)));

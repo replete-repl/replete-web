@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.10.520 {:target :webworker}
+// Compiled by ClojureScript 1.10.520 {}
 goog.provide('fipp.util');
 goog.require('cljs.core');
 fipp.util.boolean_QMARK_ = (function fipp$util$boolean_QMARK_(x){

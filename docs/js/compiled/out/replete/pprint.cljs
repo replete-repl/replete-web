@@ -73,9 +73,9 @@
   (visit-unknown [this x]
     (cond
       (instance? Atom x)
-      (pretty-coll this "#object [" ['cljs.core.Atom {:val @x}] :line "]" visit)
+      (pretty-coll this "#object[" ['cljs.core.Atom {:val @x}] :line "]" visit)
       (instance? Volatile x)
-      (pretty-coll this "#object [" ['cljs.core.Volatile {:val @x}] :line "]" visit)
+      (pretty-coll this "#object[" ['cljs.core.Volatile {:val @x}] :line "]" visit)
       (instance? Delay x)
       (pretty-coll this "#object[" ['cljs.core.Delay {:status (if (nil? (.-f x)) :ready :pending),
                                                       :val    (.-value x)}

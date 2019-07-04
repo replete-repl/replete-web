@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.10.520 {:target :webworker}
+// Compiled by ClojureScript 1.10.520 {}
 goog.provide('fipp.visit');
 goog.require('cljs.core');
 goog.require('fipp.util');
