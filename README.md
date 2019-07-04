@@ -2,7 +2,7 @@
 
 ClojureScript REPL web app using web workers for self-hosted eval.
 
-https://codebuild.us-east-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicTk2SFk5S3NmaExBbVMrelplVUFCc0xiUm8rUk40QjczbFQ0S2JOQUpMVnE2RllvV3RabWtZNk5tUDhBU0F5NGp0QVNhdmJnN28wZnErNFVlZHUyQXBRPSIsIml2UGFyYW1ldGVyU3BlYyI6ImFVSyt5c1FkRWpra0NFT2ciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
+![Build Status](https://codebuild.us-east-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicTk2SFk5S3NmaExBbVMrelplVUFCc0xiUm8rUk40QjczbFQ0S2JOQUpMVnE2RllvV3RabWtZNk5tUDhBU0F5NGp0QVNhdmJnN28wZnErNFVlZHUyQXBRPSIsIml2UGFyYW1ldGVyU3BlYyI6ImFVSyt5c1FkRWpra0NFT2ciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 ## Starting REPLETE in Development
 
