@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.10.520 {:target :webworker}
+// Compiled by ClojureScript 1.10.520 {}
 goog.provide('clojure.core.rrb_vector.interop');
 goog.require('cljs.core');
 goog.require('clojure.core.rrb_vector.protocols');
