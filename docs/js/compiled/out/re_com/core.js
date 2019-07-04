@@ -1,7 +1,6 @@
-// Compiled by ClojureScript 1.10.520 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.10.520 {}
 goog.provide('re_com.core');
 goog.require('cljs.core');
-goog.require('cljs.core.constants');
 goog.require('re_com.alert');
 goog.require('re_com.box');
 goog.require('re_com.buttons');

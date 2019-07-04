@@ -1,10 +1,8 @@
-{:deps    {org.clojure/clojure         {:mvn/version "1.10.0"}
+{:deps    {org.clojure/clojure         {:mvn/version "1.10.1"}
            org.clojure/clojurescript   {:mvn/version "1.10.520"}
 
-           org.clojure/test.check      {:mvn/version "0.10.0-alpha4"}
-
            replete-repl/replete-shared {:git/url "https://github.com/replete-repl/replete-shared.git"
-                                        :sha     "a25109eb8148879f2bc1fcdab088584904d1b528"}
+                                        :sha     "d570b0f31eac2bd8248b507e7d6fa7b089f63859"}
 
            re-frame                    {:mvn/version "0.10.6"}
            re-com                      {:mvn/version "2.3.0"
@@ -23,4 +21,5 @@
            :worker      {:main-opts ["-m" "cljs.main" "-w" "src" "-co" "worker.cljs.edn" "-c"]}
 
            :dist-worker {:main-opts ["-m" "cljs.main" "-co" "worker.cljs.edn" "-c"]}
-           :dist-app    {:main-opts  ["-m" "cljs.main" "-co" "dist.cljs.edn" "-c"]}}}
+           :dist-app    {:main-opts ["-m" "cljs.main" "-co" "replete.cljs.edn" "-c"]
+                         :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}}}
