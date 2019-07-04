@@ -56,7 +56,7 @@ var key_bindings = cljs.core.get.call(null,map__3759__$1,new cljs.core.Keyword(n
 var style = cljs.core.get.call(null,map__3759__$1,new cljs.core.Keyword(null,"style","style",-496642736));
 var ed_opts = cljs.core.merge.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"node-id","node-id",779482292),"input"], null),opts);
 var cmirror_opts = cljs.core.merge.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"autofocus","autofocus",-712814732),true], null),cm_opts);
-return new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_com.core.v_box,new cljs.core.Keyword(null,"size","size",1098693007),"100%",new cljs.core.Keyword(null,"gap","gap",80255254),"5px",new cljs.core.Keyword(null,"children","children",-940561982),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [replete.editor.cmirror_edit_box,ed_opts,cmirror_opts,style], null),new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_com.core.button,new cljs.core.Keyword(null,"class","class",-2030961996),"btn-primary",new cljs.core.Keyword(null,"label","label",1718410804),"XYo",new cljs.core.Keyword(null,"tooltip","tooltip",-1809677058),["Shortcut: ",(function (){var G__3762 = new cljs.core.Keyword(null,"enter","enter",1792452624).cljs$core$IFn$_invoke$arity$1(key_bindings);
+return new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_com.core.v_box,new cljs.core.Keyword(null,"size","size",1098693007),"100%",new cljs.core.Keyword(null,"gap","gap",80255254),"5px",new cljs.core.Keyword(null,"children","children",-940561982),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [replete.editor.cmirror_edit_box,ed_opts,cmirror_opts,style], null),new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_com.core.button,new cljs.core.Keyword(null,"class","class",-2030961996),"btn-primary",new cljs.core.Keyword(null,"label","label",1718410804),"Eval",new cljs.core.Keyword(null,"tooltip","tooltip",-1809677058),["Shortcut: ",(function (){var G__3762 = new cljs.core.Keyword(null,"enter","enter",1792452624).cljs$core$IFn$_invoke$arity$1(key_bindings);
 if((G__3762 == null)){
 return null;
 } else {
@@ -100,5 +100,3 @@ return new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMP
 });
 ;})(key_bindings))
 });
-
-//# sourceMappingURL=editor.js.map

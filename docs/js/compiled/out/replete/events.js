@@ -135,5 +135,3 @@ return replete.events.next_prev.call(null,db,cljs.core.dec);
 re_frame.core.reg_event_db.call(null,new cljs.core.Keyword("replete.events","history-next","replete.events/history-next",-1773984442),(function (db,_){
 return replete.events.next_prev.call(null,db,cljs.core.inc);
 }));
-
-//# sourceMappingURL=events.js.map

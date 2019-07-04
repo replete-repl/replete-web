@@ -24,5 +24,3 @@ replete.system.dev_setup.call(null);
 return replete.system.mount_root.call(null);
 });
 goog.exportSymbol('replete.system.init', replete.system.init);
-
-//# sourceMappingURL=system.js.map

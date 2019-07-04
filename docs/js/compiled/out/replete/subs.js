@@ -23,5 +23,3 @@ return new cljs.core.Keyword(null,"os","os",795021913).cljs$core$IFn$_invoke$ari
 re_frame.core.reg_sub.call(null,new cljs.core.Keyword("replete.subs","key-bindings","replete.subs/key-bindings",-447606100),(function (db){
 return new cljs.core.Keyword(null,"key-bindings","key-bindings",-1464217982).cljs$core$IFn$_invoke$arity$1(db);
 }));
-
-//# sourceMappingURL=subs.js.map

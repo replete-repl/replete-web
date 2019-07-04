@@ -65,5 +65,3 @@ goog.global.REPLETE_LOAD = replete.io_impl.load;
 goog.global.REPLETE_SLEEP = replete.io_impl.sleep;
 goog.global.REPLETE_LOAD_FROM_JAR = replete.io_impl.load_from_jar;
 goog.global.REPLETE_REQUEST = replete.io_impl.unsupported_request;
-
-//# sourceMappingURL=io_impl.js.map
