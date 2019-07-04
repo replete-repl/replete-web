@@ -1,12 +1,6 @@
 // Compiled by ClojureScript 1.10.520 {}
 goog.provide('replete.cm_eval');
 goog.require('cljs.core');
-goog.require('cljsjs.codemirror');
-goog.require('cljsjs.codemirror.addon.edit.matchbrackets');
-goog.require('cljsjs.codemirror.addon.hint.show_hint');
-goog.require('cljsjs.codemirror.mode.clojure');
-goog.require('cljsjs.parinfer');
-goog.require('cljsjs.parinfer_codemirror');
 goog.require('reagent.core');
 goog.require('reagent.dom');
 goog.require('re_frame.core');
@@ -102,5 +96,3 @@ return cljs.core.reset_BANG_.call(null,cmirror,null);
 });})(cmirror,mark_up,map__2025,map__2025__$1,node_id,preamble_markup,preamble_text,cm_options,cm_update))
 ,new cljs.core.Keyword(null,"component-did-update","component-did-update",-1468549173),cm_update,new cljs.core.Keyword(null,"display-name","display-name",694513143),node_id], null));
 });
-
-//# sourceMappingURL=cm_eval.js.map

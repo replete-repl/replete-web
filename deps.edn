@@ -23,4 +23,5 @@
            :worker      {:main-opts ["-m" "cljs.main" "-w" "src" "-co" "worker.cljs.edn" "-c"]}
 
            :dist-worker {:main-opts ["-m" "cljs.main" "-co" "worker.cljs.edn" "-c"]}
-           :dist-app    {:main-opts  ["-m" "cljs.main" "-co" "dist.cljs.edn" "-c"]}}}
+           :dist-app    {:main-opts  ["-m" "cljs.main" "-co" "dist.cljs.edn" "-c"]
+                         :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}}}

@@ -45,7 +45,7 @@
      [[cmirror-edit-box ed-opts cmirror-opts style]
       [button
        :class "btn-primary"
-       :label (str "aEval")
+       :label (str "Eval")
        :tooltip (str "Shortcut: " (some-> (:enter key-bindings) name))
        :on-click #(re-frame/dispatch [::events/eval])]]]))
 

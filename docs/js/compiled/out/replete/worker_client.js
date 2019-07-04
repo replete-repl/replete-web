@@ -32,5 +32,3 @@ return cljs.core.deref.call(null,replete.worker_client.worker).addEventListener(
 replete.worker_client.send_BANG_ = (function replete$worker_client$send_BANG_(event){
 return cljs.core.deref.call(null,replete.worker_client.worker).postMessage(cljs.core.str.cljs$core$IFn$_invoke$arity$1(event));
 });
-
-//# sourceMappingURL=worker_client.js.map
