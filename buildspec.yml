@@ -17,3 +17,9 @@ phases:
     commands:
       - clojure -A:dist-worker
       - clojure -A:dist-app
+      - ls -ld /root/.m2
+      - du -sh /root/.m2
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
