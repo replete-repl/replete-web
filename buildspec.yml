@@ -17,5 +17,7 @@ phases:
     commands:
       - clojure -A:dist-worker
       - clojure -A:dist-app
-      - cd resources/public
-      - aws s3 sync . s3://org.replete-repl
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
