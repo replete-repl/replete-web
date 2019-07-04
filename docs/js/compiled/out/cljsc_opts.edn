@@ -1,0 +1,1 @@
+{:main replete.system, :output-to "resources/public/js/compiled/app.js", :output-dir "resources/public/js/compiled/out", :asset-path "js/compiled/out", :external-config #:devtools{:config {:features-to-install :all}}, :preloads [devtools.preload], :aot-cache true}
