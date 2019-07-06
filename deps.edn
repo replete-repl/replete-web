@@ -4,7 +4,7 @@
            org.clojure/test.check      {:mvn/version "0.10.0-alpha4"}
 
            replete-repl/replete-shared {:git/url "https://github.com/replete-repl/replete-shared.git"
-                                        :sha     "a25109eb8148879f2bc1fcdab088584904d1b528"}
+                                        :sha     "18ab1c19f9213aaf6ebb5a0b13a499a1bc27ab32"}
 
            re-frame                    {:mvn/version "0.10.6"}
            re-com                      {:mvn/version "2.3.0"
