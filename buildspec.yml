@@ -18,7 +18,6 @@ phases:
       - clojure -A:dist
       - clojure -A:test | tee test.out
       - grep '0 failures, 0 errors.' test.out
-      - clojure -A:dist
   post_build:
     commands:
       - scripts/invalidate-cdn.sh
