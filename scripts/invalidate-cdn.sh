@@ -11,7 +11,7 @@ ID=$(aws cloudfront create-invalidation --distribution-id ${CDN} --paths ${JS} |
 
 STATE=incomplete
 
-until [[ ${STATE} = "Completed" ]]
+until [[ ${STATE} = Completed ]]
 do
     STATE=$(aws cloudfront get-invalidation --id ${ID} --distribution-id ${CDN} |
             jq -r '.Invalidation.Status')
