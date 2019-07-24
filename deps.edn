@@ -14,7 +14,7 @@
            cljsjs/parinfer-codemirror  {:mvn/version "1.4.1-2"}
 
            replete-repl/replete-shared {:git/url "https://github.com/replete-repl/replete-shared.git"
-                                        :sha     "6038af5069206792da91679b7d4dd7d91a83ef61"}}
+                                        :sha     "c89e691494ab15680b4edc421a91f74cf4cb1838"}}
 
  :paths   ["src" "resources"]
 
