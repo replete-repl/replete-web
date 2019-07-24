@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 CDN=${CF_DISTRIBUTION_ID:?"Must set CF_DISTRIBUTION_ID"}
 
