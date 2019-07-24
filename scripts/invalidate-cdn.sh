@@ -7,7 +7,7 @@ CDN=${CF_DISTRIBUTION_ID:?"Must set CF_DISTRIBUTION_ID"}
 JS="/js/compiled*"
 
 ID=$(aws cloudfront create-invalidation --distribution-id ${CDN} --paths ${JS} |
-     jq '.Invalidation.Id')
+     jq -r '.Invalidation.Id')
 
 STATE=incomplete
 
