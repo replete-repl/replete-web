@@ -15,9 +15,16 @@ phases:
 
   build:
     commands:
-      - clojure -A:dist-worker
-      - clojure -A:dist-app
+      - clojure -A:dist
+      - clojure -A:test | tee test.out
+      - grep '0 failures, 0 errors.' test.out
+      - clojure -A:dist
+  post_build:
+    commands:
+      - scripts/invalidate-cdn.sh
 
 cache:
   paths:
     - '/root/.m2/**/*'
+    - '/root/.gitlibs/**/*'
+    - '/.cpcache/**/*'

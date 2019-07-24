@@ -1,10 +1,7 @@
-{:deps    {org.clojure/clojure         {:mvn/version "1.10.0"}
+{:deps    {org.clojure/clojure         {:mvn/version "1.10.1"}
            org.clojure/clojurescript   {:mvn/version "1.10.520"}
 
            org.clojure/test.check      {:mvn/version "0.10.0-alpha4"}
-
-           replete-repl/replete-shared {:git/url "https://github.com/replete-repl/replete-shared.git"
-                                        :sha     "18ab1c19f9213aaf6ebb5a0b13a499a1bc27ab32"}
 
            re-frame                    {:mvn/version "0.10.6"}
            re-com                      {:mvn/version "2.3.0"
@@ -14,14 +11,26 @@
            org.clojure/java.classpath  {:mvn/version "0.3.0"}
 
            cljsjs/codemirror           {:mvn/version "5.40.2-1"}
-           cljsjs/parinfer-codemirror  {:mvn/version "1.4.1-2"}}
+           cljsjs/parinfer-codemirror  {:mvn/version "1.4.1-2"}
+
+           replete-repl/replete-shared {:git/url "https://github.com/replete-repl/replete-shared.git"
+                                        :sha     "6038af5069206792da91679b7d4dd7d91a83ef61"}}
 
  :paths   ["src" "resources"]
 
- :aliases {:repl        {:main-opts  ["-m" "cljs.main" "-w" "src" "-ro" "repl.edn" "-co" "replete.cljs.edn" "-c" "-r"]
-                         :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}
-           :worker      {:main-opts ["-m" "cljs.main" "-w" "src" "-co" "worker.cljs.edn" "-c"]}
+ :aliases {:repl {:main-opts  ["-m" "cljs.main" "-w" "src" "-ro" "repl.edn" "-co" "replete.cljs.edn" "-c" "-r"]
+                  :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}
 
-           :dist-worker {:main-opts ["-m" "cljs.main" "-co" "worker.cljs.edn" "-c"]}
-           :dist-app    {:main-opts  ["-m" "cljs.main" "-co" "dist.cljs.edn" "-c"]
-                         :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}}}
+           :fig-repl {:jvm-opts    ["-Xmx1g" "-Xms1g"]
+                      :extra-paths ["test"]
+                      :extra-deps  {com.bhauman/figwheel-main       {:mvn/version "0.2.0"}
+                                    com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}}
+                      :main-opts   ["-m" "figwheel.main" "-b" "replete" "-r"]}
+
+           :test {:extra-paths ["test"]
+                  :extra-deps  {olical/cljs-test-runner {:mvn/version "3.7.0"}}
+                  :main-opts   ["-m" "cljs-test-runner.main"]}
+
+           :dist {:jvm-opts   ["-Xmx1g" "-Xms1g"]
+                  :main-opts  ["-m" "cljs.main" "-co" "dist.cljs.edn" "-c"]
+                  :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}}}
