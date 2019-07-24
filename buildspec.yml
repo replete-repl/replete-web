@@ -25,5 +25,3 @@ phases:
 cache:
   paths:
     - '/root/.m2/**/*'
-    - '/root/.gitlibs/**/*'
-    - '/.cpcache/**/*'
