@@ -14,7 +14,7 @@ STATE=incomplete
 until [[ ${STATE} = "Completed" ]]
 do
     STATE=$(aws cloudfront get-invalidation --id ${ID} --distribution-id ${CDN} |
-            jq '.Invalidation.Status')
+            jq -r '.Invalidation.Status')
 
-    sleep 1
+    sleep 15
 done
