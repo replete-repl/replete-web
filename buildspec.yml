@@ -19,7 +19,7 @@ phases:
       - clojure -A:test | tee test.out
       - grep '0 failures, 0 errors.' test.out
   post_build:
-    commands:
+    finally:
       - scripts/invalidate-cdn.sh
 
 cache:
