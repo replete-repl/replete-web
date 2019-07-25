@@ -16,11 +16,9 @@ phases:
   build:
     commands:
       - clojure -A:dist
-      - find resources/public/js/compiled/out/replete -ls | tee /tmp/replete.out0
+      - find . -type d -name replete -exec ls -l {} \;
       - clojure -A:test | tee test.out
       - grep '0 failures, 0 errors.' test.out
-      - find resources/public/js/compiled/out/replete -ls | tee /tmp/replete.out1
-      - diff /tmp/replete.out0 /tmp/replete.out1
   post_build:
     finally:
       - scripts/invalidate-cdn.sh
