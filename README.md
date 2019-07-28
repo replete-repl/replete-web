@@ -1,9 +1,38 @@
-# Replete Web
-
-ClojureScript REPL web app using web workers for self-hosted eval.
-
 ![Build Status](https://codebuild.us-east-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicTk2SFk5S3NmaExBbVMrelplVUFCc0xiUm8rUk40QjczbFQ0S2JOQUpMVnE2RllvV3RabWtZNk5tUDhBU0F5NGp0QVNhdmJnN28wZnErNFVlZHUyQXBRPSIsIml2UGFyYW1ldGVyU3BlYyI6ImFVSyt5c1FkRWpra0NFT2ciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
+# Replete Web 
+
+#### https://repl.replete-web.io
+
+##### A ClojureScript web app with a self-hosted eval REPL.
+
+It is compliant with 1.10 features and bundled with the following commonly used namespaces:
+
+- clojure.core.reducers
+- clojure.data
+- clojure.reflect
+- clojure.set
+- clojure.string
+- clojure.walk
+- clojure.zip
+- clojure.test.check
+- cljs.pprint
+- cljs.reader
+- cljs.spec.alpha
+- cljs.spec.gen.alpha
+- cljs.spec.test.alpha
+- cljs.test
+
+### Usability features:
+Like the native Replete family REPLs it supports a simple, clean interface with
+- `parinfer` editing to simplify form entry  
+- command history (via Cmd/Ctrl up/down arrows)
+
+# Contributing
+
+As with all projects, there's always more to do and we are happy to take PRs!
+
+Please open issues to report a bug or propose new features / improvements.
 
 ## Starting REPLETE in Development - with Figwheel
 
@@ -62,10 +91,6 @@ Open `http://localhost:8888` in your browser
 
 `Ctrl-C` will stop the docker container and clean up
 
-
-# Contributing
-
-Happy to take PRs!
 
 # License
 
