@@ -70,6 +70,7 @@ The REPLETE web UI will be served and you can interact / dev / test
 ### Local HTTP via Python
 
 ```bash
+cd resources/public
 python -m SimpleHTTPServer 8888
 ```
 
