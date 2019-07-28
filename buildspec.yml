@@ -17,10 +17,9 @@ phases:
     commands:
       - clojure -A:dist
       - clojure -A:test | tee test.out
-      - ls -l ./src/replete/io_impl.*
-      - ls -l ./resources/public/js/compiled/out/replete/io_impl.*
-      - ls -l ./cljs-test-runner-out/replete/io_impl.*
-#      - grep '0 failures, 0 errors.' test.out
+      - grep -l 'goog\/deps' resources/public/js/compiled/out/replete/io_impl.*
+      - grep -l 'goog\/deps' cljs-test-runner-out/replete/io_impl.js
+      - grep '0 failures, 0 errors.' test.out
   post_build:
     finally:
       - scripts/invalidate-cdn.sh
