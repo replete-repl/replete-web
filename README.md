@@ -34,6 +34,8 @@ As with all projects, there's always more to do and we are happy to take PRs!
 
 Please open issues to report a bug or propose new features / improvements.
 
+# Development
+
 ## Starting REPLETE in Development - with Figwheel
 
 Start a development REPL / Browser session
@@ -50,7 +52,6 @@ cljs.user=>
 
 The REPLETE web UI will be served and you can interact / dev / test
 
-
 ## Starting REPLETE in Development - without Figwheel
 
 Start a development REPL / Browser session
@@ -66,7 +67,7 @@ The REPLETE web UI will be served and you can interact / dev / test
 
 **NOTE**: this REPL do not use _figwheel_ so you will need to manually refresh the page to obtain changes to behaviour.
 
-## Local HTTP via Python
+### Local HTTP via Python
 
 ```bash
 python -m SimpleHTTPServer 8888
@@ -77,7 +78,7 @@ Open `http://localhost:8888` in your browser
 `Ctrl-C` will stop the server
 
 
-## Local HTTP via Docker
+### Local HTTP via Docker
 
 Assuming you have Docker all set up and running . . .
 
