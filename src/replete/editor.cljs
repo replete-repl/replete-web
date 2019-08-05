@@ -64,15 +64,20 @@
 
 (def ^:private main-style
   {:position "absolute"
-   :padding  "5px"
+   :padding  "0px"
+   :left     "0px"
+   :right    "0px"
    :top      "0px"
    :bottom   "0px"
    :width    "100%"})
 
-(def ^:private box-style
+(def ^:private editor-style
   (merge (flex-child-style "1")
          {:border        "1px solid lightgrey"
           :border-radius "4px"}))
+
+(def ^:private eval-style
+  (flex-child-style "1"))
 
 (defn- key-binding
   [key-map [button event]]
@@ -99,7 +104,7 @@
             eval-cm-opts {:theme "replete-eval-light"}
             eval-box-opts {:opts    eval-opts
                            :cm-opts eval-cm-opts
-                           :style   box-style}
+                           :style   eval-style}
 
             extra-keys (extra-key-bindings @key-bindings event-bindings)
             edit-cm-opts {:theme     "replete-edit-light"
@@ -107,7 +112,7 @@
             edit-box-opts {:opts         {:node-id "replete-input"}
                            :cm-opts      edit-cm-opts
                            :key-bindings @key-bindings
-                           :style        box-style}]
+                           :style        editor-style}]
         [box
          :style main-style
          :child
