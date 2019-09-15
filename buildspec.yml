@@ -15,10 +15,13 @@ phases:
 
   build:
     commands:
-      - clojure -A:dist
+      - echo | clojure -A:fig-repl
+      - (grep -l 'goog\/deps' resources/public/js/compiled/out/replete/io_impl.* ; echo $?)
       - touch src/replete/io_impl.cljs
       - clojure -A:dist
+      - (grep -l 'goog\/deps' resources/public/js/compiled/out/replete/io_impl.* ; echo $?)
       - clojure -A:test | tee test.out
+      - (grep -l 'goog\/deps' resources/public/js/compiled/out/replete/io_impl.* ; echo $?)
       - grep '0 failures, 0 errors.' test.out
   post_build:
     commands:
