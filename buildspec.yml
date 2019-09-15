@@ -15,9 +15,8 @@ phases:
 
   build:
     commands:
-      - echo | clojure -A:repl
+      - clojure -A:dist
       - clojure -A:test | tee test.out
-      - grep -l 'goog\/deps' cljs-test-runner-out/replete/io_impl.js
       - grep '0 failures, 0 errors.' test.out
   post_build:
     commands:
