@@ -18,8 +18,8 @@
 
  :paths   ["src" "resources"]
 
- :aliases {:repl {:main-opts  ["-m" "cljs.main" "-w" "src" "-ro" "repl.edn" "-co" "replete.cljs.edn" "-c" "-r"]
-                  :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}
+ :aliases {:repl     {:main-opts  ["-m" "cljs.main" "-w" "src" "-ro" "repl.edn" "-co" "replete.cljs.edn" "-c" "-r"]
+                      :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}
 
            :fig-repl {:jvm-opts    ["-Xmx1g" "-Xms1g"]
                       :extra-paths ["test"]
@@ -27,10 +27,14 @@
                                     com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}}
                       :main-opts   ["-m" "figwheel.main" "-b" "replete" "-r"]}
 
-           :test {:extra-paths ["test"]
-                  :extra-deps  {olical/cljs-test-runner {:mvn/version "3.7.0"}}
-                  :main-opts   ["-m" "cljs-test-runner.main"]}
+           :fig-dist {:jvm-opts   ["-Xmx1g" "-Xms1g"]
+                      :extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.0"}}
+                      :main-opts  ["-m" "figwheel.main" "-b" "replete"]}
 
-           :dist {:jvm-opts   ["-Xmx1g" "-Xms1g"]
-                  :main-opts  ["-m" "cljs.main" "-co" "dist.cljs.edn" "-c"]
-                  :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}}}
+           :test     {:extra-paths ["test"]
+                      :extra-deps  {olical/cljs-test-runner {:mvn/version "3.7.0"}}
+                      :main-opts   ["-m" "cljs-test-runner.main"]}
+
+           :dist     {:jvm-opts   ["-Xmx1g" "-Xms1g"]
+                      :main-opts  ["-m" "cljs.main" "-co" "dist.cljs.edn" "-c"]
+                      :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}}}

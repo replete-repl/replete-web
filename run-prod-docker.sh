@@ -3,8 +3,9 @@
 set -e
 
 ## Clean
-rm -rf resources/public/js/compiled
+rm -rf ~/.gitlibs
 rm -rf .cpcache
+rm -rf resources/public/js/compiled
 rm -rf cljs-test-runner-out
 
 ## Build

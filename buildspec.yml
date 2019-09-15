@@ -15,7 +15,7 @@ phases:
 
   build:
     commands:
-      - echo | clojure -A:fig-repl
+      - echo | clojure -A:fig-dist
       - (grep -l 'goog\/deps' resources/public/js/compiled/out/replete/io_impl.* ; echo $?)
       - touch src/replete/io_impl.cljs
       - clojure -A:dist
