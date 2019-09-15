@@ -24,9 +24,10 @@ phases:
 
       - clojure -A:test | tee test.out
       - grep -l 'goog\/deps' cljs-test-runner-out/replete/io_impl.js
-#      - grep '0 failures, 0 errors.' test.out
+      - grep '0 failures, 0 errors.' test.out
   post_build:
     commands:
+      - scripts/tag-build.sh
       - aws s3 sync resources/public s3://${S3_BUCKET} --delete
       - scripts/invalidate-cdn.sh
 
