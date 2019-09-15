@@ -16,6 +16,8 @@ phases:
   build:
     commands:
       - clojure -A:dist
+      - touch src/replete/io_impl.cljs
+      - clojure -A:dist
       - clojure -A:test | tee test.out
       - grep '0 failures, 0 errors.' test.out
   post_build:
