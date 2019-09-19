@@ -14,7 +14,7 @@
            cljsjs/parinfer-codemirror  {:mvn/version "1.4.1-2"}
 
            replete-repl/replete-shared {:git/url "https://github.com/replete-repl/replete-shared.git"
-                                        :sha     "c89e691494ab15680b4edc421a91f74cf4cb1838"}}
+                                        :sha     "66c39ddfea7c96153b6ecc58a32b001f28c25b69"}}
 
  :paths   ["src" "resources"]
 
@@ -23,13 +23,15 @@
 
            :fig-repl {:jvm-opts    ["-Xmx1g" "-Xms1g"]
                       :extra-paths ["test"]
-                      :extra-deps  {com.bhauman/figwheel-main       {:mvn/version "0.2.0"}
+                      :extra-deps  {com.bhauman/figwheel-main       {:mvn/version "0.2.3"}
                                     com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}}
                       :main-opts   ["-m" "figwheel.main" "-b" "replete" "-r"]}
 
-           :fig-dist {:jvm-opts   ["-Xmx1g" "-Xms1g"]
-                      :extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.0"}}
-                      :main-opts  ["-m" "figwheel.main" "-b" "replete"]}
+           :fig-dist {:jvm-opts    ["-Xmx1g" "-Xms1g"]
+                      :extra-paths ["test"]
+                      :extra-deps  {com.bhauman/figwheel-main       {:mvn/version "0.2.3"}
+                                    com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}}
+                      :main-opts   ["-m" "figwheel.main" "-bo" "replete"]}
 
            :test     {:extra-paths ["test"]
                       :extra-deps  {olical/cljs-test-runner {:mvn/version "3.7.0"}}
