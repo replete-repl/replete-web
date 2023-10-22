@@ -1,7 +1,7 @@
 {:deps    {org.clojure/clojure         {:mvn/version "1.10.1"}
-           org.clojure/clojurescript   {:mvn/version "1.10.597"}
+           org.clojure/clojurescript   {:mvn/version "1.11.60"}
 
-           org.clojure/test.check      {:mvn/version "0.10.0-alpha4"}
+           org.clojure/test.check      {:mvn/version "1.1.1"}
 
            re-frame                    {:mvn/version "0.10.6"}
            re-com                      {:mvn/version "2.3.0"
@@ -14,7 +14,7 @@
            cljsjs/parinfer-codemirror  {:mvn/version "1.4.1-2"}
 
            replete-repl/replete-shared {:git/url "https://github.com/replete-repl/replete-shared.git"
-                                        :sha     "c4f96eb8f353c350db0c8b5f05b4f383cbadf481"}}
+                                        :sha     "235d41641b693d54b2df6c39c5b91a630ecb497a"}}
 
  :paths   ["src" "resources"]
 
