@@ -2,7 +2,7 @@
 
 # Replete Web 
 
-#### https://repl.replete-web.io
+#### https://replete-repl.org/repl/
 
 ##### A ClojureScript web app with a self-hosted eval REPL.
 
@@ -96,6 +96,6 @@ Open `http://localhost:8888` in your browser
 
 # License
 
-Copyright © 2019 Ray McDermott, Mike Fikes, and Contributors
+Copyright © 2019–2023 Ray McDermott, Mike Fikes, and Contributors
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
